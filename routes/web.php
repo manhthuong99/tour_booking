@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\District;
+use App\Models\District;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 // Route backend
 Route::get('admin/login', 'backend\Home@login')->name('admin.login');
+Route::get('admin', 'backend\Home@index')->name('admin.home');
 Route::post('admin/login', 'backend\Home@login')->name('admin.login');
 Route::get('admin/home', 'backend\Home@index')->name('admin.home');
 Route::post('admin/home', 'backend\Home@index')->name('admin.home');
@@ -37,6 +38,7 @@ Route::group(['prefix' => 'admin','middleware'=>['admin.login']], function () {
     Route::resource('category', 'backend\CategoriesController');
     Route::resource('booking', 'backend\BookingController')->except('create');
     Route::post('apply', 'backend\BookingController@apply')->name('booking.apply');
+    Route::post('cancel', 'backend\BookingController@cancel')->name('booking.cancel');
     Route::get('booking-success', 'backend\BookingController@success')->name('booking.success');
 });
 
@@ -44,7 +46,7 @@ Route::group(['prefix' => 'admin','middleware'=>['admin.login']], function () {
 //Route frontend
 
 Route::get('login', 'frontend\UserController@login')->name('frontend.user.login');
-Route::post('index', 'Frontend\UserController@index')->name('frontend.user.index');
+Route::post('index', 'frontend\UserController@index')->name('frontend.user.index');
 Route::get('register', 'frontend\UserController@register')->name('frontend.user.register');
 Route::get('repassword', 'frontend\UserController@repassword')->name('frontend.user.repassword');
 

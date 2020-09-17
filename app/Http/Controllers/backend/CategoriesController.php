@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Model\Category_detail;
+use App\Models\Category_detail;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -43,9 +43,9 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         $data = new Category_detail();
-        $data->name = $request->name;
+        $data->category_detail_name = $request->name;
         $data->position = $request->position;
-        $check = Category_detail::where('name', $request->name)
+        $check = Category_detail::where('category_detail_name', $request->name)
             ->get();
         if ($check->count()) {
             return redirect()->back()->with('failed', 'Tên này đã tồn tại');
@@ -90,9 +90,9 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $data = Category_detail::find($id);
-        $data->name = $request->name;
+        $data->category_detail_name = $request->name;
         $data->position = $request->position;
-        if ($this->checkDuplicateName($request->id,$request->name)){
+        if ($this->checkDuplicateName($request->id,$request->category_detail_name)){
            return redirect()->back()->with('failed', 'Tên này đã tồn tại');
         }
         else{
@@ -118,11 +118,11 @@ class CategoriesController extends Controller
     {
         $check = false;
         $result1 = Category_detail::where([
-            'name' => $name
+            'category_detail_name' => $name
         ])->get();
         if ($result1->count()) {
             $result2 = Category_detail::where([
-                'name' => $name,
+                'category_detail_name' => $name,
                 'category_detail_id'=>$id
             ])->get();
             if ($result2->count()){

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Model\Users;
+use App\Models\Booking;
+use App\Models\Users;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,8 @@ class Home extends Controller
         $arr = [
             'username' => $request->username,
             'password' => $request->password,
-            'permission' => 1
+            'permission' => 1,
+            'status' => 1
         ];
         if (Auth::attempt($arr)) {
             return  redirect('/admin/dashboard');
@@ -36,12 +38,18 @@ class Home extends Controller
         return redirect('/admin/login');
     }
     public function dashboard(){
+        $data = array();
         $current_time = Carbon::now();
         $count = Users::where('status', 1)
             ->whereYear('created_at', '<=', $current_time->year)
             ->whereMonth('created_at', $current_time->month)
             ->count();
         $data['member'] = $count;
+        $data['listBooking']=Booking::with('tours','users')
+            ->join('tours','booking.id_tours','=','tours.tours_id')
+            ->join('users','booking.id_users','=','users.users_id')
+            ->orderBy('booking_id', 'DESC')->where('booking_status',1)
+            ->paginate(10);
         return view('backend.home.dashboard',$data);
     }
 

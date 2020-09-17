@@ -16,6 +16,7 @@ class CreateCategoryDetail extends Migration
         Schema::create('category_detail', function (Blueprint $table) {
             $table->increments('category_detail_id');
             $table->string('category_detail_name');
+            $table->string('position');
         });
     }
 

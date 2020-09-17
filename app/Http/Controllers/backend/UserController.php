@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Model\Users;
+use App\Models\Users;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -24,8 +24,8 @@ class UserController extends Controller
         $data['listUser'] = Users::where('permission', 0)
             ->where('status', 1)
             ->orderBy('users_id', 'DESC')
-            ->paginate(10);
-        return view('backend/user/listing', $data);
+            ->get();
+        return view('backend/user/list', $data);
     }
 
     /**
@@ -47,29 +47,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-//        $address = "";
-//        $data = new Destination();
-//        $data->name = $request->name;
-//        $data->description = $request->description;
-//        if ($request->id_district != null){
-//            $arrDistrict = District::where('id', $request->id_district)->get()->toArray();
-//            $address .= $arrDistrict[0]['_prefix'] . ' ' . $arrDistrict[0]['_name'] . ', ';
-//            $arrProvince = Province::where('id', $request->id_province)->get()->toArray();
-//            $address .= $arrProvince[0]['_name'];
-//            $data->address = $address;
-//        }
-//        $data->id_province=$request->id_province;
-//        $data->id_district = $request->id_district;
-//        if ($request->hasFile('image')) {
-//            $data->image = rand() . '-' . $request->image->getClientOriginalName();
-//            $request->image->storeAs('images', $data->image, 'public');
-//        }
-//        if ($data->save()){
-//            return redirect('/admin/destination')->with('success','Tạo mới thành công!');
-//        }
-//        else {
-//            return redirect()->back();
-//        }
+
     }
 
     /**

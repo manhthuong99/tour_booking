@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,6 +11,10 @@ class Booking extends Model
     protected $guarded = [];
     public function tours()
     {
-        return $this->belongsTo('App\Model\Tours','id_tours');
+        return $this->belongsTo('App\Models\Tours','id_tours');
+    }
+    public function users()
+    {
+        return $this->belongsTo('App\Models\Users','id_users');
     }
 }

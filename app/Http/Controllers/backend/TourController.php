@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Model\Category;
-use App\Model\Category_detail;
-use App\Model\Destination;
-use App\Model\Tours;
-use App\Model\Transport;
-use App\Model\Transport_detail;
+use App\Models\Category;
+use App\Models\Category_detail;
+use App\Models\Destination;
+use App\Models\Tours;
+use App\Models\Transport;
+use App\Models\Transport_detail;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -25,12 +25,12 @@ class TourController extends Controller
      */
     public function index()
     {
-//        $data['listTours'] = Tours::orderBy('tours_id', 'DESC')->paginate(10);
-//        return view('backend.tours.listing', $data);
-        $data['listTours']=Tours::with('destination')->join('destination','tours.id_destination','=','destination.destination_id')
-            ->orderBy('tours_id', 'DESC')
-            ->get();
+        $data['listTours'] = Tours::orderBy('tours_id', 'DESC')->paginate(10);
         return view('backend.tours.listing', $data);
+//        $data['listTours']=Tours::with('destination')->join('destination','tours.id_destination','=','destination.destination_id')
+//            ->orderBy('tours_id', 'DESC')
+//            ->get();
+//        return view('backend.tours.listing', $data);
     }
 
     /**
@@ -41,7 +41,6 @@ class TourController extends Controller
     public function create()
     {
         $data['listTranSport'] = Transport_detail::orderBy('Transport_detail_id', 'DESC')->get();
-        $data['listDestination'] = Destination::orderBy('Destination_id', 'DESC')->get();
         $data['listCategories'] = Category_detail::orderBy('Category_detail_id', 'DESC')->get();
         return view('backend.tours.create', $data);
     }
@@ -55,18 +54,18 @@ class TourController extends Controller
     public function store(Request $request)
     {
         $data = new Tours();
-        $data->name = $request->name;
-        $data->id_destination = $request->id_destination;
+        $data->tours_name = $request->name;
+        $data->destination = $request->destination;
         $data->price = $request->price;
         $data->day_number = $request->day_number;
         $data->discount = $request->discount;
         $data->calendar = $request->calendar;
         $data->description = $request->description;
         if ($request->hasFile('images')) {
-            $data->images = rand() . '-' . $request->images->getClientOriginalName();
-            $request->images->storeAs('tours', $data->images, 'public');
+            $data->image = rand() . '-' . $request->images->getClientOriginalName();
+            $request->images->storeAs('tours', $data->image, 'public');
         }
-        if ($this->checkDuplicateName('', $request->name)) {
+        if ($this->checkDuplicateName('', $request->tours_name)) {
             return redirect()->back()->with('failed', 'Tên này đã tồn tại');
         } else {
             $data->save();
@@ -74,7 +73,7 @@ class TourController extends Controller
                 foreach ($request->id_category as $value) {
                     $category = new Category();
                     $category->id_category_detail = $value;
-                    $category->id_tour = $data->tours_id;
+                    $category->id_tours = $data->tours_id;
                     $category->save();
                 }
             }
@@ -111,7 +110,6 @@ class TourController extends Controller
     public function edit($id)
     {
         $data['listTranSport'] = Transport_detail::orderBy('Transport_detail_id', 'DESC')->get();
-        $data['listDestination'] = Destination::orderBy('Destination_id', 'DESC')->get();
         $data['listCategories'] = Category_detail::orderBy('Category_detail_id', 'DESC')->get();
         $data['toursSelected'] = Tours::where('tours_id',$id)->get();
         return view('backend.tours.edit', $data);
@@ -127,18 +125,18 @@ class TourController extends Controller
     public function update(Request $request, $id)
     {
         $data = Tours::find($id);
-        $data->name = $request->name;
-        $data->id_destination = $request->id_destination;
+        $data->tours_name = $request->name;
+        $data->destination = $request->destination;
         $data->price = $request->price;
         $data->day_number = $request->day_number;
         $data->discount = $request->discount;
         $data->calendar = $request->calendar;
         $data->description = $request->description;
         if ($request->hasFile('images')) {
-            $data->images = rand() . '-' . $request->images->getClientOriginalName();
-            $request->images->storeAs('tours', $data->images, 'public');
+            $data->image = rand() . '-' . $request->images->getClientOriginalName();
+            $request->images->storeAs('tours', $data->image, 'public');
         }
-        if ($this->checkDuplicateName($id, $request->name)) {
+        if ($this->checkDuplicateName($id, $request->tours_name)) {
             return redirect()->back()->with('failed', 'Tên này đã tồn tại');
         } else {
             $data->save();
@@ -146,7 +144,7 @@ class TourController extends Controller
                 foreach ($request->id_category as $value) {
                     $category = new Category();
                     $category->id_category_detail = $value;
-                    $category->id_tour = $data->tours_id;
+                    $category->id_tours = $data->tours_id;
                     $category->save();
                 }
             }
@@ -180,11 +178,11 @@ class TourController extends Controller
     {
         $check = false;
         $result1 = Tours::where([
-            'name' => $name
+            'tours_name' => $name
         ])->get();
         if ($result1->count()) {
             $result2 = Tours::where([
-                'name' => $name,
+                'tours_name' => $name,
                 'tours_id' => $id
             ])->get();
             if ($result2->count()) {

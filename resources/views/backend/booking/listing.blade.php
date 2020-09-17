@@ -55,21 +55,21 @@
                         @php($i = 1)
                         @foreach( $listBooking as $value )
                             <tr>
-                                <td>{{ $value->tours->name }}</td>
-                                <td> {{ $value->tours->calendar }}</td>
-                                <td> {{ $value->customer_name }}</td>
-                                <td> {{ $value->email }}</td>
-                                <td> {{ $value->phone_number }}</td>
-                                <td> {{ $value->number_person }}</td>
+                                <td>{{ $value->tours->tours_name }}</td>
+                                <td> {{ date("d/m/Y", strtotime($value->tours->calendar)) }}</td>
+                                <td> {{ $value->users->fullname }}</td>
+                                <td> {{ $value->users->email }}</td>
+                                <td> {{ $value->users->phone_number }}</td>
+                                <td> {{ $value->number_customer }}</td>
                                 <td> {{ $value->total }}</td>
                                 @if($value->booking_status==0)
-                                    <td style="color: yellow">Đang chờ duyệt</td>
+                                    <td style="color: red">Đã hủy</td>
                                 @endif
                                 @if($value->booking_status==1)
-                                    <td style="color: green">Đã duyệt</td>
+                                    <td style="color: black">Đang chờ duyệt</td>
                                 @endif
                                 @if($value->booking_status==2)
-                                    <td style="color: red">Đã duyệt</td>
+                                    <td style="color: green">Đã duyệt</td>
                                 @endif
                                 <td align="center">
                                     <button><a class="fa fa-fw fa-eye" href="{{ route('booking.show',$value->booking_id) }}"></a>

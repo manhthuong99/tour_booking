@@ -20,6 +20,7 @@ class CreateBooking extends Migration
             $table->integer('number_customer');
             $table->double('total')->nullable();
             $table->integer('status')->default(0);
+            $table->dateTime('confirm_at')->nullable();
         });
     }
 

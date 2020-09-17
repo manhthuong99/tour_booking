@@ -19,7 +19,7 @@ class CreateTours extends Migration
             $table->text('description')->nullable();
             $table->double('price');
             $table->float('day_number');
-            $table->integer('destination');
+            $table->string('destination');
             $table->integer('id_district')->nullable()->unsigned();
             $table->integer('id_province')->nullable()->unsigned();
             $table->date('calendar');

@@ -7,9 +7,9 @@
         <div class="row">
             <div class="clearfix visible-sm-block"></div>
 
-            <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="info-box">
-                    <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                    <span class="info-box-icon bg-red"><i class="ion ion-ios-star-outline"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Tour đặt mới</span>
@@ -20,7 +20,7 @@
                 <!-- /.info-box -->
             </div>
             <!-- /.col -->
-            <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="col-md-4 col-sm-12 col-xs-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
@@ -36,6 +36,18 @@
                 <!-- /.info-box -->
             </div>
             <!-- /.col -->
+            <div class="col-md-4 col-sm-12 col-xs-12">
+                <div class="info-box">
+                    <span class="info-box-icon bg-green"><i class="fa fa-fw fa-dollar"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Doanh thu</span>
+                        <span class="info-box-number">760</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
         </div>
         <div class="col-md-12">
             <div class="box">
@@ -176,89 +188,108 @@
     <!-- /.row -->
     <div class="row">
         <!-- Left col -->
-        <div class="col-md-8">
+        <div class="col-md-5">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"><b>Danh sách điểm đến</b></h3>
-                    <div class="search">
-                        <input id="search" name="search" type="text" class="form-control" placeholder="Tìm kiếm">
-                    </div>
+                    <h3 class="box-title">Tour mới đặt</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                         <tr align="center">
-                            <td align="center" width="3%"><h4><b>STT</b></h4></td>
-                            <td width="30%"><h4><b>Tên điểm đến</b></h4></td>
-                            <td width="57%"><h4><b>Địa chỉ</b></h4></td>
-                            <td align="center" width="10%" colspan="2"><h4><b>Thao tác</b></h4></td>
+                            <th align="center" width="3%">STT</th>
+                            <th width="30%">Tours</th>
+                            <th width="57%">Khách hàng</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody id="table_data">
+                        @php( $stt = 1)
+                        @foreach( $listBooking as $value)
+                            <tr>
+                                <td>{{ $stt++ }}</td>
+                                <td>{{ $value->tours->tours_name }}</td>
+                                <td>{{ $value->users->fullname }}</td>
+                                <td align="center">
+                                    <button><a class="fa fa-fw fa-eye" href="{{ route('booking.show',$value->booking_id) }}"></a>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="box-header">
+                    <h3 class="box-title">Tìm kiếm nhiều nhất</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <ul class="tags">
+                        <li><a href="#" class="tag">HTML</a></li>
+                        <li><a href="#" class="tag">CSS</a></li>
+                        <li><a href="#" class="tag">JavaScript</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
         <!-- /.col -->
 
-        <div class="col-md-4">
-            <!-- Info Boxes Style 2 -->
-
-            <div class="box box-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Browser Usage</h3>
-
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                class="fa fa-minus"></i>
-                        </button>
-                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i
-                                class="fa fa-times"></i></button>
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="row">
-                        <div class="col-md-8">
-                            <div class="chart-responsive">
-                                <canvas id="pieChart" height="150"></canvas>
+        <div class="col-md-7">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#activity" data-toggle="tab">Tour đặt nhiều</a></li>
+                    <li><a href="#settings" data-toggle="tab">Khách hàng mới</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                        <!-- Post -->
+                        <div class="post">
+                            <div class="user-block">
+                                <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg"
+                                     alt="user image">
+                                <span class="username">
+                          <a href="#">Jonathan Burke Jr.</a>
+                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        </span>
+                                <span class="description">Shared publicly - 7:30 PM today</span>
                             </div>
-                            <!-- ./chart-responsive -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-md-4">
-                            <ul class="chart-legend clearfix">
-                                <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
-                                <li><i class="fa fa-circle-o text-green"></i> IE</li>
-                                <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-                                <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-                                <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-                                <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
+                            <!-- /.user-block -->
+                            <p>
+                                Lorem ipsum represents a long-held tradition for designers,
+                                typographers and the like. Some people hate it and argue for
+                                its demise, but others ignore the hate as they create awesome
+                                tools to help create filler text for everyone from bacon lovers
+                                to Charlie Sheen fans.
+                            </p>
+                            <ul class="list-inline">
+                                <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a>
+                                </li>
+                                <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i>
+                                        Like</a>
+                                </li>
+                                <li class="pull-right">
+                                    <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i>
+                                        Comments
+                                        (5)</a></li>
                             </ul>
+
+                            <input class="form-control input-sm" type="text" placeholder="Type a comment">
                         </div>
-                        <!-- /.col -->
+                        <!-- /.post -->
                     </div>
-                    <!-- /.row -->
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="settings">
+                        abcc
+                    </div>
+                    <!-- /.tab-pane -->
                 </div>
-                <!-- /.box-body -->
-                <div class="box-footer no-padding">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#">United States of America
-                                <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a>
-                        </li>
-                        <li><a href="#">India <span class="pull-right text-green"><i
-                                        class="fa fa-angle-up"></i> 4%</span></a>
-                        </li>
-                        <li><a href="#">China
-                                <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.footer -->
+                <!-- /.tab-content -->
             </div>
-            <!-- /.box -->
+            <!-- /.nav-tabs-custom -->
         </div>
         <!-- /.col -->
     </div>

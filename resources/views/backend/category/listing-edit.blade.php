@@ -22,15 +22,14 @@
                                 <div class="box-body left">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Tên địa điểm (<b style="color: red">*</b>)</label>
-                                        <input name="name" type="text" class="form-control" placeholder="" required value="{{ $value->name }}">
+                                        <input name="name" type="text" class="form-control" placeholder="" required value="{{ $value->category_detail_name }}">
                                     </div>
                                     <div class="form-group">
                                         <label>VỊ trí (<b style="color: red">*</b>)</label>
                                         <select id="position" name="position" class="form-control select2"
                                                 style="width: 100%;">
-                                            <option value="1" selected="selected">Tour Menu</option>
-                                            <option value="2">Tour Giảm giá</option>
-                                            <option value="3">Tour Yêu thích</option>
+                                            <option value="1" selected="selected">Top Menu</option>
+                                            <option value="2">Left Menu</option>
                                         </select>
                                     </div>
                                 </div>
@@ -73,15 +72,12 @@
                                     @foreach( $listCategories as $value )
                                         <tr>
                                             <td align="center">{{ $i++ }}</td>
-                                            <td>{{ $value->name }}</td>
+                                            <td>{{ $value->category_detail_name }}</td>
                                             @if( $value->position == 1)
-                                                <td>Tour Menu</td>
+                                                <td>Top Menu</td>
                                             @endif
                                             @if( $value->position == 2)
-                                                <td>Tour Giảm giá</td>
-                                            @endif
-                                            @if( $value->position == 3)
-                                                <td>Tour Yêu thích</td>
+                                                <td>Left Menu</td>
                                             @endif
                                             <td align="center">
                                                 <button><a style="margin-left: 20%"

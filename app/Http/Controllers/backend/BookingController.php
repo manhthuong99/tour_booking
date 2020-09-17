@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Model\Booking;
+use App\Models\Booking;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -21,9 +22,11 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $data['listBooking']=Booking::with('tours')->join('tours','booking.id_tours','=','tours.tours_id')
+        $data['listBooking']=Booking::with('tours','users')
+            ->join('tours','booking.id_tours','=','tours.tours_id')
+            ->join('users','booking.id_users','=','users.users_id')
             ->orderBy('booking_id', 'DESC')
-            ->paginate(15);
+            ->get();
         return view('backend.booking.listing', $data);
     }
 
@@ -57,9 +60,13 @@ class BookingController extends Controller
      */
     public function show($id)
     {
-        $data['Booking'] = Booking::with('tours')->join('tours','booking.id_tours','=','tours.tours_id')
+        $current_time = Carbon::now();
+        $data['Booking']['current_time'] = $current_time;
+        $data['Booking']=Booking::with('tours','users')
+            ->join('tours','booking.id_tours','=','tours.tours_id')
+            ->join('users','booking.id_users','=','users.users_id')
         ->where('booking_id', $id)->get();
-        return view('backend.booking.show', $data);
+        return view('backend.booking.invoice', $data);
     }
 
     /**
@@ -101,13 +108,14 @@ class BookingController extends Controller
     public function apply(Request $request){
         $data = Booking::find($request->booking_id);
         $data->booking_status = $request->booking_status;
+        $data->confim_at = Carbon::now();
         $data->save();
         return redirect('/admin/booking')->with('success', 'Xác nhận thành công!');
     }
-    public function success(){
-        $data['listBooking'] = Booking::where('status',1)
-            ->orderBy('id', 'DESC')
-            ->paginate(15);
-        return view('backend/booking/listing', $data);
+    public function cancel(Request $request){
+        $data = Booking::find($request->booking_id);
+        $data->booking_status = $request->booking_status;
+        $data->save();
+        return redirect('/admin/booking')->with('failed', 'Đã hủy tour!');
     }
 }

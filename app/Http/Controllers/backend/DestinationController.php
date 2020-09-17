@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Model\Destination;
-use App\Model\District;
-use App\Model\Province;
+use App\Models\Destination;
+use App\Models\District;
+use App\Models\Province;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;

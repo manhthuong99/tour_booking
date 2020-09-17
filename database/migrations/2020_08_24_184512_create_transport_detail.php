@@ -16,9 +16,9 @@ class CreateTransportDetail extends Migration
         Schema::create('transport_detail', function (Blueprint $table) {
             $table->increments('transport_detail_id');
             $table->string('transport_detail_name');
+            $table->string('icon');
         });
     }
-
     /**
      * Reverse the migrations.
      *

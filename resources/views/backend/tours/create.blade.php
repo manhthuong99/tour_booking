@@ -18,9 +18,9 @@
                     @csrf
                     <div class="box-body left">
                         @if( session()->get('failed'))
-                        <div class="form-group">
-                            <span style="color: red">{{ session()->get('failed') }}</span>
-                        </div>
+                            <div class="form-group">
+                                <span style="color: red">{{ session()->get('failed') }}</span>
+                            </div>
                         @endif
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên tour (<b style="color: red">*</b>)</label>
@@ -28,10 +28,12 @@
                         </div>
                         <div class="form-group">
                             <label>Danh mục (<b style="color: red">*</b>)</label>
-                            <select id="id_category" name="id_category[]" class="form-control select2" multiple="multiple"
+                            <select id="id_category" name="id_category[]" class="form-control select2"
+                                    multiple="multiple"
                                     data-placeholder="-- Chọn danh mục --" required>
                                 @foreach( $listCategories as  $value )
-                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
+                                    <option
+                                        value="{{ $value->category_detail_id }}">{{ $value->category_detail_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -40,23 +42,18 @@
                             <div>
                                 @foreach( $listTranSport as  $value )
                                     <input style="width: 30px" name="id_transport[]" class="minimal" type="checkbox"
-                                           value="{{  $value->id }}"> {{ $value->name }} &nbsp;
+                                           value="{{  $value->transport_detail_id }}"> <i
+                                        class="{{ $value->icon }}"></i> &nbsp;{{ $value->transport_detail_name }}
                                 @endforeach
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Điểm đến (<b style="color: red">*</b>)</label>
-                            <select id="id_destination" name="id_destination" class="form-control select1"
-                                    style="width: 100%;" required>
-                                <option value="">-- Chọn địa điểm --</option>
-                                @foreach( $listDestination as  $value )
-                                    <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                @endforeach
-                            </select>
+                            <label for="exampleInputEmail1">Điểm đến (<b style="color: red">*</b>)</label>
+                            <input name="destination" type="text" class="form-control" placeholder="" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Hình ảnh</label>
-                            <input name="images" type="file" id="exampleInputFile" >
+                            <input name="images" type="file" id="exampleInputFile">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá tour (<b style="color: red">*</b>)</label>
@@ -64,7 +61,8 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Số ngày (<b style="color: red">*</b>)</label>
-                            <input step=".5" name="day_number" type="number" class="form-control" placeholder="" required>
+                            <input step=".5" name="day_number" type="number" class="form-control" placeholder=""
+                                   required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giảm giá</label>
@@ -77,7 +75,7 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mô tả</label>
                             <div class="box-body pad">
-                                <textarea id="description" name="description" rows="10" cols="80" ></textarea>
+                                <textarea id="description" name="description" rows="10" cols="80"></textarea>
                             </div>
                         </div>
                     </div>

@@ -34,28 +34,33 @@
                             {{ session()->get('failed') }}
                         </div>
                     @endif
-                    <h3 class="box-title">Danh sách điểm đến</h3>
+                    <h3 class="box-title">Danh sách đặt tour</h3>
                 </div>
                 <div class="box-body">
                     <table id="example" class="stripe row-border order-column" style="width:100%">
                         <thead>
                         <tr>
-                            <th width="30%">Tên tour</th>
-                            <th width="10%">Giá</th>
-                            <th width="18%">Điểm đến</th>
-                            <th width="17%">Địa chỉ</th>
-                            <th width="15%">Trạng thái</th>
-                            <th width="5%"></th>
-                            <th width="5%"></th>
+                            <th>Tên tour</th>
+                            <th>Giá</th>
+                            <th>Điểm đến</th>
+                            <th>Địa chỉ</th>
+                            <th>Ngày khỏi hành</th>
+                            <th>Số ngày</th>
+                            <th>giảm giá</th>
+                            <th>Trạng thái</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach( $listTours as $value )
                             <tr>
-                                <td>{{ $value->name }}</td>
+                                <td>{{ $value->tours_name }}</td>
                                 <td> {{ $value->price }} VNĐ</td>
-                                <td> {{ $value->destination->name }}</td>
-                                <td> {{ $value->destination->address }}</td>
+                                <td> {{ $value->destination }}</td>
+                                <td> {{ $value->address }}</td>
+                                <td> {{ date("d/m/Y", strtotime($value->calendar)) }}</td>
+                                <td> {{ $value->day_number }}</td>
+                                <td> {{ $value->discount }}</td>
                                 @if( $value->status==1)
                                     <td style="color: #32CD32">Đang kinh doanh</td>
                                 @endif
@@ -67,15 +72,6 @@
                                                 class="glyphicon glyphicon-edit"></i></a>
                                     </button>
                                 </td>
-{{--                                <td align="center">--}}
-{{--                                    <form method="POST" action="{{ route('tour.destroy', $value->tours_id) }}">--}}
-{{--                                        @csrf--}}
-{{--                                        @method('DELETE')--}}
-{{--                                        <button type="submit">--}}
-{{--                                            <span class="glyphicon glyphicon-floppy-remove"></span>--}}
-{{--                                        </button>--}}
-{{--                                    </form>--}}
-{{--                                </td>--}}
                             </tr>
                         @endforeach
                         </tbody>
