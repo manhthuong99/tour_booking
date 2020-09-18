@@ -13,7 +13,9 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Tour đặt mới</span>
-                        <span class="info-box-number">760</span>
+                        @if(\Illuminate\Support\Facades\Auth::check())
+                            <span class="info-box-number">{{ $booking }}</span>
+                        @endif
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -41,8 +43,8 @@
                     <span class="info-box-icon bg-green"><i class="fa fa-fw fa-dollar"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">Doanh thu</span>
-                        <span class="info-box-number">760</span>
+                        <span class="info-box-text">Tổng doanh thu</span>
+                        <span class="info-box-number">{{ $total }} VNĐ</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -221,6 +223,10 @@
                     </table>
                 </div>
                 <br>
+                <div class="box-header" style="float: right">
+                    <h3 class="box-title"> Doanh thu tháng {{ \Carbon\Carbon::now()->month }}:</h3>
+                    <h3 class="box-title"><b>{{ $total }} VNĐ</b></h3>
+                </div>
                 <br>
                 <br>
                 <div class="box-header">
@@ -283,7 +289,32 @@
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="settings">
-                        abcc
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr align="center">
+                                <th align="center" width="3%">STT</th>
+                                <th width="30%">Username</th>
+                                <th width="37%">Họ tên</th>
+                                <th width="30%">Email</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="table_data">
+                            @php( $stt = 1)
+                            @foreach( $newCustomer as $value)
+                                <tr>
+                                    <td>{{ $stt++ }}</td>
+                                    <td>{{ $value->username }}</td>
+                                    <td>{{ $value->fullname }}</td>
+                                    <td>{{ $value->email }}</td>
+                                    <td align="center">
+                                        <button><a class="fa fa-fw fa-eye" href="{{ route('user.show',$value->users_id) }}"></a>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.tab-pane -->
                 </div>

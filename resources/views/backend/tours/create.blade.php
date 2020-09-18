@@ -3,6 +3,24 @@
     <script type="text/javascript" src="{{  asset('js/jquery.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <link rel="stylesheet" href="{{ asset('bower_components/select2/dist/css/select2.min.css') }}">
+    <script>
+        jQuery(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#id_province').change(function () {
+                let id_province = $("#id_province").val();
+                $.post('{{ route('listDistrict') }}', {
+                        "id": id_province
+                    }, function (data) {
+                        $("#id_district").html(data)
+                    }
+                )
+            })
+        });
+    </script>
 @stop
 @section('main')
     <div class="row" style="font-size: 20px">
@@ -52,6 +70,26 @@
                             <input name="destination" type="text" class="form-control" placeholder="" required>
                         </div>
                         <div class="form-group">
+                            <label>Tỉnh/TP</label>
+                            <select id="id_province" name="id_province" class="form-control select2"
+                                    style="width: 100%;" required>
+                                <option value="" selected="selected">-- Chọn tỉnh/TP --</option>
+                                <?php
+                                /** @var array $listProvince */
+                                foreach ($listProvince as $value) {
+                                    echo "<option value='" . $value['id'] . "'>" . $value['_name'] . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Quận/Huyện</label>
+                            <select id="id_district" name="id_district" class="form-control select2"
+                                    style="width: 100%;">
+                                <option value="" selected="selected">-- Chọn Quận/Huyện --</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputFile">Hình ảnh</label>
                             <input name="images" type="file" id="exampleInputFile">
                         </div>
@@ -69,7 +107,7 @@
                             <input name="discount" type="number" class="form-control" placeholder="" value="0">
                         </div>
                         <div class="form-group" id="calender">
-                            <label for="exampleInputEmail1">Ngày khỏi hành</label>
+                            <label for="exampleInputEmail1">Ngày khởi hành</label>
                             <input name="calendar" type="date" class="form-control" placeholder="" value="0">
                         </div>
                         <div class="form-group">

@@ -108,7 +108,7 @@ class BookingController extends Controller
     public function apply(Request $request){
         $data = Booking::find($request->booking_id);
         $data->booking_status = $request->booking_status;
-        $data->confim_at = Carbon::now();
+        $data->confirm_at = Carbon::now();
         $data->save();
         return redirect('/admin/booking')->with('success', 'Xác nhận thành công!');
     }

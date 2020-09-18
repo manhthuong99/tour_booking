@@ -19,7 +19,12 @@ Route::get('/', function () {
 });
 // Route backend
 Route::get('admin/login', 'backend\Home@login')->name('admin.login');
-Route::get('admin', 'backend\Home@index')->name('admin.home');
+Route::get('admin', function (){
+    if (\Illuminate\Support\Facades\Auth::check()){
+        return redirect('admin/dashboard');
+    }
+    else return redirect('admin/login');
+})->name('admin.home');
 Route::post('admin/login', 'backend\Home@login')->name('admin.login');
 Route::get('admin/home', 'backend\Home@index')->name('admin.home');
 Route::post('admin/home', 'backend\Home@index')->name('admin.home');
@@ -28,7 +33,7 @@ Route::get('admin/logout', 'backend\Home@logout')->name('admin.logout');
 Route::group(['prefix' => 'admin','middleware'=>['admin.login']], function () {
     Route::post('loadDistrict', function (\Illuminate\Http\Request $request) {
         $data['listDistrict'] = District::where('_province_id', $request->id)->orderBy('_name')->get()->toArray();
-        return view("backend/destination/district", $data);
+        return view("backend.tours.district", $data);
     })->name('listDistrict');
     Route::get('dashboard', 'backend\Home@dashboard')->name('admin.dashboard');
     Route::resource('destination', 'backend\DestinationController')->except('show');

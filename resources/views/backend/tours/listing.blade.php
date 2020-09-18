@@ -41,9 +41,9 @@
                         <thead>
                         <tr>
                             <th>Tên tour</th>
-                            <th>Giá</th>
                             <th>Điểm đến</th>
                             <th>Địa chỉ</th>
+                            <th>Giá</th>
                             <th>Ngày khỏi hành</th>
                             <th>Số ngày</th>
                             <th>giảm giá</th>
@@ -55,9 +55,9 @@
                         @foreach( $listTours as $value )
                             <tr>
                                 <td>{{ $value->tours_name }}</td>
-                                <td> {{ $value->price }} VNĐ</td>
                                 <td> {{ $value->destination }}</td>
                                 <td> {{ $value->address }}</td>
+                                <td> {{ $value->price }} VNĐ</td>
                                 <td> {{ date("d/m/Y", strtotime($value->calendar)) }}</td>
                                 <td> {{ $value->day_number }}</td>
                                 <td> {{ $value->discount }}</td>

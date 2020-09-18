@@ -12,17 +12,28 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
+        App\Models\Users::create([
+            'username' => 'admin',
+            'password' => bcrypt('admin'),
+            'email' => 'mthuong03@gmail.com',
+            'fullname' => 'Nguyễn Mạnh Thưởng',
+            'address' => 'Thanh Xuân, Hà Nội',
+            'avatar' => 'avatar-clone.jpg',
+            'status' => 1,
+            'permission' => 1,
 
-        for($i = 2; $i < 102; $i++) {
-            App\Models\Tours::create([
-                'tours_id'=> $i++,
-                'tours_name' => $faker->city,
-                'description' => $faker->address,
-                'price' => rand(1000000,10000000),
-                'day_number'=>rand(1,3),
-                'id_province'=>rand(1,63),
-                'image'=>'sapa.jpg',
-                'calendar'=>$faker->dateTime,
+        ]);
+        for ($i = 2; $i < 202; $i++) {
+            App\Models\Users::create([
+                'username' => $faker->userName,
+                'password' => bcrypt('test'),
+                'email' => $faker->email,
+                'fullname' => $faker->name,
+                'address' => $faker->address,
+                'phone_number' => $faker->phoneNumber,
+                'avatar' => 'avatar-clone.jpg',
+                'status' => 1,
+                'permission' => 0,
 
             ]);
         }

@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Category_detail;
 use App\Models\Destination;
+use App\Models\District;
+use App\Models\Province;
 use App\Models\Tours;
 use App\Models\Transport;
 use App\Models\Transport_detail;
@@ -25,12 +27,8 @@ class TourController extends Controller
      */
     public function index()
     {
-        $data['listTours'] = Tours::orderBy('tours_id', 'DESC')->paginate(10);
+        $data['listTours'] = Tours::orderBy('tours_id', 'DESC')->get();
         return view('backend.tours.listing', $data);
-//        $data['listTours']=Tours::with('destination')->join('destination','tours.id_destination','=','destination.destination_id')
-//            ->orderBy('tours_id', 'DESC')
-//            ->get();
-//        return view('backend.tours.listing', $data);
     }
 
     /**
@@ -40,6 +38,7 @@ class TourController extends Controller
      */
     public function create()
     {
+        $data['listProvince'] = Province::orderBy('_name')->get()->toArray();
         $data['listTranSport'] = Transport_detail::orderBy('Transport_detail_id', 'DESC')->get();
         $data['listCategories'] = Category_detail::orderBy('Category_detail_id', 'DESC')->get();
         return view('backend.tours.create', $data);
@@ -61,6 +60,8 @@ class TourController extends Controller
         $data->discount = $request->discount;
         $data->calendar = $request->calendar;
         $data->description = $request->description;
+        $data->id_province = $request->id_province;
+        $data->id_district = $request->id_district;
         if ($request->hasFile('images')) {
             $data->image = rand() . '-' . $request->images->getClientOriginalName();
             $request->images->storeAs('tours', $data->image, 'public');
@@ -132,6 +133,16 @@ class TourController extends Controller
         $data->discount = $request->discount;
         $data->calendar = $request->calendar;
         $data->description = $request->description;
+        if ($request->id_district != null) {
+            $address ="";
+            $arrDistrict = District::where('id', $request->id_district)->get()->toArray();
+            $address .= $arrDistrict[0]['_prefix'] . ' ' . $arrDistrict[0]['_name'] . ', ';
+            $arrProvince = Province::where('id', $request->id_province)->get()->toArray();
+            $address .= $arrProvince[0]['_name'];
+            $data->address = $address;
+        }
+        $data->id_province = $request->id_province;
+        $data->id_district = $request->id_district;
         if ($request->hasFile('images')) {
             $data->image = rand() . '-' . $request->images->getClientOriginalName();
             $request->images->storeAs('tours', $data->image, 'public');

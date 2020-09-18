@@ -11,6 +11,77 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        $faker = Faker\Factory::create();
+        App\Models\Users::create([
+            'username' => 'admin',
+            'password' => bcrypt('admin'),
+            'email' => 'mthuong03@gmail.com',
+            'fullname' => 'Nguyễn Mạnh Thưởng',
+            'address' => 'Thanh Xuân, Hà Nội',
+            'avatar' => 'avatar-clone.jpg',
+            'status' => 1,
+            'permission' => 1,
+
+        ]);
+        for ($i = 2; $i < 202; $i++) {
+            App\Models\Users::create([
+                'username' => $faker->userName,
+                'password' => bcrypt('test'),
+                'email' => $faker->email,
+                'fullname' => $faker->name,
+                'address' => $faker->address,
+                'phone_number' => $faker->phoneNumber,
+                'avatar' => 'avatar-clone.jpg',
+                'status' => 1,
+                'permission' => 0,
+
+            ]);
+        }
+        for ($i = 1; $i < 102; $i++) {
+            App\Models\Tours::create([
+                'tours_name' => $faker->country,
+                'description' => $faker->text,
+                'destination' => $faker->city,
+                'address' => $faker->address,
+                'price' => rand(1000000, 10000000),
+                'day_number' => rand(1, 3),
+                'id_province' => rand(1, 63),
+                'image' => 'sapa.jpg',
+                'calendar' => $faker->dateTime,
+
+            ]);
+        }
+        for ($i = 2; $i < 80; $i++) {
+            App\Models\Booking::create([
+                'id_users' => rand(2, 201),
+                'id_tours' => rand(2, 101),
+                'total' => rand(1000000, 10000000),
+                'number_customer' => rand(1, 5),
+            ]);
+        }
+        \App\Models\Transport_detail::create(
+            [
+                'transport_detail_name' => 'Ô tô',
+                'icon'=>'fa fa-fw fa-car'
+            ],
+            [
+                'transport_detail_name' => 'Máy bay',
+                'icon'=>'fa fa-fw fa-plane'
+            ],
+            [
+                'transport_detail_name' => 'Tàu hỏa',
+                'icon'=>'fa fa-fw fa-train'
+            ],
+            [
+                'transport_detail_name' => 'Tàu thủy',
+                'icon'=>'fa fa-fw fa-ship'
+            ]
+        );
+        for ($i = 1;$i < 50; $i++){
+            \App\Models\Search::create([
+                'id_users' => rand(2, 201),
+                'searchs' => $faker->country,
+            ]);
+        }
     }
 }

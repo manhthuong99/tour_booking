@@ -19,8 +19,9 @@ class CreateBooking extends Migration
             $table->integer('id_tours')->unsigned();
             $table->integer('number_customer');
             $table->double('total')->nullable();
-            $table->integer('status')->default(0);
+            $table->integer('booking_status')->default(1);
             $table->dateTime('confirm_at')->nullable();
+            $table->timestamps();
         });
     }
 
