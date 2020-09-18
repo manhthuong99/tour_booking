@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Search;
 use App\Models\Users;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -52,12 +53,13 @@ class Home extends Controller
             ->whereMonth('created_at', $current_time->month)
             ->count();
         $data['booking'] = $countBooking;
-        $total = Booking::where('booking_status', 2)
-            ->whereYear('created_at', '<=', $current_time->year)
-            ->whereMonth('created_at', $current_time->month)
-            ->sum('total');
-        $data['total'] = $total;
-        $data['newCustomer'] = $countUser = Users::where(['status'=> 1,'permission'=>0])
+        $data['totalMonth'] = Booking::where('booking_status', 2)
+            ->whereYear('confirm_at', '<=', $current_time->year)
+            ->whereMonth('confirm_at', $current_time->month)
+            ->sum('total');;
+        $data['total'] = Booking::where('booking_status', 2)
+            ->sum('total');;
+        $data['newCustomer'] = $countUser = Users::where(['status' => 1, 'permission' => 0])
             ->whereYear('created_at', '<=', $current_time->year)
             ->whereMonth('created_at', $current_time->month)
             ->orderBy('users_id', 'DESC')
@@ -66,6 +68,16 @@ class Home extends Controller
             ->join('tours', 'booking.id_tours', '=', 'tours.tours_id')
             ->join('users', 'booking.id_users', '=', 'users.users_id')
             ->orderBy('booking_id', 'DESC')->where('booking_status', 1)
+            ->paginate(10);
+        $data['topSearch'] = Search::selectRaw('count(searchs) as total, searchs')
+            ->groupBy('searchs')
+            ->orderBy('total', 'desc')
+            ->paginate(10);
+        $data['topBooking'] = Booking::with('tours')
+            ->join('tours', 'booking.id_tours', '=', 'tours.tours_id')
+            ->selectRaw('count(id_tours) as total,tours_name,price')
+            ->groupBy('tours_name','price')
+            ->orderBy('total', 'desc')
             ->paginate(10);
         return view('backend.home.dashboard', $data);
     }

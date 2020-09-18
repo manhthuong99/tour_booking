@@ -225,7 +225,7 @@
                 <br>
                 <div class="box-header" style="float: right">
                     <h3 class="box-title"> Doanh thu tháng {{ \Carbon\Carbon::now()->month }}:</h3>
-                    <h3 class="box-title"><b>{{ $total }} VNĐ</b></h3>
+                    <h3 class="box-title"><b>{{ $totalMonth }} VNĐ</b></h3>
                 </div>
                 <br>
                 <br>
@@ -235,9 +235,11 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <ul class="tags">
-                        <li><a href="#" class="tag">HTML</a></li>
-                        <li><a href="#" class="tag">CSS</a></li>
-                        <li><a href="#" class="tag">JavaScript</a></li>
+                        @foreach( $topSearch as $value)
+                        <li><a href="#" class="tag">{{ $value->searchs }}</a></li>
+                        @endforeach
+                            <li><a href="#" class="tag">CSS</a></li>
+                            <li><a href="#" class="tag">JavaScript</a></li>
                     </ul>
                 </div>
             </div>
@@ -252,40 +254,27 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="activity">
-                        <!-- Post -->
-                        <div class="post">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg"
-                                     alt="user image">
-                                <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                                <span class="description">Shared publicly - 7:30 PM today</span>
-                            </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore the hate as they create awesome
-                                tools to help create filler text for everyone from bacon lovers
-                                to Charlie Sheen fans.
-                            </p>
-                            <ul class="list-inline">
-                                <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a>
-                                </li>
-                                <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i>
-                                        Like</a>
-                                </li>
-                                <li class="pull-right">
-                                    <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i>
-                                        Comments
-                                        (5)</a></li>
-                            </ul>
-
-                            <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                        </div>
-                        <!-- /.post -->
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr align="center">
+                                <th align="center" width="3%">STT</th>
+                                <th width="60%">Tour</th>
+                                <th width="27%">Giá</th>
+                                <th width="10%">Số lượng</th>
+                            </tr>
+                            </thead>
+                            <tbody id="table_data">
+                            @php( $stt = 1)
+                            @foreach( $topBooking as $value)
+                                <tr>
+                                    <td>{{ $stt++ }}</td>
+                                    <td>{{ $value->tours_name }}</td>
+                                    <td>{{ $value->price }} VNĐ</td>
+                                    <td align="center">{{ $value->total }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="settings">
