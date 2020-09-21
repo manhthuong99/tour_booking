@@ -16,7 +16,7 @@ class CreateSearch extends Migration
         Schema::create('search', function (Blueprint $table) {
             $table->increments('search_id');
             $table->integer('id_users')->unsigned()->nullable();
-            $table->string('searchs');
+            $table->string('searchs')->nullable();
             $table->foreign('id_users')->references('users_id')->on('users');
         });
     }

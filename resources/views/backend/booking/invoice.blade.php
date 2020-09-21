@@ -106,6 +106,7 @@
                             <form action="{{ route('booking.apply') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="booking_id" value="{{ $value->booking_id }}">
+                                <input type="hidden" name="booking_id" value="{{ $value->users->email }}">
                                 <input type="hidden" name="booking_status" value="2">
                                 <button href="" type="submit" class="btn btn-success pull-right"
                                         style="margin-right: 10px; margin-left: 20px"><i

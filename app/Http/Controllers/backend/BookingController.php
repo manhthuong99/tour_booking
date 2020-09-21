@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -109,6 +110,7 @@ class BookingController extends Controller
         $data = Booking::find($request->booking_id);
         $data->booking_status = $request->booking_status;
         $data->confirm_at = Carbon::now();
+        $this->sendMail($request->booking_id,$request->email);
         $data->save();
         return redirect('/admin/booking')->with('success', 'Xác nhận thành công!');
     }
@@ -117,5 +119,14 @@ class BookingController extends Controller
         $data->booking_status = $request->booking_status;
         $data->save();
         return redirect('/admin/booking')->with('failed', 'Đã hủy tour!');
+    }
+    public function sendMail($id,$email){
+        $details=Booking::with('tours','users')
+            ->join('tours','booking.id_tours','=','tours.tours_id')
+            ->join('users','booking.id_users','=','users.users_id')
+            ->where('booking_id', $id)->get();
+        Mail::to($email)->send(new \App\Mail\MailBooking($details));
+        Mail::to('mthuong03@gmail.com')->send(new \App\Mail\MailBooking($details));
+
     }
 }

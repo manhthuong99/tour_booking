@@ -44,7 +44,7 @@
 
                     <div class="info-box-content">
                         <span class="info-box-text">Tổng doanh thu</span>
-                        <span class="info-box-number">{{ $total }} VNĐ</span>
+                        <span class="info-box-number">{{ number_format($total) }} VNĐ</span>
                     </div>
                     <!-- /.info-box-content -->
                 </div>
@@ -202,7 +202,8 @@
                         <tr align="center">
                             <th align="center" width="3%">STT</th>
                             <th width="30%">Tours</th>
-                            <th width="57%">Khách hàng</th>
+                            <th width="30%">Khách hàng</th>
+                            <th width="27%">Ngày đặt</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -213,6 +214,7 @@
                                 <td>{{ $stt++ }}</td>
                                 <td>{{ $value->tours->tours_name }}</td>
                                 <td>{{ $value->users->fullname }}</td>
+                                <td>{{ $value->created_at }}</td>
                                 <td align="center">
                                     <button><a class="fa fa-fw fa-eye" href="{{ route('booking.show',$value->booking_id) }}"></a>
                                     </button>
@@ -225,7 +227,7 @@
                 <br>
                 <div class="box-header" style="float: right">
                     <h3 class="box-title"> Doanh thu tháng {{ \Carbon\Carbon::now()->month }}:</h3>
-                    <h3 class="box-title"><b>{{ $totalMonth }} VNĐ</b></h3>
+                    <h3 class="box-title"><b>{{ number_format($totalMonth) }} VNĐ</b></h3>
                 </div>
                 <br>
                 <br>
@@ -236,10 +238,9 @@
                 <div class="box-body">
                     <ul class="tags">
                         @foreach( $topSearch as $value)
-                        <li><a href="#" class="tag">{{ $value->searchs }}</a></li>
+                        <li><a href="#" class="tag">{{ $value->searchs }} ({{ $value->number }})</a></li>
                         @endforeach
-                            <li><a href="#" class="tag">CSS</a></li>
-                            <li><a href="#" class="tag">JavaScript</a></li>
+
                     </ul>
                 </div>
             </div>

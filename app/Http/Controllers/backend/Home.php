@@ -69,9 +69,9 @@ class Home extends Controller
             ->join('users', 'booking.id_users', '=', 'users.users_id')
             ->orderBy('booking_id', 'DESC')->where('booking_status', 1)
             ->paginate(10);
-        $data['topSearch'] = Search::selectRaw('count(searchs) as total, searchs')
+        $data['topSearch'] = Search::selectRaw('count(searchs) as number, searchs')
             ->groupBy('searchs')
-            ->orderBy('total', 'desc')
+            ->orderBy('number', 'desc')
             ->paginate(10);
         $data['topBooking'] = Booking::with('tours')
             ->join('tours', 'booking.id_tours', '=', 'tours.tours_id')

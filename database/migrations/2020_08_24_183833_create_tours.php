@@ -20,11 +20,11 @@ class CreateTours extends Migration
             $table->double('price');
             $table->float('day_number');
             $table->string('destination');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->integer('id_district')->nullable()->unsigned();
             $table->integer('id_province')->nullable()->unsigned();
             $table->date('calendar');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->double('discount')->default(0);
             $table->integer('status')->default(1);
             $table->timestamps();

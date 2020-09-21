@@ -57,31 +57,47 @@ class DatabaseSeeder extends Seeder
                 'id_tours' => rand(2, 101),
                 'total' => rand(1000000, 10000000),
                 'number_customer' => rand(1, 5),
+                'booking_status' => rand(1, 2),
             ]);
         }
         \App\Models\Transport_detail::create(
             [
                 'transport_detail_name' => 'Ô tô',
-                'icon'=>'fa fa-fw fa-car'
-            ],
+                'icon' => 'fa fa-fw fa-car'
+            ]);
+        \App\Models\Transport_detail::create(
             [
                 'transport_detail_name' => 'Máy bay',
-                'icon'=>'fa fa-fw fa-plane'
-            ],
+                'icon' => 'fa fa-fw fa-plane'
+            ]);
+        \App\Models\Transport_detail::create(
             [
                 'transport_detail_name' => 'Tàu hỏa',
-                'icon'=>'fa fa-fw fa-train'
-            ],
+                'icon' => 'fa fa-fw fa-train'
+            ]);
+        \App\Models\Transport_detail::create(
             [
                 'transport_detail_name' => 'Tàu thủy',
-                'icon'=>'fa fa-fw fa-ship'
+                'icon' => 'fa fa-fw fa-ship'
             ]
         );
-        for ($i = 1;$i < 50; $i++){
+        for ($i = 1; $i < 50; $i++) {
             \App\Models\Search::create([
                 'id_users' => rand(2, 201),
                 'searchs' => $faker->country,
             ]);
         }
+        \App\Models\Category_detail::create([
+            'category_detail_name'=>'Miền Bắc',
+            'position'=>'1',
+        ]);
+        \App\Models\Category_detail::create([
+            'category_detail_name'=>'Miền Trung',
+            'position'=>'1',
+        ]);
+        \App\Models\Category_detail::create([
+            'category_detail_name'=>'Miền Nam',
+            'position'=>'1',
+        ]);
     }
 }
