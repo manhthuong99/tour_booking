@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
-use App\Model\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller

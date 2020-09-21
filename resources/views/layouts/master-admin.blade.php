@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Tour Booking | Admin</title>
+    <title>Kinh Đô Travel | Admin</title>
     <link rel="icon" href=
     "https://w1.pngwave.com/png/150/975/717/world-icon-travel-icon-airport-icon-logo-emblem-symbol-png-clip-art.png"
           type="image/x-icon">
@@ -46,11 +46,11 @@
 <body>
 <header class="main-header">
     <!-- Logo -->
-    <a href="/admin/home" class="logo">
+    <a href="{{ route('admin.dashboard') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>TB</b></span>
+        <span class="logo-mini"><b>KD</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>BOOKING ADMIN</b></span>
+        <span class="logo-lg"><b>Kinh Đô Travel</b></span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->
@@ -152,20 +152,6 @@
                 <ul class="treeview-menu">
                     <li><a href="{{ route('booking.index') }}"><i class="fa fa-fw fa-hand-o-right"></i>Danh
                             sách đặt tour</a></li>
-                    <li><a href="{{ route('booking.success') }}"><i class="fa fa-fw fa-hand-o-right"></i>Danh sách
-                            đặt thành công </a></li>
-                </ul>
-            </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-edit"></i> <span>Điểm đến</span>
-                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ route('destination.create') }}"><i class="fa fa-fw fa-hand-o-right"></i>Tạo mới</a>
-                    </li>
-                    <li><a href="{{ route('destination.index') }}"><i class="fa fa-fw fa-hand-o-right"></i>Danh
-                            Sách</a></li>
                 </ul>
             </li>
             <li class="treeview">

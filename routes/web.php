@@ -1,6 +1,6 @@
 <?php
 
-use App\Model\District;
+use App\Models\District;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,7 +44,7 @@ Route::group(['prefix' => 'admin','middleware'=>['admin.login']], function () {
 //Route frontend
 
 Route::get('login', 'frontend\UserController@login')->name('frontend.user.login');
-Route::post('index', 'Frontend\UserController@index')->name('frontend.user.index');
+Route::post('index', 'frontend\UserController@index')->name('frontend.user.index');
 Route::get('register', 'frontend\UserController@register')->name('frontend.user.register');
 Route::get('repassword', 'frontend\UserController@repassword')->name('frontend.user.repassword');
 

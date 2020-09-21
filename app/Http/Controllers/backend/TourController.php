@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Model\Category;
-use App\Model\Category_detail;
-use App\Model\Destination;
-use App\Model\Tours;
-use App\Model\Transport;
-use App\Model\Transport_detail;
+use App\Models\Category;
+use App\Models\Category_detail;
+use App\Models\Destination;
+use App\Models\Tours;
+use App\Models\Transport;
+use App\Models\Transport_detail;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
