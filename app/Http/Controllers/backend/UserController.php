@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use App\Models\Users;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
@@ -25,29 +26,42 @@ class UserController extends Controller
             ->where('status', 1)
             ->orderBy('users_id', 'DESC')
             ->get();
-        return view('backend/user/list', $data);
+        return view('backend/user/listing', $data);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return void
+     * @return Application|Factory|View|void
      */
     public function create()
     {
-//        $data['listProvince'] = Province::orderBy('_name')->get()->toArray();
-//        return view("backend/destination/create", $data);
+        return view('backend.user.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return void
+     * @return Application|RedirectResponse|Redirector|void
      */
     public function store(Request $request)
     {
-
+        $data = new Users();
+        $data->email = $request->email;
+        $data->username = $request->username;
+        $data->password = bcrypt($request->password);
+        $data->fullname = $request->fullname;
+        $data->birthday = $request->birthday;
+        $data->permission = $request->permission;
+        $data->avatar = 'avatar-clone.jpg';
+        if ($this->checkDuplicateName($request->users_id,$request->username)){
+            return redirect()->back()->with('failed', 'Username này đã tồn tại');
+        }
+        else{
+            $data->save();
+            return redirect('/admin/user')->with('success', 'Tạo thành công');
+        }
     }
 
     /**
@@ -59,6 +73,12 @@ class UserController extends Controller
     public function show($id)
     {
         $data['userProfile'] = Users::where('users_id', $id)->get();
+        $data['userBooking'] = Booking::with('tours','users')
+            ->join('tours','booking.id_tours','=','tours.tours_id')
+            ->join('users','booking.id_users','=','users.users_id')
+            ->where('id_users',$id)
+            ->orderBy('confirm_at', 'DESC')
+            ->get();;
         return view('backend.user.profile', $data);
     }
 

@@ -1,18 +1,25 @@
 @extends('layouts.master-admin')
+@section('header')
+    <script type="text/javascript" src="{{  asset('js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/fixedColumns.dataTables.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.datatable.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <style>
+        th, td {
+            white-space: nowrap;
+        }
+
+        div.dataTables_wrapper {
+            margin: 0 auto;
+        }
+
+        div.container {
+            width: 100%;
+        }
+    </style>
+@stop
 @section('main')
     <style>
-        /*ul li b {*/
-        /*    font-size: 24px;*/
-        /*    font-weight: lighter;*/
-        /*}*/
-
-        /*ul li a {*/
-        /*    font-size: 20px;*/
-        /*}*/
-
-        /*h3 {*/
-        /*    font-size: 24px;*/
-        /*}*/
         .custom1 {
             margin-top: 25px;
             margin-bottom: 25px;
@@ -72,40 +79,44 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="activity">
-                        <!-- Post -->
-                        <div class="post">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg"
-                                     alt="user image">
-                                <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                                <span class="description">Shared publicly - 7:30 PM today</span>
+                            <div class="box-body">
+                                <table id="example" class="stripe row-border order-column" style="width:100%">
+                                    <thead>
+                                    <tr>
+                                        <th>Tên tour</th>
+                                        <th>Ngày khởi hành</th>
+                                        <th>Số người</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Trạng thái</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php($i = 1)
+                                    @foreach( $userBooking as $value )
+                                        <tr>
+                                            <td>{{ $value->tours->tours_name }}</td>
+                                            <td> {{ date("d/m/Y", strtotime($value->tours->calendar)) }}</td>
+                                            <td> {{ $value->number_customer }}</td>
+                                            <td> {{ $value->total }}</td>
+                                            @if($value->booking_status==0)
+                                                <td style="color: red">Đã hủy</td>
+                                            @endif
+                                            @if($value->booking_status==1)
+                                                <td style="color: black">Đang chờ duyệt</td>
+                                            @endif
+                                            @if($value->booking_status==2)
+                                                <td style="color: green">Đã duyệt</td>
+                                            @endif
+                                            <td align="center">
+                                                <button><a class="fa fa-fw fa-eye" href="{{ route('booking.show',$value->booking_id) }}"></a>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
                             </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore the hate as they create awesome
-                                tools to help create filler text for everyone from bacon lovers
-                                to Charlie Sheen fans.
-                            </p>
-                            <ul class="list-inline">
-                                <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a>
-                                </li>
-                                <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i>
-                                        Like</a>
-                                </li>
-                                <li class="pull-right">
-                                    <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i>
-                                        Comments
-                                        (5)</a></li>
-                            </ul>
-
-                            <input class="form-control input-sm" type="text" placeholder="Type a comment">
-                        </div>
-                        <!-- /.post -->
                     </div>
                     <!-- /.tab-pane -->
                     <div class="tab-pane" id="settings">
@@ -206,5 +217,26 @@
         <!-- /.col -->
     </div>
     <!-- /.row -->
+@stop
+@section('footer')
+    <script type="text/javascript" src="{{  asset('js/dataTables.fixedColumns.js') }}"></script>
+    <script type="text/javascript" src="{{  asset('js/jquery.dataTables.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            let table = $('#example').removeAttr('width').DataTable({
+                scrollY: "auto",
+                scrollX: true,
+                scrollCollapse: true,
+                paging: true,
+                columnDefs: [
+                    {width: 200, targets: 0}
+                ],
+                fixedColumns: true
+            });
+        });
 
+        function delRecord() {
+            confirm('Bạn thực sự muốn xóa ?? ')
+        }
+    </script>
 @stop
