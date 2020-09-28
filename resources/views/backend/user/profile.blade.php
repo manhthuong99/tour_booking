@@ -114,7 +114,7 @@
                             @csrf
                             @method('PATCH')
                             @foreach( $userProfile as $value)
-                                <input type="hidden" class="form-control" id="inputName" placeholder="Name"
+                                <input name="users_id" type="hidden" class="form-control" id="inputName" placeholder="Name"
                                        value="{{ $value->users_id }}">
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Trạng thái</label>

@@ -38,7 +38,7 @@ class TourController extends Controller
      */
     public function create()
     {
-        $data['listProvince'] = Province::orderBy('_name')->get()->toArray();
+        $data['listProvince'] = Province::orderBy('_name')->get();
         $data['listTranSport'] = Transport_detail::orderBy('transport_detail_id', 'DESC')->get();
         $data['listCategories'] = Category_detail::orderBy('category_detail_id', 'DESC')->get();
         return view('backend.tours.create', $data);
@@ -110,6 +110,7 @@ class TourController extends Controller
      */
     public function edit($id)
     {
+        $data['listProvince'] = Province::orderBy('_name')->get();
         $data['listTranSport'] = Transport_detail::orderBy('transport_detail_id', 'DESC')->get();
         $data['listCategories'] = Category_detail::orderBy('category_detail_id', 'DESC')->get();
         $data['toursSelected'] = Tours::where('tours_id',$id)->get();
@@ -133,6 +134,7 @@ class TourController extends Controller
         $data->discount = $request->discount;
         $data->calendar = $request->calendar;
         $data->description = $request->description;
+        $data->status = $request->status;
         if ($request->id_district != null) {
             $address ="";
             $arrDistrict = District::where('id', $request->id_district)->get()->toArray();

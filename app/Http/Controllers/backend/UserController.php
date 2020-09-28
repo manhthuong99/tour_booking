@@ -100,7 +100,7 @@ class UserController extends Controller
             $request->avatar->storeAs('avatars', $data->avatar, 'public');
         }
 
-        if ($this->checkDuplicateName($request->id,$request->username)){
+        if ($this->checkDuplicateName($request->users_id,$request->username)){
             return redirect()->back()->with('failed', 'Username này đã tồn tại');
         }
         else{

@@ -77,7 +77,7 @@
                                 <?php
                                 /** @var array $listProvince */
                                 foreach ($listProvince as $value) {
-                                    echo "<option value='" . $value['id'] . "'>" . $value['_name'] . "</option>";
+                                    echo "<option value='" . $value->id . "'>" . $value->_name . "</option>";
                                 }
                                 ?>
                             </select>
