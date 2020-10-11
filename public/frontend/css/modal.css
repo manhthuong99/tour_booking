@@ -1,0 +1,55 @@
+
+#blur{
+    transition: 0.5s;
+}
+.main_chitiettour#blur.active{
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+#popup{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0, .30);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+#popup.active{
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
+}
+.requestTour{
+
+}
+.initRequestTour{
+
+margin-bottom: 15px;
+}
+.initRequestTour .labelRequestTour{
+
+}
+.labelRequestTour span{
+    color: red;
+}
+.initRequestTour input{
+    box-shadow: none !important;
+    outline: none !important;
+}
+.initRequestTour textarea{
+    box-shadow: none !important;
+    outline: none !important;
+}
+.initRequestTour input:focus{
+    border-color: #456882;
+}
+.initRequestTour textarea:focus{
+    border-color: #456882;
+}

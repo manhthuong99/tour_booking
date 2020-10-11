@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class Home extends Controller
 {
     public function index(){
-
+        return view('frontend.pages.home');
     }
 
 }

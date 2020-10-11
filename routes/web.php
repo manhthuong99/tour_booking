@@ -50,10 +50,21 @@ Route::group(['prefix' => 'admin','middleware'=>['admin.login']], function () {
 
 //Route frontend
 
-Route::get('login', 'frontend\UserController@login')->name('frontend.user.login');
+// Route::get('login', 'frontend\UserController@login')->name('frontend.user.login');
 Route::post('index', 'frontend\UserController@index')->name('frontend.user.index');
 Route::get('register', 'frontend\UserController@register')->name('frontend.user.register');
 Route::get('repassword', 'frontend\UserController@repassword')->name('frontend.user.repassword');
 
 Route::get('home', 'frontend\Home@index')->name('frontend.home');
+Route::get('hotel', 'frontend\Hotel@index')->name('frontend.hotel');
+Route::get('travel', 'frontend\Travel@index')->name('frontend.travel');
+Route::get('transport', 'frontend\Transport@index')->name('frontend.transport');
+Route::get('contact', 'frontend\Contact@index')->name('frontend.contact');
+Route::get('about', 'frontend\About@index')->name('frontend.about');
+Route::get('detailTour', 'frontend\DetailTour@index')->name('frontend.detailTour');
+Route::get('infoClient', 'frontend\InfoClient@index')->name('frontend.infoClient');
+Route::get('updateInfoClient', 'frontend\UpdateInfoClient@index')->name('frontend.updateInfoClient');
+Route::get('login', 'frontend\Login@index')->name('frontend.login');
+Route::get('register', 'frontend\Register@index')->name('frontend.register');
+
 

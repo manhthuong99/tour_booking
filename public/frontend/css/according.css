@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #bedfe8;
+}
+.accordion{
+    width: 800px;
+    
+}
+.accordion .contenBx{
+    position: relative;
+    margin: 10px 20px;
+}
+.accordion .contenBx .label{
+    position: relative;
+    padding: 10px;
+    background: #2694af;
+    color: #fff;
+    cursor: pointer;
+}
+.accordion .contenBx .label::before{
+    content: '+';
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+}
+.accordion .contenBx.active .label::before{
+    content: '-';
+}
+.accordion .contenBx .contentAcc{
+    position: relative;
+    background: #fff;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    overflow-y: auto;
+}
+.accordion .contenBx.active .contentAcc{
+    height: 150px;
+    padding: 10px;
+}

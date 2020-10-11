@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* body{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background: #111;
+    justify-content: center;
+} */
+.wrapperClip{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+}
+.mainClip{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #222;
+}
+.mainClip .clip{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.4s;
+}
+.mainClip .clip.clip1{
+    clip-path: polygon(0 0, 55% 0, 20% 100%, 0% 100%);
+    background: #f00;
+    background: url(../images/ht7.jpeg);
+    background-size: cover;
+}
+.mainClip .clip.clip2{
+    clip-path: polygon(55% 0, 100% 0, 45% 100%, 20% 100%);
+    background: #0f0;
+    background: url(../images/ht8.jpeg);
+    background-size: cover;
+}
+.mainClip .clip.clip3{
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 45% 100%);
+    background: #00f;
+    background: url(../images/ht9.jpeg);
+    background-size: cover;
+}
+.mainClip:hover .clip{
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+.mainClip .clip:hover{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+.mainClip .clip .content{
+    position: absolute;
+    bottom: -100%;
+    width: 70%;
+    padding: 20px;
+    background: #fff;
+    opacity: 0;
+    transition: 0.5s;
+}
+.mainClip .clip:hover .content{
+    bottom: 0;
+    opacity: 1;
+}
+.conClip{
+    padding: 0 !important;
+}
