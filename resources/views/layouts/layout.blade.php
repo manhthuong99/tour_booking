@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.css') }}">
 
-    <script type="text/javascript" src="{{ asset('frontend/vendor/bootstrap.js') }}"></script>
+    <script src="{{ asset('frontend/vendor/bootstrap.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
 
@@ -153,7 +153,8 @@
                     <h2>Liên hệ</h2>
                     <p class="ppp">Địa chỉ: Phòng 2001, Tầng 20 toà nhà Licogi 13 </p>
                     <p class="ppp">164 Khuất Duy Tiến, Q.Thanh Xuân, Tp. Hà Nội.</p>
-                    <p><i class="fas fa-phone-volume iconnho"></i> Điện thoại: (024) 35190717 - 35190727 – Fax: 02435149098</p>
+                    <p><i class="fas fa-phone-volume iconnho"></i> Điện thoại: (024) 35190717 - 35190727 – Fax:
+                        02435149098</p>
                     <p><i class="fas fa-phone-volume iconnho"></i> Hotline: 0904376116.</p>
                     <div class="gg-map">
                         <iframe
@@ -246,7 +247,8 @@
         </div>
         <div class="pos_ft ">
             <p class="text-center">Bản quyền của Kinh Đô Travel ® 2020. Bảo lưu mọi quyền. <br>Ghi rõ nguồn
-                "www.kinhdotravel.com.vn" ® khi sử dụng lại thông tin từ website này. <br>Số giấy phép kinh doanh lữ hành
+                "www.kinhdotravel.com.vn" ® khi sử dụng lại thông tin từ website này. <br>Số giấy phép kinh doanh lữ
+                hành
                 Quốc tế: 10-234/2019/TCDL-GP LHQT</p>
         </div>
     </div>
