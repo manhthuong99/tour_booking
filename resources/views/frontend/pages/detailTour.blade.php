@@ -376,7 +376,10 @@
 
 
     <div id="popup">
-        <h2>Yêu cầu đặt Tour</h2>
+        <div class="col-xs-12 divClose">
+            <a href="#" onclick="toggle()">X</a>
+        </div>
+        <h2 class="titleBookTour">Yêu cầu đặt Tour</h2>
         <div class="requestTour">
             <div class="col-xs-12 initRequestTour">
                 <label class="labelRequestTour">Họ &amp; Tên <span class="vcolor-danger">*</span></label>
@@ -394,8 +397,14 @@
                 <label class="labelRequestTour">Yêu cầu khác</label>
                 <textarea maxlength="1000" rows="2" cols="30" class="form-control" id="notesRequest"></textarea>
             </div>
+            <div class="col-xs-12 totalCostTour">
+                <label class="labelTotal">Tổng tiền:</label>
+                <p id="isCost">1.200.000$</p>
+            </div>
         </div>
-        <a href="#" onclick="toggle()">close</a>
+        <div class="col-xs-12 btnTotalCostTour">
+            <button id="b" class="btn btn-flat btn-action btn-md btn-block checkButton requestPrice">Book Tour</button>
+        </div>
     </div>
 
 
@@ -407,14 +416,61 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
 <script type="text/javascript">
+
+    // function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ".") {
+    //     try {
+    //         decimalCount = Math.abs(decimalCount);
+    //         decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+    //         const negativeSign = amount < 0 ? "-" : "";
+
+    //         let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+    //         let j = (i.length > 3) ? i.length % 3 : 0;
+
+    //         return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // };
+    // document.getElementById("b").addEventListener("click", event => {
+    //     document.getElementById("isCost").innerHTML = formatMoney(2*1250000);
+    // });
+</script>
+
+<script type="text/javascript">
+    function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ".") {
+        try {
+            decimalCount = Math.abs(decimalCount);
+            decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+            const negativeSign = amount < 0 ? "-" : "";
+
+            let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+            let j = (i.length > 3) ? i.length % 3 : 0;
+
+            return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+        } catch (e) {
+            console.log(e)
+        }
+    };
     function toggle(){
-        console.log('toggle');
+        var countMem = document.getElementById("isAdult").innerHTML;
+        var priceTour = document.getElementById("RateAdultPrice").innerHTML;
+        var rePlaceDot = priceTour.replace(/\./g,'')
+        var isPrice = rePlaceDot.replace(/\x/g,'')
+
+        console.log(countMem*isPrice);
+        document.getElementById("isCost").innerHTML = formatMoney(countMem*isPrice)+'đ';
+
         var blur = document.getElementById('blur');
         blur.classList.toggle('active')
 
         var popup = document.getElementById('popup');
         popup.classList.toggle('active')
+
+
     }
 
 </script>
