@@ -14,23 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.login');
-});
+
+Route::get('/', 'frontend\Home@index')->name('frontend.home');
 // Route backend
 Route::get('admin/login', 'backend\Home@login')->name('admin.login');
-Route::get('admin', function (){
-    if (\Illuminate\Support\Facades\Auth::check()){
+Route::get('admin', function () {
+    if (\Illuminate\Support\Facades\Auth::check()) {
         return redirect('admin/dashboard');
-    }
-    else return redirect('admin/login');
+    } else return redirect('admin/login');
 })->name('admin.home');
 Route::post('admin/login', 'backend\Home@login')->name('admin.login');
 Route::get('admin/home', 'backend\Home@index')->name('admin.home');
 Route::post('admin/home', 'backend\Home@index')->name('admin.home');
 Route::get('admin/logout', 'backend\Home@logout')->name('admin.logout');
 
-Route::group(['prefix' => 'admin','middleware'=>['admin.login']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function () {
     Route::post('loadDistrict', function (\Illuminate\Http\Request $request) {
         $data['listDistrict'] = District::where('_province_id', $request->id)->orderBy('_name')->get()->toArray();
         return view("backend.tours.district", $data);
@@ -50,10 +48,10 @@ Route::group(['prefix' => 'admin','middleware'=>['admin.login']], function () {
 
 //Route frontend
 
-// Route::get('login', 'frontend\UserController@login')->name('frontend.user.login');
-Route::post('index', 'frontend\UserController@index')->name('frontend.user.index');
-Route::get('register', 'frontend\UserController@register')->name('frontend.user.register');
-Route::get('repassword', 'frontend\UserController@repassword')->name('frontend.user.repassword');
+//Route::get('login', 'frontend\UserController@login')->name('frontend.user.login');
+//Route::post('index', 'frontend\UserController@index')->name('frontend.user.index');
+//Route::get('register', 'frontend\UserController@register')->name('frontend.user.register');
+//Route::get('repassword', 'frontend\UserController@repassword')->name('frontend.user.repassword');
 
 Route::get('home', 'frontend\Home@index')->name('frontend.home');
 Route::get('hotel', 'frontend\Hotel@index')->name('frontend.hotel');

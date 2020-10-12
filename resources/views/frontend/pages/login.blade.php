@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>502 Travel</title>
+	<title>KindDo Travel</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+
 	<link rel="stylesheet" type="text/css" href={{ asset('frontend/vendor/bootstrap/css/bootstrap.min.css') }}>
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/font-awesome.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}">
 	<link rel="stylesheet" type="text/css" href={{ asset('frontend/vendor/animate/animate.cs') }}>
 	<link rel="stylesheet" type="text/css" href={{ asset('frontend/vendor/css-hamburgers/hamburgers.min.css') }}>
 	<link rel="stylesheet" type="text/css" href={{ asset('frontend/vendor/animsition/css/animsition.min.css') }}>
@@ -18,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href={{ asset('frontend/css/addMore.css') }}>
 </head>
 <body>
-	
+
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/background.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
@@ -46,16 +46,16 @@
 					<div class="text-left p-t-8 p-b-31">
 							<input type="checkbox" name="" value=""> Nhớ mật khẩu
 					</div>
-					
+
 					<div class="" >
-							Bạn chưa có tài khoản? <a href="#" style="color: darkviolet; ;font-family:sans-serif; font:caption;">Đăng ký ngay hoàn toàn miễn phí</a>
-						
+							Bạn chưa có tài khoản? <a href="{{ route('frontend.register') }}" style="color: darkviolet; ;font-family:sans-serif; font:caption;">Đăng ký ngay hoàn toàn miễn phí</a>
+
 					</div>
 
 					<div class="text-left p-b-31">
 							Quên mật khẩu? <a href="#" style="color: blueviolet; font-family:sans-serif; font:caption;">Lấy lại mật khẩu</a>
 					</div>
-					
+
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
@@ -68,7 +68,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 	<script src={{ asset('frontend/vendor/jquery/jquery-3.2.1.min.js') }}></script>
 	<script src={{ asset('frontend/vendor/animsition/js/animsition.min.js') }}></script>

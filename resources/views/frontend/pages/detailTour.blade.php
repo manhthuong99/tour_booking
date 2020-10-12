@@ -19,13 +19,13 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="images/hue1.jpg" alt="First slide">
+                                <img class="d-block w-100" src="{{ asset('images/hue1.jpg') }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="images/hue2.jpg" alt="Second slide">
+                                <img class="d-block w-100" src="{{ asset('images/hue2.jpg') }}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100" src="images/hue3.jpg" alt="Third slide">
+                                <img class="d-block w-100" src="{{ asset('images/hue3.jpg') }}" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -66,7 +66,7 @@
                                 </button>
                             </div>
                         </div>
-                       
+
                         <div id="totalResults" class="col-xs-12 flex_item no-padding v-margin-bottom-15 priceDiv" style="display: none;">
                             <span class="price-line price-line-detail"></span>
                             <span class="labelPrice">Tổng cộng</span>
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 paddingtopinfo">
                     <div class="services">
                         <div class="title-lg">Dịch vụ đi kèm</div>
@@ -200,18 +200,18 @@
                                         </table>
                                         <p>
                                             <span style="color:#555555;">
-                                                <em>Đến 
+                                                <em>Đến
                                                     <a href="#">
                                                         <strong class="doimauinfo">du lịch Miền Trung mùa thu</strong>
-                                                    </a>&nbsp;để tham quan những vẻ đẹp vừa hùng vỹ vừa tráng lệ và hòa mình vào với không gian huyền ảo của động 
-                                                    <strong class="doimauinfo">Thiên Đường</strong> - một điểm đến thu hút khách du lịch suốt bốn mùa của tỉnh Quảng Bình. Động có cấu trúc kỳ vĩ, vẻ đẹp huyền diệu và tráng lệ của hang động đã khiến những người tham gia khảo sát ngỡ ngàng. 
+                                                    </a>&nbsp;để tham quan những vẻ đẹp vừa hùng vỹ vừa tráng lệ và hòa mình vào với không gian huyền ảo của động
+                                                    <strong class="doimauinfo">Thiên Đường</strong> - một điểm đến thu hút khách du lịch suốt bốn mùa của tỉnh Quảng Bình. Động có cấu trúc kỳ vĩ, vẻ đẹp huyền diệu và tráng lệ của hang động đã khiến những người tham gia khảo sát ngỡ ngàng.
                                                 </em>
                                             </span>
                                             <span style="color:#555555;">
                                                 <em>Du khách đến với động mang theo trí tưởng tượng tuyệt vời của mình để rồi động Thiên Đường lại luôn biến ảo như một “Thiên Cung” nơi trần thế.</em>
                                             </span>
                                         </p>
-                                    </div>            
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -229,30 +229,30 @@
                                             <div class="the-content desc">
                                                 <p></p>
                                                 <div style="text-align: justify;">
-                                                    <strong>Sáng:&nbsp;</strong>Quý khách có mặt tại ga quốc nội, sân bay Tân Sơn Nhất trước giờ bay ít nhất ba tiếng khởi hành đi 
+                                                    <strong>Sáng:&nbsp;</strong>Quý khách có mặt tại ga quốc nội, sân bay Tân Sơn Nhất trước giờ bay ít nhất ba tiếng khởi hành đi
                                                     <a href="#">
                                                         <strong>du lịch Miền Trung mùa thu</strong>
-                                                    </a>.&nbsp;Đại diện công ty 
+                                                    </a>.&nbsp;Đại diện công ty
                                                     <strong>
                                                         <em>Du Lịch Việt</em>
-                                                    </strong> đón và hỗ trợ Quý khách làm thủ tục đón chuyến bay đi 
+                                                    </strong> đón và hỗ trợ Quý khách làm thủ tục đón chuyến bay đi
                                                     <strong>du lịch Đà Nẵng</strong>.<br>
-                                                    Đến sân bay Đà Nẵng, hướng dẫn viên đón tham quan một vòng bán đảo Sơn Trà…viếng Linh Ứng Tự và thưởng ngoạn vẻ đẹp của 
+                                                    Đến sân bay Đà Nẵng, hướng dẫn viên đón tham quan một vòng bán đảo Sơn Trà…viếng Linh Ứng Tự và thưởng ngoạn vẻ đẹp của
                                                     <strong>biển Mỹ Khê </strong>(được đánh giá là một trong những bãi biển quyến rũ nhất hành tinh). Đoàn khởi hành đến với <strong>cao nguyên Bà Nà</strong> nơi có khí hậu Châu Âu độc đáo và nổi tiếng với tuyến cáp treo kỷ lục mới của thế giới - Ngắm toàn cảnh thành phố Đà Nẵng từ trên cáp treo (chi phí cáp treo tự túc).
                                                 </div>
                                                 <p></p>
                                                 <p></p>
                                                 <div style="text-align: justify;">
-                                                    <strong>Trưa:&nbsp;</strong>Quý khách vui lòng tự túc dùng bữa trưa. Quý khách tự do tham quan, vui chơi giải trí tại Bà Nà với 
+                                                    <strong>Trưa:&nbsp;</strong>Quý khách vui lòng tự túc dùng bữa trưa. Quý khách tự do tham quan, vui chơi giải trí tại Bà Nà với
                                                     <strong>công viên Fantasy, rạp chiếu phim 3D Mega 360 độ với công nghệ hiện đại nhất và duy nhất có ở Viêt Nam, hai rạp chiếu phim 4D và 5Di, xe trượt ống, hầm rượi, vườn hoa tình yêu, bảo tàng sáp.</strong><br>
-                                                    Du khách có thể tìm thấy những biểu tượng mang tính tâm linh như chùa chiền, đền đài hay tượng các đức Phật. Chắc hẳn sẽ là điểm dừng chân cho những ai mong cầu bình an và sức khỏe cho gia đình: 
-                                                    <strong>chùa Linh Ứng, đền Lĩnh Chúa Linh Từ, tháp Linh Phong Tự, tượng Thích Ca Mâu Ni, lầu chuông, nhà bia, miếu Bà, Trú Vũ trà quán. 
+                                                    Du khách có thể tìm thấy những biểu tượng mang tính tâm linh như chùa chiền, đền đài hay tượng các đức Phật. Chắc hẳn sẽ là điểm dừng chân cho những ai mong cầu bình an và sức khỏe cho gia đình:
+                                                    <strong>chùa Linh Ứng, đền Lĩnh Chúa Linh Từ, tháp Linh Phong Tự, tượng Thích Ca Mâu Ni, lầu chuông, nhà bia, miếu Bà, Trú Vũ trà quán.
                                                     </strong>
                                                 </div>
                                                 <p></p>
                                                 <p>
                                                     <strong>Chiều:&nbsp;</strong>Dùng cơm chiều tại nhà hàng. Nghỉ đêm tại Đà Nẵng. Quý khách tự do dạo phố, ngắm các cây cầu nổi tiếng của thành phố Đà Nẵng: cầu Rồng, cầu Sông Hàn, cầu Trần Thị Lý, cầu Thuận Phước...
-                                                </p>                    
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -265,19 +265,19 @@
                                             <div class="the-content desc">
                                                 <p></p>
                                                 <div style="text-align: justify;">
-                                                    <strong>Sáng:</strong>&nbsp;Dùng buffet sáng tại khách sạn, 
+                                                    <strong>Sáng:</strong>&nbsp;Dùng buffet sáng tại khách sạn,
                                                     <strong>tham quan Ngũ Hành Sơn </strong>- được ví như hòn non bộ khổng lồ giữa lòng thành phố Đà Nẵng với Động Huyền Không, Chùa Linh Ứng, Chùa Tam Thai, Vọng Hải Đài, … mua sắm quà lưu niệm tại làng nghề điêu khắc đá Non Nước.
                                                 </div>
                                                 <p></p>
                                                 <p></p>
                                                 <div style="text-align: justify;">
-                                                    <strong>Trưa:&nbsp;</strong>Dùng bữa trưa tại nhà hàng, tham quan 
+                                                    <strong>Trưa:&nbsp;</strong>Dùng bữa trưa tại nhà hàng, tham quan
                                                     <strong>phố cổ Hội An</strong> - di sản văn hoá thế giới với Chùa Cầu Nhật Bản, Hội Quán Phúc Kiến, Nhà Cổ Phùng Hưng, …
                                                 </div>
                                                 <p></p>
                                                 <p>
                                                     <strong>Chiều: </strong>Dùng cơm chiều, nghỉ đêm tại Đà Nẵng.
-                                                </p>                    
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -291,7 +291,7 @@
                                             <div class="the-content desc">
                                                 <p></p>
                                                 <div style="text-align: justify;">
-                                                    <strong>Sáng:&nbsp;</strong>Dùng buffet sáng tại khách sạn. Đoàn khởi hành đến Huế, tham quan 
+                                                    <strong>Sáng:&nbsp;</strong>Dùng buffet sáng tại khách sạn. Đoàn khởi hành đến Huế, tham quan
                                                     <strong>Lăng Khải Định </strong>(Ứng Lăng, lăng mộ của vua Khải Định, vị vua thứ 12 của triều Nguyễn) với lối kiến trúc độc đáo bởi sự pha trộn kiến trúc Đông Tây Kim Cổ lạ thường, với các tác phẩm nghệ thuật ghép tranh sành sứ độc đáo.
                                                 </div>
                                                 <p></p>
@@ -304,7 +304,7 @@
                                                 <div style="text-align: justify;">
                                                     <strong>Chiều: </strong>Dùng cơm chiều tại nhà hàng, nghỉ đêm tại Đồng Hới.
                                                 </div>
-                                                <p></p>                    
+                                                <p></p>
                                             </div>
                                         </div>
                                     </div>
@@ -318,13 +318,13 @@
                                             <div class="the-content desc">
                                                 <p></p>
                                                 <div style="text-align: justify;">
-                                                    <strong>Sáng:&nbsp;</strong>Dùng buffet sáng tại khách sạn, đoàn khởi hành tham quan 
+                                                    <strong>Sáng:&nbsp;</strong>Dùng buffet sáng tại khách sạn, đoàn khởi hành tham quan
                                                     <strong>Động Thiên Đường</strong> được mệnh danh là " hoàng cung trong lòng đất", một trong những kỳ quan tráng lệ và huyền ảo bậc nhất thế giới, động nằm ẩn mình sâu trong lòng Vườn quốc gia Phong Nha Kẻ Bàng – được hiệp hội Hang động Hoàng Gia Anh khám phá từ năm 2005, hang có độ dài 31km đứng đầu trong bảng xếp hạng hang động quốc tế về sự huyền bí, kỳ vĩ của kiến tạo tự nhiên.
                                                 </div>
                                                 <p></p>
                                                 <p></p>
                                                 <div style="text-align: justify;">
-                                                    <strong>Trưa:&nbsp;</strong>Dùng bữa trưa tại nhà hàng, sau đó khởi hành về Huế, trên đường đi Quý khách có dịp ngắm nhìn Vĩ Tuyến 17 với Cầu Hiền Lương và dòng sông Bến Hải. Đoàn vào thăm 
+                                                    <strong>Trưa:&nbsp;</strong>Dùng bữa trưa tại nhà hàng, sau đó khởi hành về Huế, trên đường đi Quý khách có dịp ngắm nhìn Vĩ Tuyến 17 với Cầu Hiền Lương và dòng sông Bến Hải. Đoàn vào thăm
                                                     <strong>Thánh Địa La Vang</strong> – Tiểu vương cung thánh đường.
                                                 </div>
                                                 <p></p>
@@ -332,7 +332,7 @@
                                                 <div style="text-align: justify;">
                                                     <strong>Chiều:&nbsp;</strong>Dùng cơm chiều tại nhà hàng, nghỉ đêm tại Huế.
                                                 </div>
-                                                <p></p>                    
+                                                <p></p>
                                             </div>
                                         </div>
                                     </div>
@@ -346,20 +346,20 @@
                                             <div class="the-content desc">
                                                 <p></p>
                                                 <div style="text-align: justify;">
-                                                    <strong>Sáng:&nbsp;</strong>Dùng buffet sáng tại khách sạn, đoàn 
+                                                    <strong>Sáng:&nbsp;</strong>Dùng buffet sáng tại khách sạn, đoàn
                                                     <strong>tham quan Đại Nội</strong> – Hoàng Thành của 13 vị vua triều Nguyễn, nơi có hơn 100 công trình kiến trúc đẹp: Ngọ Môn, Điện Thái Hòa, Tử Cấm Thành, Thế Miếu, Hiển Lâm Các, Cửu Đỉnh, …
                                                 </div>
                                                 <p></p>
                                                 <p>
-                                                    <strong>Trưa:&nbsp;</strong>Dùng bữa trưa tại nhà hàng và 
+                                                    <strong>Trưa:&nbsp;</strong>Dùng bữa trưa tại nhà hàng và
                                                     <strong>tham quan chùa Thiên Mụ</strong> –&nbsp;ngôi chùa cổ nhất Cố đô Huế.
                                                 </p>
                                                 <p>
-                                                    <strong>Chiều:&nbsp;</strong>Dùng cơm chiều tại nhà hàng, hướng dẫn viên tiễn đoàn ra sân bay Phú Bài đón chuyến bay về&nbsp;TP.HCM. Kết thúc chương trình tham quan 
+                                                    <strong>Chiều:&nbsp;</strong>Dùng cơm chiều tại nhà hàng, hướng dẫn viên tiễn đoàn ra sân bay Phú Bài đón chuyến bay về&nbsp;TP.HCM. Kết thúc chương trình tham quan
                                                     <a href="#">
                                                         <strong>du lich Mien Trung mua thu</strong>
                                                     </a>, chia tay và hẹn gặp lại.
-                                                </p>                    
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -426,7 +426,7 @@
     var requestButton = document.getElementByClassName("requestButton");
     var RateAdultPrice = document.getElementById("RateAdultPrice");
     var totalResults = document.getElementById("totalResults");
-    
+
     var onDeCreaseAdult = document.getElementById("onDeCreaseAdult");
     var onInCreaseAdult = document.getElementById("onInCreaseAdult");
 
@@ -478,8 +478,8 @@
 {{-- <script>
     var RateAdultPrice = document.getElementById("RateAdultPrice");
     var totalResults = document.getElementById("totalResults");
-    
-    
+
+
     function onShowPrice(){
 
         console.log("totalResults: ", totalResults);
@@ -492,7 +492,7 @@
 
         if (totalResults.style.display === "none") {
             totalResults.style.display = "flex";
-        } 
+        }
 
     }
 </script> --}}
