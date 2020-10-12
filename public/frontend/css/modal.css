@@ -2,6 +2,34 @@
 #blur{
     transition: 0.5s;
 }
+.titleBookTour{
+
+text-align: center;
+}
+.divClose{
+    text-align: right;
+    margin-bottom: 20px;
+}
+.totalCostTour{
+    display: flex;
+    justify-content: space-between;
+}
+.btnTotalCostTour{
+    
+padding: 0 50px;
+    
+margin-top: 25px;
+}
+.totalCostTour .labelTotal{
+    font-size: 20px;
+    font-weight: 700;
+}
+.totalCostTour p{
+    color: #efb479;
+    font-size: 20px;
+    font-weight: 600;
+}
+
 .main_chitiettour#blur.active{
     filter: blur(20px);
     pointer-events: none;
@@ -11,9 +39,9 @@
     position: fixed;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -48%);
     width: 600px;
-    padding: 50px;
+    padding: 10px 10px 35px 10px;
     box-shadow: 0 5px 30px rgba(0,0,0, .30);
     background: #fff;
     visibility: hidden;
@@ -27,11 +55,11 @@
     transition: 0.5s;
 }
 .requestTour{
-
+    padding: 0 35px;
+    margin-top: 30px;
 }
 .initRequestTour{
-
-margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 .initRequestTour .labelRequestTour{
 
