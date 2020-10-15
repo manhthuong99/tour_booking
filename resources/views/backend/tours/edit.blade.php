@@ -35,6 +35,7 @@
                 @foreach($toursSelected as $tour)
                     <form role="form" action="{{ route('tour.update',$tour->tours_id) }}" enctype="multipart/form-data" method="POST">
                         @csrf
+                        @method('PATCH')
                         <div class="box-body left">
                             @if( session()->get('failed'))
                                 <div class="form-group">
@@ -81,7 +82,7 @@
                             <div class="form-group">
                                 <label>Tỉnh/TP</label>
                                 <select id="id_province" name="id_province" class="form-control select2"
-                                        style="width: 100%;" required>
+                                        style="width: 100%;">
                                     <option value="" selected="selected">-- Chọn tỉnh/TP --</option>
                                     <?php
                                     /** @var array $listProvince */

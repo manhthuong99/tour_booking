@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         }
         for ($i = 1; $i < 102; $i++) {
             App\Models\Tours::create([
+                'tours_id'=>$i,
                 'tours_name' => $faker->country,
                 'description' => $faker->text,
                 'destination' => $faker->city,
@@ -88,16 +89,36 @@ class DatabaseSeeder extends Seeder
             ]);
         }
         \App\Models\Category_detail::create([
+            'category_detail_id'=>'1',
             'category_detail_name'=>'Miền Bắc',
             'position'=>'1',
         ]);
         \App\Models\Category_detail::create([
+            'category_detail_id'=>'2',
             'category_detail_name'=>'Miền Trung',
             'position'=>'1',
         ]);
         \App\Models\Category_detail::create([
+            'category_detail_id'=>'3',
             'category_detail_name'=>'Miền Nam',
             'position'=>'1',
         ]);
+        \App\Models\Category_detail::create([
+            'category_detail_id'=>'4',
+            'category_detail_name'=>'Tour nổi bật',
+            'position'=>'1',
+        ]);
+        for ($i = 1; $i < 200; $i++) {
+            App\Models\Category::create([
+                'id_category_detail' => rand(1, 4),
+                'id_tours' => rand(1, 100),
+            ]);
+        }
+        for ($i = 1; $i < 200; $i++) {
+            App\Models\Transport::create([
+                'id_transport_detail' => rand(1, 4),
+                'id_tours' => rand(1, 100),
+            ]);
+        }
     }
 }

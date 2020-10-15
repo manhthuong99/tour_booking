@@ -1,4 +1,4 @@
-document.addEventListener( "DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     new Glide(".glide", {
         type: "carousel",
         startAt: 0,
@@ -7,13 +7,11 @@ document.addEventListener( "DOMContentLoaded", () => {
         perView: 3
     }).mount(); // flext all slide child slide and next child slide
 
- 
 
     let prevBtn = document.getElementById("prev");
     let nextBtn = document.getElementById("next");
     let nextTren = document.getElementById("nextTren");
 
- 
 
     let background = document.querySelector(".background");
     let indices = document.querySelectorAll(".index");
@@ -33,7 +31,7 @@ document.addEventListener( "DOMContentLoaded", () => {
         displacementImage: "frontend/img/14.jpg",
         hover: false
     });
-    
+
     var myAnimation2 = new hoverEffect({
         parent: document.querySelector(".background"),
         intensity: 0.3,
@@ -43,7 +41,7 @@ document.addEventListener( "DOMContentLoaded", () => {
         displacementImage: "frontend/img/14.jpg",
         hover: false
     });
-    
+
     var myAnimation3 = new hoverEffect({
         parent: document.querySelector(".background"),
         intensity: 0.3,
@@ -53,7 +51,7 @@ document.addEventListener( "DOMContentLoaded", () => {
         displacementImage: "frontend/img/14.jpg",
         hover: false
     });
-    
+
     var myAnimation4 = new hoverEffect({
         parent: document.querySelector(".background"),
         intensity: 0.3,
@@ -79,9 +77,9 @@ document.addEventListener( "DOMContentLoaded", () => {
         distortAnimations[prevIndex].next();
         showTextAnimation("next");
         setTimeout(() => {
-          let canvas = background.querySelectorAll("canvas");
-          background.appendChild(canvas[0]);
-          distortAnimations[prevIndex].previous(); // anim next
+            let canvas = background.querySelectorAll("canvas");
+            background.appendChild(canvas[0]);
+            distortAnimations[prevIndex].previous(); // anim next
         }, 1200);
     }
 
@@ -92,19 +90,18 @@ document.addEventListener( "DOMContentLoaded", () => {
         distortAnimations[currentIndex].next();
         showTextAnimation("prev");
         setTimeout(() => {
-          let canvas = background.querySelectorAll("canvas");
-          background.insertBefore(canvas[canvas.length - 1], background.firstChild);
-          distortAnimations[currentIndex].previous();
-        }, 500);
+            let canvas = background.querySelectorAll("canvas");
+            background.insertBefore(canvas[canvas.length - 1], background.firstChild);
+            distortAnimations[currentIndex].previous();
+        }, 200);
     }
 
-    var thoigian = setInterval(function(){
-  
+    var thoigian = setInterval(function () {
+
         // startNextDistortAnimation();
         nextBtn.click();
         // auto click button
-    },4000);
-
+    }, 2000);
 
 
     nextBtn.addEventListener("click", () => {
@@ -117,7 +114,7 @@ document.addEventListener( "DOMContentLoaded", () => {
         clearInterval(thoigian);
     });
 
-      
+
     prevBtn.addEventListener("click", () => {
         startPrevDistortAnimation();
         clearInterval(thoigian);
@@ -127,61 +124,59 @@ document.addEventListener( "DOMContentLoaded", () => {
     let titleDisplacement = 0;
     let descriptionDisplacement = 0;
 
-    
+
     function showTextAnimation(direction) {
 
         // dich chuyen title slide
         if (titleDisplacement === 0 && direction === "prev") {
-          titleDisplacement = -390;
+            titleDisplacement = -390;
         } else if (titleDisplacement === -390 && direction === "next") {
-          titleDisplacement = 0;
+            titleDisplacement = 0;
         } else {
-          titleDisplacement =
-            direction === "next"
-              ? titleDisplacement - 130
-              : titleDisplacement + 130;
+            titleDisplacement =
+                direction === "next"
+                    ? titleDisplacement - 130
+                    : titleDisplacement + 130;
         }
-    
+
         //dich chuyen content slide
         if (descriptionDisplacement === 0 && direction === "prev") {
-          descriptionDisplacement = -165;
-        } 
-        else if(descriptionDisplacement === -165 && direction === "next"){
-          descriptionDisplacement = 0;
+            descriptionDisplacement = -165;
+        } else if (descriptionDisplacement === -165 && direction === "next") {
+            descriptionDisplacement = 0;
+        } else {
+            descriptionDisplacement =
+                direction === "next"
+                    ? descriptionDisplacement - 55
+                    : descriptionDisplacement + 55;
         }
-        else {
-          descriptionDisplacement =
-            direction === "next" 
-              ? descriptionDisplacement - 55
-              : descriptionDisplacement + 55;
-        }
-    
+
         let title = document.querySelectorAll("#title h4");
         let description = document.querySelectorAll("#description p");
-    
+
 
         //--------- next title slide ------------
         title.forEach(title => {
-          TweenMax.to(title, 1, {
-            top: `${titleDisplacement}px`,
-            ease: Strong.easeInOut
-          });
+            TweenMax.to(title, 1, {
+                top: `${titleDisplacement}px`,
+                ease: Strong.easeInOut
+            });
         });
-    
+
         description.forEach((description, index) => {
-          let opacity = 0;
-          if(index === currentIndex){
-            opacity = 1;
-          }else {
-            opacity = 0;
-          }
-          TweenMax.to(description, 1, {
-            top: `${descriptionDisplacement}px`,
-            ease: Strong.easeInOut,
-            opacity: opacity
-          });
+            let opacity = 0;
+            if (index === currentIndex) {
+                opacity = 1;
+            } else {
+                opacity = 0;
+            }
+            TweenMax.to(description, 1, {
+                top: `${descriptionDisplacement}px`,
+                ease: Strong.easeInOut,
+                opacity: opacity
+            });
         })
     }
 
-    
+
 })
