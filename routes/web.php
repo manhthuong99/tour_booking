@@ -59,7 +59,7 @@ Route::get('travel', 'frontend\Travel@index')->name('frontend.travel');
 Route::get('transport', 'frontend\Transport@index')->name('frontend.transport');
 Route::get('contact', 'frontend\Contact@index')->name('frontend.contact');
 Route::get('about', 'frontend\About@index')->name('frontend.about');
-Route::get('detailTour', 'frontend\DetailTour@index')->name('frontend.detailTour');
+Route::get('detailTour/{id?}', 'frontend\DetailTour@index')->name('frontend.detailTour');
 Route::get('infoClient', 'frontend\InfoClient@index')->name('frontend.infoClient');
 Route::get('updateInfoClient', 'frontend\UpdateInfoClient@index')->name('frontend.updateInfoClient');
 Route::get('login', 'frontend\Login@index')->name('frontend.login');

@@ -26,7 +26,7 @@
                             @if( $tour->category_detail_id == 4)
                                 <h4>{{ $tour->tours_name }}</h4>
                             @endif
-                            @break($endPoint == 4)
+                            @break($endPoint == 5)
                         @endforeach
                     </div>
                     <div id="description">
@@ -34,7 +34,7 @@
                             @if( $tour->category_detail_id == 4)
                                 <p>{{ $tour->address }}</p>
                             @endif
-                            @break($endPoint == 4)
+                            @break($endPoint == 5)
                         @endforeach
                     </div>
                 </div>
@@ -207,7 +207,7 @@
                                                     <a href="{{ route('frontend.detailTour') }}"
                                                        title="Hành hương về núi thiêng Kailash"
                                                        class="hvr-shutter-out-vertical">
-                                                        <img src="{{ asset('frontend/images/mbac1.jpg')}}" alt="Hành hương về núi
+                                                        <img src="{{ asset('storage/tours/'.$tour->image)}}" alt="Hành hương về núi
                                                      thiêng Kailash" title="Hành hương về núi thiêng Kailash"
                                                              class="img-responsive pic-sub">
                                                     </a>
@@ -218,14 +218,14 @@
                                                         {{ $tour->tours_name }}
                                                     </h2>
                                                     <p class="dot-dot catnoidung content-lh-2row"
-                                                       style="display: -webkit-box; -webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;">
+                                                       style="display: -webkit-box; -webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;">
                                                         {{ $tour->address }}
                                                     </p>
                                                     <div>
                                                         <div class="f-left">
                                                             <i class="far fa-clock" style="color: #999;"></i>&nbsp;
                                                             <span
-                                                                style="color: #0aa0fe;font-style: italic;font-weight: bold;font-size: 11px;">01/10/2019 13:11</span>
+                                                                style="color: #0aa0fe;font-style: italic;font-weight: bold;font-size: 14px;">{{ date("d/m/Y", strtotime($tour->calendar)) }}</span>
                                                         </div>
                                                         <div class="f-right">
                                                         </div>
@@ -251,169 +251,47 @@
                     <p>Các điểm đến du lịch trong nước và nước ngoài</p>
                 </div>
                 <div class="row sl-travelto">
-                    <div class="col-sm-3 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel">
-                                <img src="{{ asset('frontend/images/dd1.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Vịnh Hạ Long</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">1,600
+                    @foreach( $topBooking as $tour)
+                        <div class="col-sm-3 sl-travel">
+                            <div class="pos-travel">
+                                <a href="{{ route('frontend.detailTour',$tour->tours_id) }}" class="bg-travel">
+                                    <img src="{{ asset('storage/tours/'.$tour->image)}}" alt="">
+                                    <div class="tt-tour">
+                                        <div class="destination-name">{{ $tour->tours_name }}</div>
+                                        <div class="destination-like">Đã có
+                                            <span class="num-like">{{ $tour->total }}
 											<sup class="k">+</sup>
 										</span>lượt khách
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-3 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel">
-                                <img src="{{ asset('frontend/images/dd2.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Sapa</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">1,200
-											<sup class="k">+</sup>
-										</span>lượt khách
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel">
-                                <img src="{{ asset('frontend/images/dd3.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Đà Nẵng</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">1,350
-											<sup class="k">+</sup>
-										</span>lượt khách
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel">
-                                <img src="{{ asset('frontend/images/dd4.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Sapa</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">1,200
-											<sup class="k">+</sup>
-										</span>lượt khách
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
+                        @break($endPoint++ == 4)
+                    @endforeach
                     <div class="col-xs-12 netdut">
                         <div style="border-top: 1px dashed #ccc;padding-bottom: 30px;padding-top: 0px;"></div>
                     </div>
+                    @foreach( $topBooking as $key => $tour)
+                        @if( $key >3)
+                        <div class="col-sm-2 sl-travel">
+                            <div class="pos-travel">
+                                <a href="#" class="bg-travel bg-small">
 
-                    <div class="col-sm-2 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel bg-small">
-
-                                <img class="imgqg" src="{{ asset('frontend/images/ninhbinh2.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Ninh Bình</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">1,200
+                                    <img class="imgqg" src="{{ asset('storage/tours/'.$tour->image)}}" alt="">
+                                    <div class="tt-tour">
+                                        <div class="destination-name">{{ $tour->tours_name }}</div>
+                                        <div class="destination-like">Đã có
+                                            <span class="num-like">{{ $tour->total }}
 											<sup class="k">+</sup>
 										</span>lượt khách
+                                        </div>
                                     </div>
-                                </div>
-
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-2 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel bg-small">
-
-                                <img class="imgqg" src="{{ asset('frontend/images/dalat.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Đà Lạt</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">2,200
-											<sup class="k">+</sup>
-										</span>lượt khách
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel bg-small">
-
-                                <img class="imgqg" src="{{ asset('frontend/images/vinhphuc.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Vĩnh Phúc</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">1,200
-											<sup class="k">+</sup>
-										</span>lượt khách
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel bg-small">
-
-                                <img class="imgqg" src="{{ asset('frontend/images/bacninh.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Bắc Ninh</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">1,200
-											<sup class="k">+</sup>
-										</span>lượt khách
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel bg-small">
-
-                                <img class="imgqg" src="{{ asset('frontend/images/laichau.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Lai Châu</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">900
-											<sup class="k">+</sup>
-										</span>lượt khách
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-2 sl-travel">
-                        <div class="pos-travel">
-                            <a href="#" class="bg-travel bg-small">
-
-                                <img class="imgqg" src="{{ asset('frontend/images/laocai.jpg')}}" alt="">
-                                <div class="tt-tour">
-                                    <div class="destination-name">Lào Cai</div>
-                                    <div class="destination-like">Đã có
-                                        <span class="num-like">1,500
-											<sup class="k">+</sup>
-										</span>lượt khách
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
+                            @endif
+                    @endforeach
                 </div>
             </div>
         </div>
