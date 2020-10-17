@@ -118,14 +118,6 @@
                     </div>
                 </div>
                 <span id="validate-username" style="color: red; margin-top:10px "></span>
-{{--                <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">--}}
-{{--                    <span class="label-input100">Phone</span>--}}
-{{--                    <div class="flexform">--}}
-{{--                        <i class='fa fa-phone iconFormDK'></i>--}}
-{{--                        <input class="input100 inputFormDK" type="text" name="phone" placeholder="Nhập số điện thoại">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
                 <div class="wrap-input100 validate-input" data-validate="Password is required"
                      style="margin-bottom: 23px">
                     <span class="label-input100">Mật khẩu</span>

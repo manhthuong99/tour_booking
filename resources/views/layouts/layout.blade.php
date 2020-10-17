@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>KinhDo Travel</title>
     <link rel="icon" href=
     "https://w1.pngwave.com/png/150/975/717/world-icon-travel-icon-airport-icon-logo-emblem-symbol-png-clip-art.png"

@@ -65,6 +65,7 @@ Route::get('updateProfile', 'frontend\UpdateInfoClient@index')->name('frontend.u
 Route::get('login', 'frontend\Login@index')->name('frontend.login');
 Route::get('register', 'frontend\Register@index')->name('frontend.register');
 Route::post('register', 'frontend\Login@register')->name('frontend.registerUser');
+Route::post('booking', 'frontend\DetailTour@booking')->name('frontend.booking');
 Route::post('checklogin', 'frontend\Login@checklogin')->name('frontend.checklogin');
 Route::get('logout', 'frontend\Login@logout')->name('frontend.logout');
 Route::post('checkUsername', function (\Illuminate\Http\Request $request) {

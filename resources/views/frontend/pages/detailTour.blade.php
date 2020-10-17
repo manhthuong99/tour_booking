@@ -1,12 +1,39 @@
 @extends('layouts.layout')
 @section('content')
-{{--    <script>--}}
-{{--        jQuery(document).ready(function () {--}}
-{{--            $('#booking').click(function (){--}}
-{{--                console.log('oke')--}}
-{{--            })--}}
-{{--        })--}}
-{{--    </script>--}}
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <script type="text/javascript" src="{{  asset('js/jquery.js') }}"></script>
+    <script>
+        jQuery(document).ready(function () {
+            $('#booking').click(function () {
+                if ({{\Illuminate\Support\Facades\Auth::check() == false}}) {
+                    alert("Bạn cần đăng nhập để đặt tour")
+                    window.location = "/login";
+                }
+                console.log('oke')
+            })
+        })
+        jQuery(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#btn-submit').click(function () {
+                let id_users = {{ \Illuminate\Support\Facades\Auth::user()->users_id }};
+                let id_tours = $('#id_tours').val();
+                let number_customer = $('#isAdult').text();
+                let total = $('#total').text();
+                alert('oke')
+                console.log('oke' + id_users + '-' + id_tours + '-' + number_customer + '-' + total)
+            })
+        })
+    </script>
+    @if( session()->get('message'))
+        <script>
+            alert('{{ session()->get('message') }}')
+        </script>
+
+    @endif
     @foreach( $tourDetail as $tour)
         <div id="vnt-content">
             <div class="main_chitiettour" id="blur">
@@ -15,6 +42,7 @@
                         <div class="col-xs-12 mg-bot15">
                             <h1 class="tour-namechitiet" itemprop="name">
                                 <h3>{{ $tour->tours_name }}</h3>
+                                <input id="id_tours" type="hidden" value="{{ $tour->tours_id }}">
                             </h1>
                         </div>
                         <div class="slideshow-pt col-lg-8 col-md-12 col-sm-12 col-xs-12 pos-relative">
@@ -29,12 +57,6 @@
                                         <img class="d-block w-100" src="{{ asset('storage/tours/'.$tour->image) }}"
                                              alt="First slide">
                                     </div>
-                                    {{--                            <div class="carousel-item">--}}
-                                    {{--                                <img class="d-block w-100" src="{{ asset('images/hue2.jpg') }}" alt="Second slide">--}}
-                                    {{--                            </div>--}}
-                                    {{--                            <div class="carousel-item">--}}
-                                    {{--                                <img class="d-block w-100" src="{{ asset('images/hue3.jpg') }}" alt="Third slide">--}}
-                                    {{--                            </div>--}}
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
                                    data-slide="prev">
@@ -99,13 +121,15 @@
                                         <label class="visible-sm">&nbsp;</label>
                                         <div class="col-xs-12 no-padding scroll-mobile">
                                             <div class="col-xs-12 no-padding request-Button hide-class">
-                                                <button id="booking" class="btn btn-flat btn-action btn-md btn-block requestButton">
+                                                <button
+                                                    class="btn btn-flat btn-action btn-md btn-block requestButton">
                                                     Yêu cầu đặt
                                                 </button>
                                             </div>
                                             <div class="col-xs-12 no-padding check-Button">
                                                 {{-- <button onClick="onShowPrice()"  onclick="toggle()" data-toggle="modal" data-target="#myModal" class="btn btn-flat btn-action btn-md btn-block checkButton requestPrice">Yêu cầu đặt</button> --}}
-                                                <button onclick="toggle()" data-toggle="modal" data-target="#myModal"
+                                                <button id="booking" onclick="toggle();" data-toggle="modal"
+                                                        data-target="#myModal"
                                                         class="btn btn-flat btn-action btn-md btn-block checkButton requestPrice">
                                                     Yêu cầu đặt
                                                 </button>
@@ -507,45 +531,51 @@
             </div>
 
             <div disabled="" id="popup">
-{{--                @if(\Illuminate\Support\Facades\Auth::check())--}}
+                @if(\Illuminate\Support\Facades\Auth::check())
                     <div class="col-xs-12 divClose">
                         <a href="#" onclick="toggle()">X</a>
                     </div>
-                    <h2 class="titleBookTour">Yêu cầu đặt Tour</h2>
-                    <div class="requestTour">
-                        <div class="col-xs-12 initRequestTour">
-                            <label class="labelRequestTour">Họ &amp; Tên <span class="vcolor-danger">*</span></label>
-                            <input maxlength="255" type="text" class="form-control " id="customerName">
+                    <h2 class="titleBookTour">Thông tin khách hàng</h2>
+                    <form id="formBooking" action="{{ route('frontend.booking') }}" method="post">
+                        @csrf
+                        <div class="requestTour">
+                            <div class="col-xs-12 initRequestTour">
+                                <label class="labelRequestTour">Họ &amp; Tên <span
+                                        class="vcolor-danger">*</span></label>
+                                <input maxlength="255" type="text" class="form-control " id="customerName"
+                                       value="{{ \Illuminate\Support\Facades\Auth::user()->fullname }}">
+                            </div>
+                            <div class="col-xs-12 initRequestTour">
+                                <label class="labelRequestTour">Điện thoại <span class="vcolor-danger">*</span></label>
+                                <input maxlength="255" type="text" class="form-control " id="customerPhone"
+                                       value="{{ \Illuminate\Support\Facades\Auth::user()->phone_number }}">
+                            </div>
+                            <div class="col-xs-12 initRequestTour">
+                                <label class="labelRequestTour">Email</label>
+                                <input maxlength="255" type="text" class="form-control " id="customerEmail"
+                                       value="{{ \Illuminate\Support\Facades\Auth::user()->email }}">
+                            </div>
+                            <div class="col-xs-12 initRequestTour" style="display: none">
+                                <label class="labelRequestTour">Yêu cầu khác</label>
+                                <textarea maxlength="1000" rows="2" cols="30" class="form-control"
+                                          id="notesRequest"></textarea>
+                            </div>
+                            <div class="col-xs-12 totalCostTour">
+                                <label class="labelTotal"></label>
+                                <p id="isCost" style="display: none"></p>
+                            </div>
                         </div>
-                        <div class="col-xs-12 initRequestTour">
-                            <label class="labelRequestTour">Điện thoại <span class="vcolor-danger">*</span></label>
-                            <input maxlength="255" type="text" class="form-control " id="customerPhone">
+                        <input  type="hidden" id="id_users" name="id_users" value="{{ \Illuminate\Support\Facades\Auth::user()->users_id }}">
+                        <input  type="hidden" id="id_tours" name="id_tours" value=" {{ $tour->tours_id }}">
+                        <input  type="hidden" id="number_customer" name="number_customer" value="1">
+                        <input  type="hidden" id="totalBooking" name="total" value="{{ $tour->price }}">
+                        <div class="col-xs-12 btnTotalCostTour">
+                            <input type="submit" id="btn-submit"
+                                   class="btn btn-flat btn-action btn-md btn-block checkButton requestPrice"
+                                   value=" Xác nhận">
                         </div>
-                        <div class="col-xs-12 initRequestTour">
-                            <label class="labelRequestTour">Email</label>
-                            <input maxlength="255" type="text" class="form-control " id="customerEmail">
-                        </div>
-                        <div class="col-xs-12 initRequestTour">
-                            <label class="labelRequestTour">Yêu cầu khác</label>
-                            <textarea maxlength="1000" rows="2" cols="30" class="form-control"
-                                      id="notesRequest"></textarea>
-                        </div>
-                        <div class="col-xs-12 totalCostTour">
-                            <label class="labelTotal"></label>
-                            <p id="isCost" style="display: none"></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 btnTotalCostTour">
-                        <button id="b" class="btn btn-flat btn-action btn-md btn-block checkButton requestPrice">Book
-                            Tour
-                        </button>
-                    </div>
-{{--                @else--}}
-{{--                    <script>--}}
-{{--                        alert("Bạn cần đăng nhập để đặt tour")--}}
-{{--                        // window.location = "/login";--}}
-{{--                    </script>--}}
-{{--                @endif--}}
+                    </form>
+                @endif
             </div>
 
 
@@ -562,6 +592,8 @@
                 let numberPerson = Number($('#isAdult').text());
                 let RateAdultPrice = Number($('#price').text().replace(/\,/g, ''));
                 $('#total').html(formatNumber(numberPerson * RateAdultPrice))
+                $('#totalBooking').val(numberPerson * RateAdultPrice)
+                $('#number_customer').val(formatNumber(numberPerson))
             })
             $('#onDeCreaseAdult').click(function () {
                 let numberPerson = Number($('#isAdult').text());
@@ -612,22 +644,27 @@
             } catch (e) {
                 console.log(e)
             }
-        };
+        }
 
         function toggle() {
-            var countMem = document.getElementById("isAdult").innerHTML;
-            var priceTour = document.getElementById("RateAdultPrice").innerHTML;
-            var rePlaceDot = priceTour.replace(/\./g, '')
-            var isPrice = rePlaceDot.replace(/\x/g, '')
+            if ({{ \Illuminate\Support\Facades\Auth::check()}}) {
+                let countMem = document.getElementById("isAdult").innerHTML;
+                let priceTour = document.getElementById("RateAdultPrice").innerHTML;
+                let rePlaceDot = priceTour.replace(/\./g, '')
+                let isPrice = rePlaceDot.replace(/\x/g, '')
 
-            console.log(countMem * isPrice);
-            document.getElementById("isCost").innerHTML = formatMoney(countMem * isPrice) + 'đ';
+                console.log(countMem * isPrice);
+                document.getElementById("isCost").innerHTML = formatMoney(countMem * isPrice) + 'đ';
 
-            var blur = document.getElementById('blur');
-            blur.classList.toggle('active')
+                let blur = document.getElementById('blur');
+                blur.classList.toggle('active')
 
-            var popup = document.getElementById('popup');
-            popup.classList.toggle('active')
+                let popup = document.getElementById('popup');
+                popup.classList.toggle('active')
+            } else {
+                alert("Bạn cần đăng nhập để đặt tour")
+                window.location = "/login";
+            }
 
 
         }
