@@ -221,16 +221,30 @@
                                                        style="display: -webkit-box; -webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;">
                                                         {{ $tour->address }}
                                                     </p>
-                                                    <div>
-                                                        <div class="f-left">
-                                                            <i class="far fa-clock" style="color: #999;"></i>&nbsp;
-                                                            <span
-                                                                style="color: #0aa0fe;font-style: italic;font-weight: bold;font-size: 14px;">{{ date("d/m/Y", strtotime($tour->calendar)) }}</span>
-                                                        </div>
-                                                        <div class="f-right">
-                                                        </div>
-                                                        <div class="clear"></div>
+                                                    //code moi
+                                                    <div class="priceTour360">
+                                                        <i class="fas fa-dollar-sign"></i>&nbsp;
+                                                        <span >1.200.000</span>
                                                     </div>
+                                                    <div class="clockTour360">
+                                                        <i class="far fa-clock"></i>&nbsp;
+                                                        <span>{{ date("d/m/Y", strtotime($tour->calendar)) }}</span>
+                                                    </div>
+                                                    //het code moi
+                                                    
+                                                    //comment code cu
+                                                    // <div>
+                                                    //     <div class="f-left">
+                                                    //         <i class="far fa-clock" style="color: #999;"></i>&nbsp;
+                                                    //         <span
+                                                    //             style="color: #0aa0fe;font-style: italic;font-weight: bold;font-size: 14px;">{{ date("d/m/Y", strtotime($tour->calendar)) }}</span>
+                                                    //     </div>
+                                                    //     <div class="f-right">
+                                                    //     </div>
+                                                    //     <div class="clear"></div>
+                                                    // </div>
+                                                    //het comment
+                                                    
                                                 </div>
                                             </div>
                                         </div>

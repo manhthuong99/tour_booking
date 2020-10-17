@@ -26,7 +26,16 @@
   }
   
   
-  
+  .reMargin{
+    margin-top: 20px !important;
+    margin-bottom: 5px;
+  }
+  .validForm{
+    color: #efb479;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 300;
+  }
   
   /*//////////////////////////////////////////////////////////////////
   [ RESTYLE TAG ]*/

@@ -1,4 +1,17 @@
-*{margin: 0; padding: 0;}
+*{margin: 0; padding: 0;} 
+.priceTour360{
+
+}
+.priceTour360 i{font-size: 15px;width: 15px;color: #efb479;font-weight: 600;}
+.priceTour360 span{
+	font-size: 13px;
+	color: #1a1b1d;
+}
+.clockTour360{
+
+}
+.clockTour360 i{font-size: 15px;width: 15px;color: #efb479;font-weight: 700;}
+.clockTour360 span{font-size: 13px;color: #1a1b1d;}
 .khoimainbig{
 	width: 100%;
 	height: 82%;
@@ -12,9 +25,6 @@
 .userSubmit_3ASx a{
 	color: #fff;
 	font-size: 14px;
-}
-.userSubmit_3ASx a:hover{
-	color: #fff;
 }
 .DayPickerInput input{
 	height: 40px;
@@ -36,8 +46,6 @@
 	border-radius: 6px !important;
 	background-color: #fff !important;
 	margin: 0 5px !important;
-	border-top: none !important;
-    border-bottom: none !important;
 }
 .carousel-item>img.d-block{
 	max-height: 420px !important;
@@ -77,14 +85,14 @@ strong a{
 }
 .gnl_inner .global_inner ul li a{
 	line-height: 40px;
-	color: #212121 !important;
-	padding-left: 15px;
+	color: #212121 !important;  
+	padding-left: 15px;	
 }
 .gnl_inner .global_inner ul{
 	text-align: justify;
 }
 .gnl_inner .global_inner ul li{
-	/* border-bottom: 1px dashed #ccc;
+	/* border-bottom: 1px dashed #ccc;	
 	padding-top: 5px;
     padding-bottom: 5px; */
 }
@@ -163,7 +171,7 @@ body{
 }
 .btnheader{
 	width: 10%;
-	margin-left: 30px;
+	margin-left: 30px; 	
 }
 .navduoi{
 	height: 60px;
@@ -234,7 +242,7 @@ input[type=search] {
 }
 input::-webkit-search-decoration,
 input::-webkit-search-cancel-button {
-	display: none;
+	display: none; 
 }
 
 
@@ -397,10 +405,10 @@ ul li.active .motslide .xanhduoi1{
 }
 @-webkit-keyframes xanhvao{
 	from{transform:translateX(-100%) translateY(100%);
-		opacity: 0;
+		opacity: 0; 
 	}
 	to{ transform:translateX(0) translateY(0);
-		opacity: 0.4;
+		opacity: 0.4; 
 	}
 }
 .motslide .xanhduoi2{
@@ -412,10 +420,10 @@ ul li.active .motslide .xanhduoi2{
 }
 @-webkit-keyframes xanhvao2{
 	from{transform:translateX(-100%) translateY(100%);
-		opacity: 0;
+		opacity: 0; 
 	}
 	to{ transform:translateX(0) translateY(0);
-		opacity: 0.7;
+		opacity: 0.7; 
 	}
 }
 .motslide .xanhtren{
@@ -427,10 +435,10 @@ ul li.active .motslide .xanhtren{
 }
 @-webkit-keyframes xanhvao3{
 	from{transform:translateX(100%) translateY(-100%);
-		opacity: 0;
+		opacity: 0; 
 	}
 	to{ transform:translateX(0) translateY(0);
-		opacity: 0.7;
+		opacity: 0.7; 
 	}
 }
 .motslide .textnd{
@@ -575,7 +583,7 @@ ul li.active .motslide .textnd{
 	margin-right: 30px;
 }
 .iconT-i-c1{
-	background-image: url(../images/icons.png);
+	background-image: url(images/icons.png);
 	background-position: -269px -38px;
 	width: 41px;
 	height: 42px;
@@ -583,7 +591,7 @@ ul li.active .motslide .textnd{
 	margin: 0 auto 0;
 }
 .iconT-i-c2{
-	background-image: url(../images/icons.png);
+	background-image: url(images/icons.png);
 	background-position: -310px -38px;
 	width: 41px;
 	height: 42px;
@@ -591,7 +599,7 @@ ul li.active .motslide .textnd{
 	margin: 0 auto 0;
 }
 .iconT-i-c3{
-	background-image: url(../images/icons.png);
+	background-image: url(images/icons.png);
 	background-position: -352px -38px;
 	width: 39px;
 	height: 42px;
@@ -599,7 +607,7 @@ ul li.active .motslide .textnd{
 	margin: 0 auto 0;
 }
 .iconT-i-c4{
-	background-image: url(../images/icons.png);
+	background-image: url(images/icons.png);
 	background-position: -392px -38px;
 	width: 41px;
 	height: 42px;
@@ -674,7 +682,7 @@ ul li.active .motslide .textnd{
 .trennho{
 	width: 340px;
 	height: 306px;
-	background: url(../images/ht8.jpeg) no-repeat;
+	background: url(images/ht8.jpeg) no-repeat;
 	background-size: cover;
 	position: relative;
 	border-radius: 5px;
@@ -690,7 +698,7 @@ ul li.active .motslide .textnd{
 .trento{
 	width: 710px;
 	height: 306px;
-	background: url(../images/ht2.jpeg) no-repeat;
+	background: url(images/ht2.jpeg) no-repeat;
 	background-size: cover;
 	margin-left: 30px;
 	border-radius: 5px;
@@ -707,7 +715,7 @@ ul li.active .motslide .textnd{
 .duoito{
 	width: 710px;
 	height: 306px;
-	background: url(../images/ht3.jpeg) no-repeat;
+	background: url(images/ht3.jpeg) no-repeat;
 	background-size: cover;
 	border-radius: 5px;
 	position: relative;
@@ -723,7 +731,7 @@ ul li.active .motslide .textnd{
 .duoinho{
 	width: 340px;
 	height: 306px;
-	background: url(../images/ht4.jpeg) no-repeat;
+	background: url(images/ht4.jpeg) no-repeat;
 	background-size: cover;
 	margin-left: 30px;
 	border-radius: 5px;
@@ -925,11 +933,11 @@ ul li.active .motslide .textnd{
 	z-index: 999;
 }
 .col-sm-3.sl-travel .pos-travel .bg-travel .tt-tour{
-	background-image: url("../images/bg-dd2.png");
+	background-image: url("images/bg-dd2.png");
 
 }
 .tt-tour{
-	background-image: url("../images/bg-dd2.png");
+	background-image: url("images/bg-dd2.png");
 }
 .tt-tour .destination-name {
 	margin: 0 auto;
@@ -1001,7 +1009,7 @@ a:active, a:hover {
 }
 .fttrai{
 	width: 50%;
-	padding: 25px 0;
+	padding: 25px 0; 
 }
 .fttrai img{
 	width: 20%;
@@ -1444,21 +1452,21 @@ input {
 
 }
 .start{
-
+	
 	background: rgba(18, 17, 17, 0.12);
-
+	
 	width: 50%;
-
+	
 	height: 40px;
-
+	
 	padding: 7px 0;
-
+	
 	text-align: center;
-
+	
 	position: relative;
-
+	
 	bottom: -25px;
-
+	
 	left: 156px;
 }
 
@@ -1484,7 +1492,7 @@ input {
 	margin: auto;
 	height: 80px;
 	background: white;
-	padding: 0px 180px;
+	padding: 0px 203px;
 }
 .bonnut li{
 	list-style: none;
@@ -1594,7 +1602,7 @@ li.active b.btn{
 	bottom: 30px;
 }
 .bgimg_ht{
-	/*background-image: url("../images/ht1.jpg");*/
+	/*background-image: url("images/ht1.jpg");*/
 	background-size: cover;
 	background-position: 50%;
 	overflow: hidden;
@@ -1742,7 +1750,7 @@ li.active b.btn{
 .col-xs-4{
 	width: 33.33333333% !important;
 }
-.col-sm-4.tx_ndinner{
+.col-sm-4.tx_ndinner{ 
 	position: relative;
 	width: 100%;
 }
@@ -1800,8 +1808,8 @@ li.active b.btn{
 	width: 110px;
 	z-index: 8;
 	/* background-color: #ff891e; */
-    top: 30px;
-    left: 260px;
+	top: 15px;
+	left: 240px;
 	border-top-left-radius: 8px;
 	border-bottom-left-radius: 8px;
 	padding: 5px 7px;
@@ -1842,7 +1850,7 @@ li.active b.btn{
 }
 
 .khoifooter{
-	background: url("../images/bg-footer.png") no-repeat center bottom;
+	background: url("images/bg-footer.png") no-repeat center bottom;
 	background-color: #fff;
 	/*height: 550px;*/
 	position: relative;
@@ -1873,7 +1881,7 @@ li.active b.btn{
 	width: 60%;
 }
 .tt_footerinner .tt_ft2{
-
+	
 	width: 40%;
 }
 .list_chinhsach{
@@ -1883,7 +1891,7 @@ li.active b.btn{
 
 }
 .list_chinhsach li a{
-	background: url("../images/circle.png") no-repeat left center;
+	background: url("images/circle.png") no-repeat left center;
 	margin: 10px 0 10px 0!important;
 	display: block;
 	list-style: none;
@@ -1949,7 +1957,7 @@ li.active b.btn{
 	background: linear-gradient(to right,#ff3400,#f60);
 }
 .iconhl_ft button i{
-
+	
 }
 .sdt_ft{
 
@@ -1960,11 +1968,11 @@ li.active b.btn{
 	left: 62px;
 }
 .sdt_ft_inner{
-
+	
 	display: block;
-
+	
 	font-weight: bold;
-
+	
 	font-size: 20px;
 }
 
@@ -1974,7 +1982,7 @@ li.active b.btn{
 	margin-right: 10px;
 }
 .ttcard_ft i{
-	background-image: url("../images/icons.png");
+	background-image: url("images/icons.png");
 	background-size: 472px 231px;
 }
 .ttcard_ft ._123pay{
@@ -2256,7 +2264,7 @@ input.form-control, input.form-control,select.form-control {
 	height: 38px;
 }
 .text-right {
-	text-align: right;
+	text-align: right; 
 }
 .frame-payment {
 	background: #f4f4f4;
@@ -2410,9 +2418,9 @@ a:hover {
 
 }
 .btnAdd .btnbot{
-
+	
 	width: 50%;
-
+	
 	padding: 20px 18px;
 }
 .btnbot h4{
@@ -2420,13 +2428,13 @@ a:hover {
 	text-transform: uppercase;
 }
 .inputlogin input{
-
+	
 	width: 95%;
-
+	
 	border: none;
-
+	
 	border-bottom: 1px solid #cccaca;
-
+	
 	padding: 5px 0;
 }
 .forgot{
@@ -2463,7 +2471,7 @@ a:hover {
 	margin: 0;
 }
 .signin{
-
+	
 	background-color: #303e57;
 }
 .signin h4{
@@ -2481,7 +2489,7 @@ input::placeholder {
 	color: #716a6a;
 }
 .bg-login{
-	background: url("../images/bg-login2.jpg") no-repeat;
+	background: url("images/bg-login2.jpg") no-repeat;
 	background-size: cover;
 	width: 100%;
 	height: 100%;
@@ -2535,6 +2543,7 @@ input::placeholder {
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
 	width: 100%;
+	height: 100%;
 }
 .hvr-shutter-out-vertical:before {
 	content: "";
@@ -2554,6 +2563,7 @@ input::placeholder {
 	-webkit-transition-duration: 0.3s;
 	transition-duration: 0.3s;
 	-webkit-transition-timing-function: ease-out;
+	height: 100%;
 	transition-timing-function: ease-out;
 }
 .hvr-shutter-out-vertical:hover:before, .hvr-shutter-out-vertical:focus:before, .hvr-shutter-out-vertical:active:before {
@@ -2562,7 +2572,7 @@ input::placeholder {
 }
 img.pic-sub {
 	width: 100%;
-	height: 101px;
+	height: 100%;
 }
 .sub_tin .col-lg-5 img {
 	padding-top: 0px;
@@ -2707,7 +2717,7 @@ img.pic-sub {
 }
 .viewed {
 	margin-bottom: 15px;
-}
+}	
 .viewed i {
 	color: #888;
 }
@@ -2870,7 +2880,7 @@ img.pic-sub {
 	margin: 10px 0 10px 0!important;
 	display: block;
 	list-style: none;
-	background: url("../images/circle.png") no-repeat top left;
+	background: url("images/circle.png") no-repeat top left;
 	padding-left: 20px;
 	font-weight: 400;
 	line-height: 15px;
@@ -3031,7 +3041,7 @@ td, th {
 		line-height: 25px;
 	}
 	.borderbot{
-
+		
 		border-bottom: 1px dashed gray;
 	}
 	li.nav-item.ndheaderduoi .mautextnav{
@@ -3266,7 +3276,7 @@ td, th {
 		padding-bottom: 53% !important;
 	}
 	.tx_ndinner:nth-child(n+4) {
-		 margin-top: 0;
+		 margin-top: 0; 
 	}
 	.col-sm-4.tx_ndinner {
 		margin-top: 20px;
@@ -4197,10 +4207,10 @@ td, th {
     display: inline-block;
 }
 .RateAdultAvg{
-	/* display: none; */
+	display: none;
 }
 .priceDiv{
-
+	display: none;
 }
 .price-color {
     color: #ffbd00;

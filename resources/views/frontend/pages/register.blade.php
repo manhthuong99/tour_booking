@@ -102,23 +102,23 @@
                 <span class="login100-form-title " style="font-family: sans-serif; font-size: 25px">
 						Đăng ký
 					</span>
-                <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                <div class="wrap-input100 validate-input m-b-23 reMargin" data-validate="Username is reauired">
                     <span class="label-input100">Email</span>
                     <div class="flexform">
                         <i class='fa fa-envelope iconFormDK'></i>
                         <input class="input100 inputFormDK" type="email" id="email" name="email" placeholder="Nhập Email">
                     </div>
                 </div>
-                <span id="validate-email" style="color: red; margin-top:10px "></span>
-                <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                <span id="validate-email" class="validForm"></span>
+                <div class="wrap-input100 validate-input m-b-23 reMargin" data-validate="Username is reauired">
                     <span class="label-input100">Tài Khoản</span>
                     <div class="flexform">
                         <i class='fa fa-user iconFormDK'></i>
                         <input class="input100 inputFormDK" type="text" id="username" name="username" placeholder="Tài khoản">
                     </div>
                 </div>
-                <span id="validate-username" style="color: red; margin-top:10px "></span>
-                <div class="wrap-input100 validate-input" data-validate="Password is required"
+                <span id="validate-username" class="validForm"></span>
+                <div class="wrap-input100 validate-input reMargin" data-validate="Password is required"
                      style="margin-bottom: 23px">
                     <span class="label-input100">Mật khẩu</span>
                     <div class="flexform">
@@ -127,7 +127,7 @@
                     </div>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Password is required">
+                <div class="wrap-input100 validate-input reMargin" data-validate="Password is required">
                     <span class="label-input100">Nhập lại mật khẩu</span>
                     <div class="flexform">
                         <i class='fa fa-lock iconFormDK'></i>
@@ -137,7 +137,7 @@
                 </div>
                 <div style="height:10px">
                 </div>
-                <span id="validate-password" style="color: red; margin-top:10px "></span>
+                <span id="validate-password" class="validForm"></span>
                 <div style="height:20px">
                 </div>
 
