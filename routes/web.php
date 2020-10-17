@@ -60,9 +60,26 @@ Route::get('transport', 'frontend\Transport@index')->name('frontend.transport');
 Route::get('contact', 'frontend\Contact@index')->name('frontend.contact');
 Route::get('about', 'frontend\About@index')->name('frontend.about');
 Route::get('detailTour/{id?}', 'frontend\DetailTour@index')->name('frontend.detailTour');
-Route::get('infoClient', 'frontend\InfoClient@index')->name('frontend.infoClient');
-Route::get('updateInfoClient', 'frontend\UpdateInfoClient@index')->name('frontend.updateInfoClient');
+Route::get('profile/{id}', 'frontend\InfoClient@index')->name('frontend.profile');
+Route::get('updateProfile', 'frontend\UpdateInfoClient@index')->name('frontend.updateProfile');
 Route::get('login', 'frontend\Login@index')->name('frontend.login');
 Route::get('register', 'frontend\Register@index')->name('frontend.register');
+Route::post('register', 'frontend\Login@register')->name('frontend.registerUser');
+Route::post('checklogin', 'frontend\Login@checklogin')->name('frontend.checklogin');
+Route::get('logout', 'frontend\Login@logout')->name('frontend.logout');
+Route::post('checkUsername', function (\Illuminate\Http\Request $request) {
+    $data = \App\Models\Users::where('username', $request->username)->get();
+    if ($data->count()){
+        return true;
+    }
+    else return false;
+})->name('frontend.checkUsername');
+Route::post('checkEmail', function (\Illuminate\Http\Request $request) {
+    $data = \App\Models\Users::where('email', $request->email)->get();
+    if ($data->count()){
+        return true;
+    }
+    else return false;
+})->name('frontend.checkEmail');
 
 

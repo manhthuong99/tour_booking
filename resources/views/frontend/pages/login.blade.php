@@ -20,10 +20,10 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/background.jpg');">
+		<div class="container-login100" style="background-image: url('{{ asset('images/background.jpg') }}');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form" action="../Model/server.php" method="post">
-
+				<form class="login100-form validate-form" action="{{ route('frontend.checklogin') }}" method="post">
+                    @csrf
 					<span class="login100-form-title p-b-49" style="font-family: sans-serif;">
 						KinhDo Travel
 					</span>
@@ -42,7 +42,9 @@
 						<input class="input100" type="password" name="password" placeholder="Mật khẩu">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
-
+                    @if( session()->get('message'))
+                        <span style="color: red">{{ session()->get('message') }}</span>
+                    @endif
 					<div class="text-left p-t-8 p-b-31">
 							<input type="checkbox" name="" value=""> Nhớ mật khẩu
 					</div>
@@ -55,7 +57,6 @@
 					<div class="text-left p-b-31">
 							Quên mật khẩu? <a href="#" style="color: blueviolet; font-family:sans-serif; font:caption;">Lấy lại mật khẩu</a>
 					</div>
-
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>

@@ -13,6 +13,7 @@
     <script src="{{ asset('frontend/vendor/bootstrap.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('frontend/vendor/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
 
     {{-- css --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/header.css') }}">
@@ -49,10 +50,19 @@
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user"></i>
                         </a>
+
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item tittleHeader" href="{{ route('frontend.login') }}">Đăng nhập</a>
-                            <a class="dropdown-item tittleHeader" href="{{ route('frontend.register') }}">Đăng
-                                ký</a>
+                            @if(\Illuminate\Support\Facades\Auth::check())
+                                <a class="dropdown-item tittleHeader" href="{{ route('frontend.profile',\Illuminate\Support\Facades\Auth::user()->users_id) }}">
+                                    {{ \Illuminate\Support\Facades\Auth::user()->fullname }}</a>
+                                <a class="dropdown-item tittleHeader" href="{{ route('frontend.logout') }}">Đăng
+                                    xuất</a>
+
+                            @else
+                                <a class="dropdown-item tittleHeader" href="{{ route('frontend.login') }}">Đăng nhập</a>
+                                <a class="dropdown-item tittleHeader" href="{{ route('frontend.register') }}">Đăng
+                                    ký</a>
+                            @endif
                         </div>
                     </li>
                     <li class="nav-item"><a href="#" class="nav-link" id="search"><i class="fa fa-search"></i></a></li>

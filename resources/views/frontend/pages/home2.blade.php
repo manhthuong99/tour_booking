@@ -204,7 +204,7 @@
                                             </div>
                                             <div class="sangngang">
                                                 <div class="col-lg-5 mg-bot">
-                                                    <a href="{{ route('frontend.detailTour') }}"
+                                                    <a href="{{ route('frontend.detailTour',$tour->tours_id) }}"
                                                        title="Hành hương về núi thiêng Kailash"
                                                        class="hvr-shutter-out-vertical">
                                                         <img src="{{ asset('storage/tours/'.$tour->image)}}" alt="Hành hương về núi
@@ -215,7 +215,7 @@
                                                 <div class="col-lg-7">
                                                     <h2 class="mg-bot10 dot-dot cattieude ddd-truncated"
                                                         style="word-wrap: break-word;">
-                                                        {{ $tour->tours_name }}
+                                                        <a href="{{ route('frontend.detailTour',$tour->tours_id) }}">{{ $tour->tours_name }}</a>
                                                     </h2>
                                                     <p class="dot-dot catnoidung content-lh-2row"
                                                        style="display: -webkit-box; -webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;">
