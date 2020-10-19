@@ -3,30 +3,30 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <script type="text/javascript" src="{{  asset('js/jquery.js') }}"></script>
     <script>
-        jQuery(document).ready(function () {
-            $('#booking').click(function () {
-                if ({{\Illuminate\Support\Facades\Auth::check() == false}}) {
-                    alert("Bạn cần đăng nhập để đặt tour")
-                    window.location = "/login";
-                }
-                console.log('oke')
-            })
-        })
-        jQuery(document).ready(function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $('#btn-submit').click(function () {
-                let id_users = {{ \Illuminate\Support\Facades\Auth::user()->users_id }};
-                let id_tours = $('#id_tours').val();
-                let number_customer = $('#isAdult').text();
-                let total = $('#total').text();
-                alert('oke')
-                console.log('oke' + id_users + '-' + id_tours + '-' + number_customer + '-' + total)
-            })
-        })
+        {{--jQuery(document).ready(function () {--}}
+        {{--    $('#booking').click(function () {--}}
+        {{--        if ({{\Illuminate\Support\Facades\Auth::check() == false}}) {--}}
+        {{--            alert("Bạn cần đăng nhập để đặt tour")--}}
+        {{--            window.location = "/login";--}}
+        {{--        }--}}
+        {{--        console.log('oke')--}}
+        {{--    })--}}
+        {{--})--}}
+        {{--jQuery(document).ready(function () {--}}
+        {{--    $.ajaxSetup({--}}
+        {{--        headers: {--}}
+        {{--            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--    $('#btn-submit').click(function () {--}}
+        {{--        let id_users = {{ \Illuminate\Support\Facades\Auth::user()->users_id }};--}}
+        {{--        let id_tours = $('#id_tours').val();--}}
+        {{--        let number_customer = $('#isAdult').text();--}}
+        {{--        let total = $('#total').text();--}}
+        {{--        alert('oke')--}}
+        {{--        console.log('oke' + id_users + '-' + id_tours + '-' + number_customer + '-' + total)--}}
+        {{--    })--}}
+        {{--})--}}
     </script>
     @if( session()->get('message'))
         <script>

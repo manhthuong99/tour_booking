@@ -5,6 +5,8 @@ namespace App\Http\Controllers\frontend;
 use App\Models\Booking;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Category_detail;
+
 class Home extends Controller
 {
     public function index(){
@@ -21,15 +23,10 @@ class Home extends Controller
             ->groupBy('tours_name','image','tours_id')
             ->orderBy('total', 'desc')
             ->paginate(10);
+        $data['categories']=Category_detail::get();
+//        dd($data);
         return view('frontend.pages.home2',$data);
     }
-public function topBooking(){
-    $data['topBooking'] = Booking::with('tours')
-        ->join('tours', 'booking.id_tours', '=', 'tours.tours_id')
-        ->selectRaw('count(id_tours) as total,tours_name,price')
-        ->groupBy('tours_name','price')
-        ->orderBy('total', 'desc')
-        ->paginate(10);
-}
+
 
 }

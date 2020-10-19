@@ -55,7 +55,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.login']], function ()
 
 Route::get('home', 'frontend\Home@index')->name('frontend.home');
 Route::get('hotel', 'frontend\Hotel@index')->name('frontend.hotel');
-Route::get('travel', 'frontend\Travel@index')->name('frontend.travel');
+Route::get('category/{id}', 'frontend\Travel@index')->name('frontend.category');
 Route::get('transport', 'frontend\Transport@index')->name('frontend.transport');
 Route::get('contact', 'frontend\Contact@index')->name('frontend.contact');
 Route::get('about', 'frontend\About@index')->name('frontend.about');

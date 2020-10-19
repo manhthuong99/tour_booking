@@ -221,30 +221,14 @@
                                                        style="display: -webkit-box; -webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;">
                                                         {{ $tour->address }}
                                                     </p>
-                                                    //code moi
                                                     <div class="priceTour360">
-                                                        <i class="fas fa-dollar-sign"></i>&nbsp;
-                                                        <span >1.200.000</span>
+                                                        <i class="fa fa-fw fa-dollar"></i>&nbsp;
+                                                        <span>{{ number_format($tour->price) }} VNĐ</span>
                                                     </div>
                                                     <div class="clockTour360">
-                                                        <i class="far fa-clock"></i>&nbsp;
+                                                        <i class="fa fa-clock-o"></i>&nbsp;
                                                         <span>{{ date("d/m/Y", strtotime($tour->calendar)) }}</span>
                                                     </div>
-                                                    //het code moi
-                                                    
-                                                    //comment code cu
-                                                    // <div>
-                                                    //     <div class="f-left">
-                                                    //         <i class="far fa-clock" style="color: #999;"></i>&nbsp;
-                                                    //         <span
-                                                    //             style="color: #0aa0fe;font-style: italic;font-weight: bold;font-size: 14px;">{{ date("d/m/Y", strtotime($tour->calendar)) }}</span>
-                                                    //     </div>
-                                                    //     <div class="f-right">
-                                                    //     </div>
-                                                    //     <div class="clear"></div>
-                                                    // </div>
-                                                    //het comment
-                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -288,23 +272,23 @@
                     </div>
                     @foreach( $topBooking as $key => $tour)
                         @if( $key >3)
-                        <div class="col-sm-2 sl-travel">
-                            <div class="pos-travel">
-                                <a href="#" class="bg-travel bg-small">
+                            <div class="col-sm-2 sl-travel">
+                                <div class="pos-travel">
+                                    <a href="#" class="bg-travel bg-small">
 
-                                    <img class="imgqg" src="{{ asset('storage/tours/'.$tour->image)}}" alt="">
-                                    <div class="tt-tour">
-                                        <div class="destination-name">{{ $tour->tours_name }}</div>
-                                        <div class="destination-like">Đã có
-                                            <span class="num-like">{{ $tour->total }}
+                                        <img class="imgqg" src="{{ asset('storage/tours/'.$tour->image)}}" alt="">
+                                        <div class="tt-tour">
+                                            <div class="destination-name">{{ $tour->tours_name }}</div>
+                                            <div class="destination-like">Đã có
+                                                <span class="num-like">{{ $tour->total }}
 											<sup class="k">+</sup>
 										</span>lượt khách
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                            @endif
+                        @endif
                     @endforeach
                 </div>
             </div>
