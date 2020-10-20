@@ -1,40 +1,29 @@
 @extends('layouts.layout')
 @section('content')
-    @php( $endPoint = 1)
     <section class="divSection">
         <div class="side-indicator" style="right: 50px">
             <div class="line"></div>
-            <div class="index one">
-                1
-            </div>
-            <div class="index two">
-                2
-            </div>
-            <div class="index three">
-                3
-            </div>
-            <div class="index four">
-                4
-            </div>
+            @foreach( $toursHighlights as $key => $tourHighlight)
+                    <div class="index one">
+                        {{ $key+1 }}
+                    </div>
+                @break($key == 3)
+            @endforeach
         </div>
         <div class="content contentHome">
             <div class="text-wrapper">
                 <div class="text" style="margin-left: 80px">
                     <h4> TOUR NỔI BẬT</h4>
                     <div id="title">
-                        @foreach( $listTours as $tour)
-                            @if( $tour->category_detail_id == 4)
-                                <h4>{{ $tour->tours_name }}</h4>
-                            @endif
-                            @break($endPoint == 5)
+                        @foreach( $toursHighlights as $key => $tourHighlight)
+                                <h4>{{ $tourHighlight->tours_name }}</h4>
+                            @break($key == 3)
                         @endforeach
                     </div>
                     <div id="description">
-                        @foreach( $listTours as $tour)
-                            @if( $tour->category_detail_id == 4)
-                                <p>{{ $tour->address }}</p>
-                            @endif
-                            @break($endPoint == 5)
+                        @foreach( $toursHighlights as $key => $tourHighlight)
+                                <p>{{ $tourHighlight->address }}</p>
+                            @break($key == 3)
                         @endforeach
                     </div>
                 </div>
@@ -43,37 +32,16 @@
                 <div class="glide_cover"></div>
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
-                        @foreach( $listTours as $tour)
-                            @if( $tour->category_detail_id == 4)
+                        @foreach( $toursHighlights as $key => $tourHighlight)
                                 <li class="glide__slide">
                                     <div class="slide one">
                                         <div class="slider-image">
-                                            <img src="{{asset('storage/tours/'.$tour->image)}}" alt=""/>
+                                            <img src="{{asset('storage/tours/'.$tourHighlight->image)}}" alt=""/>
                                         </div>
                                     </div>
                                 </li>
-                            @endif
-                            @break($endPoint == 4)
+                            @break($key == 3)
                         @endforeach
-
-                        {{--                        <li class="glide__slide">--}}
-                        {{--                            <div class="slide two">--}}
-                        {{--                                <p>Kerala</p>--}}
-                        {{--                                <div class="rating">--}}
-                        {{--                                    <div class="circle active"></div>--}}
-                        {{--                                    <div class="circle active"></div>--}}
-                        {{--                                    <div class="circle active"></div>--}}
-                        {{--                                    <div class="circle active"></div>--}}
-                        {{--                                    <div class="circle"></div>--}}
-                        {{--                                </div>--}}
-                        {{--                                <div class="slider-image">--}}
-                        {{--                                    <img src="{{asset('frontend/img/slide6.jpg')}}" alt=""/>--}}
-                        {{--                                    <div class="bookmark">--}}
-                        {{--                                        <i class="fa fa-bookmark"></i>--}}
-                        {{--                                    </div>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </li>--}}
                     </ul>
                 </div>
                 <div data-glide-el="controls" class="controls">
@@ -138,50 +106,6 @@
                 </div>
             </div>
         </div>
-
-    {{--    <div class="mainWavy">--}}
-    {{--        <div class="container wavy">--}}
-    {{--            <div class="col-xs-12 marginBot">--}}
-    {{--                <div class="text-xs-center">--}}
-    {{--                    <h3 class="tdto mb-3 ht_tieude nopadTilt">Tour kích cầu</h3>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="initWavy">--}}
-    {{--                <div class="boxWavy">--}}
-    {{--                    <div class="contentWavy">--}}
-    {{--                        <h2>Water wave div</h2>--}}
-    {{--                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.--}}
-    {{--                            Lorem Ipsum has been the industry's standard</p>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <div class="boxWavy">--}}
-    {{--                    <div class="contentWavy">--}}
-    {{--                        <h2>Water wave div</h2>--}}
-    {{--                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.--}}
-    {{--                            Lorem Ipsum has been the industry's standard</p>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <div class="boxWavy">--}}
-    {{--                    <div class="contentWavy">--}}
-    {{--                        <h2>Water wave div</h2>--}}
-    {{--                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.--}}
-    {{--                            Lorem Ipsum has been the industry's standard</p>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <svg>--}}
-    {{--                    <filter id="wavyFilter">--}}
-    {{--                        <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="2">--}}
-    {{--                            <animate attributeName="baseFrequency" dur="60s" values="0.02;0.05;0.02"--}}
-    {{--                                     repeatCount="indefinite"/>--}}
-    {{--                        </feTurbulence>--}}
-    {{--                        <feDisplacementMap in="SourceGraphic" scale="30"/>--}}
-    {{--                    </filter>--}}
-    {{--                </svg>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    <!-- het wavy -->
-
 
         <div class="khoidulich360">
             <div class="container">
@@ -249,7 +173,7 @@
                     <p>Các điểm đến du lịch trong nước và nước ngoài</p>
                 </div>
                 <div class="row sl-travelto">
-                    @foreach( $topBooking as $tour)
+                    @foreach( $topBooking as $key => $tour)
                         <div class="col-sm-3 sl-travel">
                             <div class="pos-travel">
                                 <a href="{{ route('frontend.detailTour',$tour->tours_id) }}" class="bg-travel">
@@ -265,7 +189,7 @@
                                 </a>
                             </div>
                         </div>
-                        @break($endPoint++ == 4)
+                        @break($key == 3)
                     @endforeach
                     <div class="col-xs-12 netdut">
                         <div style="border-top: 1px dashed #ccc;padding-bottom: 30px;padding-top: 0px;"></div>

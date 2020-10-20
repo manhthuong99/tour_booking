@@ -1,4 +1,4 @@
-*{margin: 0; padding: 0;} 
+*{margin: 0; padding: 0;}
 .priceTour360{
 
 }
@@ -85,14 +85,14 @@ strong a{
 }
 .gnl_inner .global_inner ul li a{
 	line-height: 40px;
-	color: #212121 !important;  
-	padding-left: 15px;	
+	color: #212121 !important;
+	padding-left: 15px;
 }
 .gnl_inner .global_inner ul{
 	text-align: justify;
 }
 .gnl_inner .global_inner ul li{
-	/* border-bottom: 1px dashed #ccc;	
+	/* border-bottom: 1px dashed #ccc;
 	padding-top: 5px;
     padding-bottom: 5px; */
 }
@@ -171,7 +171,7 @@ body{
 }
 .btnheader{
 	width: 10%;
-	margin-left: 30px; 	
+	margin-left: 30px;
 }
 .navduoi{
 	height: 60px;
@@ -242,7 +242,7 @@ input[type=search] {
 }
 input::-webkit-search-decoration,
 input::-webkit-search-cancel-button {
-	display: none; 
+	display: none;
 }
 
 
@@ -405,10 +405,10 @@ ul li.active .motslide .xanhduoi1{
 }
 @-webkit-keyframes xanhvao{
 	from{transform:translateX(-100%) translateY(100%);
-		opacity: 0; 
+		opacity: 0;
 	}
 	to{ transform:translateX(0) translateY(0);
-		opacity: 0.4; 
+		opacity: 0.4;
 	}
 }
 .motslide .xanhduoi2{
@@ -420,10 +420,10 @@ ul li.active .motslide .xanhduoi2{
 }
 @-webkit-keyframes xanhvao2{
 	from{transform:translateX(-100%) translateY(100%);
-		opacity: 0; 
+		opacity: 0;
 	}
 	to{ transform:translateX(0) translateY(0);
-		opacity: 0.7; 
+		opacity: 0.7;
 	}
 }
 .motslide .xanhtren{
@@ -435,10 +435,10 @@ ul li.active .motslide .xanhtren{
 }
 @-webkit-keyframes xanhvao3{
 	from{transform:translateX(100%) translateY(-100%);
-		opacity: 0; 
+		opacity: 0;
 	}
 	to{ transform:translateX(0) translateY(0);
-		opacity: 0.7; 
+		opacity: 0.7;
 	}
 }
 .motslide .textnd{
@@ -1009,7 +1009,7 @@ a:active, a:hover {
 }
 .fttrai{
 	width: 50%;
-	padding: 25px 0; 
+	padding: 25px 0;
 }
 .fttrai img{
 	width: 20%;
@@ -1452,21 +1452,21 @@ input {
 
 }
 .start{
-	
+
 	background: rgba(18, 17, 17, 0.12);
-	
+
 	width: 50%;
-	
+
 	height: 40px;
-	
+
 	padding: 7px 0;
-	
+
 	text-align: center;
-	
+
 	position: relative;
-	
+
 	bottom: -25px;
-	
+
 	left: 156px;
 }
 
@@ -1750,7 +1750,7 @@ li.active b.btn{
 .col-xs-4{
 	width: 33.33333333% !important;
 }
-.col-sm-4.tx_ndinner{ 
+.col-sm-4.tx_ndinner{
 	position: relative;
 	width: 100%;
 }
@@ -1881,7 +1881,7 @@ li.active b.btn{
 	width: 60%;
 }
 .tt_footerinner .tt_ft2{
-	
+
 	width: 40%;
 }
 .list_chinhsach{
@@ -1957,7 +1957,7 @@ li.active b.btn{
 	background: linear-gradient(to right,#ff3400,#f60);
 }
 .iconhl_ft button i{
-	
+
 }
 .sdt_ft{
 
@@ -1968,11 +1968,11 @@ li.active b.btn{
 	left: 62px;
 }
 .sdt_ft_inner{
-	
+
 	display: block;
-	
+
 	font-weight: bold;
-	
+
 	font-size: 20px;
 }
 
@@ -2264,7 +2264,7 @@ input.form-control, input.form-control,select.form-control {
 	height: 38px;
 }
 .text-right {
-	text-align: right; 
+	text-align: right;
 }
 .frame-payment {
 	background: #f4f4f4;
@@ -2418,9 +2418,9 @@ a:hover {
 
 }
 .btnAdd .btnbot{
-	
+
 	width: 50%;
-	
+
 	padding: 20px 18px;
 }
 .btnbot h4{
@@ -2428,13 +2428,13 @@ a:hover {
 	text-transform: uppercase;
 }
 .inputlogin input{
-	
+
 	width: 95%;
-	
+
 	border: none;
-	
+
 	border-bottom: 1px solid #cccaca;
-	
+
 	padding: 5px 0;
 }
 .forgot{
@@ -2471,7 +2471,7 @@ a:hover {
 	margin: 0;
 }
 .signin{
-	
+
 	background-color: #303e57;
 }
 .signin h4{
@@ -2717,7 +2717,7 @@ img.pic-sub {
 }
 .viewed {
 	margin-bottom: 15px;
-}	
+}
 .viewed i {
 	color: #888;
 }
@@ -3041,7 +3041,7 @@ td, th {
 		line-height: 25px;
 	}
 	.borderbot{
-		
+
 		border-bottom: 1px dashed gray;
 	}
 	li.nav-item.ndheaderduoi .mautextnav{
@@ -3276,7 +3276,7 @@ td, th {
 		padding-bottom: 53% !important;
 	}
 	.tx_ndinner:nth-child(n+4) {
-		 margin-top: 0; 
+		 margin-top: 0;
 	}
 	.col-sm-4.tx_ndinner {
 		margin-top: 20px;
@@ -4210,7 +4210,7 @@ td, th {
 	display: none;
 }
 .priceDiv{
-	display: none;
+	/*display: none;*/
 }
 .price-color {
     color: #ffbd00;

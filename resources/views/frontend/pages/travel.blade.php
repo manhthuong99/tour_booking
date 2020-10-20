@@ -25,8 +25,8 @@
                 <div class="mda-archive" itemscope="" itemtype="http://schema.org/Product">
                     <h1 itemprop="name" class="mda-archive-title">
                         @foreach( $category_detail as $category)
-                            <a itemprop="url" style="text-decoration: none !important;" title="Du lịch Miền Bắc"
-                               href="https://dulichviet.com.vn/du-lich-mien-bac"> {{ $category->category_detail_name }}</a>
+                            <a itemprop="url" style="text-decoration: none !important;"
+                               title="Du lịch Miền Bắc"> {{ $category->category_detail_name }}</a>
                         @endforeach
                     </h1>
                     <div style="display: none">
@@ -104,30 +104,33 @@
             <div class="container nopadding divTiltEffect">
                 <div class="col-xs-12">
                     <div class="text-xs-center">
-{{--                        <h3 class="tdto mb-3 ht_tieude nopadTilt">Mùa thu vàng miền Bắc</h3>--}}
+                        {{--                        <h3 class="tdto mb-3 ht_tieude nopadTilt">Mùa thu vàng miền Bắc</h3>--}}
                     </div>
                 </div>
                 <div class="row marginTopRow">
                     @foreach( $listToursByCategory as $key => $tour)
-                    <div class="col-sm-4">
-                        <div id="app-container" data-tilt>
-                            <div id="app">
-                                <vue-tabs id="tabs">
-                                    <v-tab title="First Tab" class="tab" :selected="true">
-                                        <div class="tab-content">
-                                            <!-- <div class="tab-image first-image"></div> -->
-                                            <img class="tab-image first-image" src="{{asset('storage/tours/'.$tour->image)}}" alt="">
-                                            <div class="backgroundHover"></div>
-                                            <div class="tab-content-text">
-                                                <h1>{{ $tour->tours_name }}</h1>
-                                                <p class="detailtTilt"> {{ $tour->description }}</p>
+                        <div class="col-sm-4">
+                            <div id="app-container" data-tilt>
+                                <div id="app">
+                                    <vue-tabs id="tabs">
+                                        <v-tab title="First Tab" class="tab" :selected="true">
+                                            <div class="tab-content">
+                                                <a href="{{ route('frontend.detailTour',$tour->tours_id) }}">
+                                                <!-- <div class="tab-image first-image"></div> -->
+                                                <img class="tab-image first-image"
+                                                     src="{{asset('storage/tours/'.$tour->image)}}" alt="">
+                                                </a>
+                                                <div class="backgroundHover"></div>
+                                                <div class="tab-content-text">
+                                                    <h1>{{ $tour->tours_name }}</h1>
+                                                    <p class="detailtTilt"> {{ $tour->description }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </v-tab>
-                                </vue-tabs>
+                                        </v-tab>
+                                    </vue-tabs>
+                                </div>
                             </div>
                         </div>
-                    </div>
                         @break( $key == 2)
                     @endforeach
                 </div>
@@ -175,101 +178,49 @@
                         </div> <!-- hết col-12 -->
                     </div> <!-- hết row tieude -->
                     <div class="row marginTopRow">
-                        <div class="col-sm-4">
-                            <div class="oneuser">
-                                <div class="imguser text-xs-center">
-                                    <img src="images/nhatrang1.jpg" alt="">
-                                    <h4 class="ten">Nha Trang</h4>
-                                    <i class="vitri">Tháp Ép-phen</i>
-                                </div>
-                                <div class="infouser">
-                                    <h3 class="ten">Nha Trang</h3>
-                                    <div class="diemden">
-                                        <span>Điểm đến : </span>
-                                        <i class="vitri">Tháp Ép-phen</i>
-                                    </div>
-                                    <div class="time-mbac">
-                                        <i class="far fa-clock"></i>
-                                        <span>2 ngày 1 đêm</span>
-                                    </div>
-                                    <div class="gia-calender">
-                                        <div class="calender">
-                                            <i class="far fa-calendar-alt"></i>
-                                            <span>Thứ 7 hàng tuần</span>
+                        @foreach( $listToursByCategory as $key => $tour)
+                            @if($key > 2  )
+                                <div class="col-sm-4">
+                                    <a href="{{ route('frontend.detailTour',$tour->tours_id) }}">
+                                    <div class="oneuser">
+                                        <div class="imguser text-xs-center">
+                                            <img src="{{asset('storage/tours/'.$tour->image)}}" alt="">
+                                            <h4 class="ten">{{ $tour->tours_name }}</h4>
+                                            <i class="vitri">{{ $tour->destination }}</i>
                                         </div>
-                                        <div class="gia"><span>790,000đ</span></div>
-                                    </div>
-                                    <div class="start">
-                                        <i class="fas fa-car"></i>
-                                        <span>Từ Hà Nội</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="oneuser">
-                                <div class="imguser text-xs-center">
-                                    <img src="images/ninhbinh.jpg" alt="">
-                                    <h4 class="ten">Ninh Bình</h4>
-                                    <i class="vitri">Tràng An</i>
-                                </div>
-                                <div class="infouser">
-                                    <h3 class="ten">Ninh Bình</h3>
-                                    <div class="diemden">
-                                        <span>Điểm đến : </span>
-                                        <i class="vitri">Tràng An</i>
-                                    </div>
-                                    <div class="time-mbac">
-                                        <i class="far fa-clock"></i>
-                                        <span>3 ngày 2 đêm</span>
-                                    </div>
-                                    <div class="gia-calender">
-                                        <div class="calender">
-                                            <i class="far fa-calendar-alt"></i>
-                                            <span>Theo yêu cầu</span>
+                                        <div class="infouser">
+                                            <h3 class="ten">{{ $tour->tours_name }}</h3>
+                                            <div class="diemden">
+                                                <span>Điểm đến : </span>
+                                                <i style="font-size: 20px" class="vitri">{{ $tour->destination }}</i>
+                                            </div>
+                                            <div class="time-mbac">
+                                                <i class="far fa-clock">Số ngày: </i>
+                                                <span>{{ $tour->day_number }}</span>
+                                            </div>
+                                            <div class="gia-calender">
+                                                <div class="calender">
+                                                    <i class="far fa-calendar-alt">Ngày khởi hành: </i>
+                                                    <span>{{ date("d/m/Y", strtotime($tour->calendar)) }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="gia-calender">
+                                                <div class="calender">
+                                                    <i class="far fa-calendar-alt">Giá: </i>
+                                                    <span>{{ $tour->price }} VNĐ</span>
+                                                </div>
+                                            </div>
+{{--                                            <div class="start">--}}
+{{--                                                <i class="fas fa-car"></i>--}}
+{{--                                                <span>Từ Hà Nội</span>--}}
+{{--                                            </div>--}}
                                         </div>
-                                        <div class="gia"><span>1.200.000đ</span></div>
                                     </div>
-                                    <div class="start">
-                                        <i class="fas fa-car"></i>
-                                        <span>Từ Hà Nội</span>
-                                    </div>
+                                    </a>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="oneuser">
-                                <div class="imguser text-xs-center">
-                                    <img src="images/bavi.png" alt="">
-                                    <h4 class="ten">Ba Vì</h4>
-                                    <i class="vitri">Thỉnh Kinh</i>
-                                </div>
-                                <div class="infouser">
-                                    <h3 class="ten">Ba Vì</h3>
-                                    <div class="diemden">
-                                        <span>Điểm đến : </span>
-                                        <i class="vitri">Thỉnh Kinh</i>
-                                    </div>
-                                    <div class="time-mbac">
-                                        <i class="far fa-clock"></i>
-                                        <span>1 ngày 0 đêm</span>
-                                    </div>
-                                    <div class="gia-calender">
-                                        <div class="calender">
-                                            <i class="far fa-calendar-alt"></i>
-                                            <span>Thứ 6 hàng tuần</span>
-                                        </div>
-                                        <div class="gia"><span>650,000đ</span></div>
-                                    </div>
-                                    <div class="start">
-                                        <i class="fas fa-car"></i>
-                                        <span>Từ Hà Nội</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                @break($key==5)
+                            @endif
+                        @endforeach
                     </div>
                 </div> <!-- hết row  -->
 
@@ -284,285 +235,37 @@
                                  style="width: 100%; overflow: hidden; position: relative;">
                             <ul class="module_card-01"
                                 style="width: 500%; position: relative; transition-duration: 59.7534s; transform: translate3d(-210px, 0px, 0px); transition-timing-function: linear;">
-                                <li id="bofloat"
-                                    style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/ht4.jpeg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
+                                @foreach( $listToursByCategory as $key => $tour)
+                                    @if($key > 5  )
+                                        <li id="bofloat"
+                                            style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
+                                            <a href="{{ route('frontend.detailTour',$tour->tours_id) }}">
+                                                <div class="head">
+                                                    <p class="image">
+                                                        <img src="{{asset('storage/tours/'.$tour->image)}}" width="331"
+                                                             height="240"
+                                                             class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
+                                                             alt="" data-lazy-loaded="true" style="display: block;">
+                                                    </p>
+                                                </div>
+                                                <div class="body">
+                                                    <h2 class="title">{{ $tour->tours_name }}</h2>
+                                                    <p class="text"></p>
+                                                    <p class="date">
+                                                        <time
+                                                            datetime="2019-08-06">{{ date("d/m/Y", strtotime($tour->calendar)) }}</time>
+                                                    </p>
+                                                    <p>
                                             <span class="module_link-more01">
-                                                <span>Xem</span>
+                                                <span></span>
                                             </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li id="bofloat2"
-                                    style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/ht3.jpeg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ blal</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li id="bofloat"
-                                    style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/ht2.jpeg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/ht1.jpeg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/dalat.jpg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/giamg2.jpg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/giamg1.jpg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/dd4.jpg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/dd1.jpg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/dd2.jpg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/dd3.jpg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li style="float: left; list-style: none; position: relative; width: 335px; margin-right: 30px;">
-                                    <a href="#">
-                                        <div class="head">
-                                            <p class="image">
-                                                <img src="images/ht_gt2.jpg" width="331" height="240"
-                                                     class="attachment-top_thumbnail size-top_thumbnail wp-post-image"
-                                                     alt="" data-lazy-loaded="true" style="display: block;">
-                                            </p>
-                                        </div>
-                                        <div class="body">
-                                            <h2 class="title">Nhà của Kỷ</h2>
-                                            <p class="text"></p>
-                                            <p class="date">
-                                                <time datetime="2019-08-06">2020.09.20</time>
-                                            </p>
-                                            <p>
-                                            <span class="module_link-more01">
-                                                <span>Xem</span>
-                                            </span>
-                                            </p>
-                                        </div>
-                                    </a>
-                                </li>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        @break($key == 15)
+                                    @endif
+                                @endforeach
                             </ul>
                         </marquee>
                         <script>
@@ -578,81 +281,76 @@
                             }
                         </script>
                     </div>
-                    <p class="_align-center btnMargin">
-                        <a href="#" class="module_button-01">
-                            <span>hơn</span>
-                        </a>
-                    </p>
                 </section>
                 <!-- het section -->
-                <div class="row mbac_more">
-                    <div class="col-sm-4">
-                        <div class="sp">
-                            <img src="images/dd4.jpg" alt="">
-                            <div class="ten">
-                                <div class="goi">
-                                    <div class="danhmuc">Tour Bắc</div>
-                                    <div class="tenchitiet">Nha trang</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="sp">
-                            <img src="images/dd1.jpg" alt="">
-                            <div class="ten">
-                                <div class="goi">
-                                    <div class="danhmuc">Tour Bắc</div>
-                                    <div class="tenchitiet">Vịnh Hạ Long</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="sp">
-                            <img src="images/dd2.jpg" alt="">
-                            <div class="ten">
-                                <div class="goi">
-                                    <div class="danhmuc">Tour Bắc</div>
-                                    <div class="tenchitiet">Sapa</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="sp">
-                            <img src="images/dd3.jpg" alt="">
-                            <div class="ten">
-                                <div class="goi">
-                                    <div class="danhmuc">Tour Bắc</div>
-                                    <div class="tenchitiet">Đà Nẵng</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="sp">
-                            <img src="images/dd1.jpg" alt="">
-                            <div class="ten">
-                                <div class="goi">
-                                    <div class="danhmuc">Tour Bắc</div>
-                                    <div class="tenchitiet">Vịnh Hạ Long</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="sp">
-                            <img src="images/dd4.jpg" alt="">
-                            <div class="ten">
-                                <div class="goi">
-                                    <div class="danhmuc">Tour Bắc</div>
-                                    <div class="tenchitiet">Nhà Kỷ</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="row mbac_more">--}}
+{{--                    <div class="col-sm-4">--}}
+{{--                        <div class="sp">--}}
+{{--                            <img src="images/dd4.jpg" alt="">--}}
+{{--                            <div class="ten">--}}
+{{--                                <div class="goi">--}}
+{{--                                    <div class="danhmuc">Tour Bắc</div>--}}
+{{--                                    <div class="tenchitiet">Nha trang</div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-sm-4">--}}
+{{--                        <div class="sp">--}}
+{{--                            <img src="images/dd1.jpg" alt="">--}}
+{{--                            <div class="ten">--}}
+{{--                                <div class="goi">--}}
+{{--                                    <div class="danhmuc">Tour Bắc</div>--}}
+{{--                                    <div class="tenchitiet">Vịnh Hạ Long</div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-sm-4">--}}
+{{--                        <div class="sp">--}}
+{{--                            <img src="images/dd2.jpg" alt="">--}}
+{{--                            <div class="ten">--}}
+{{--                                <div class="goi">--}}
+{{--                                    <div class="danhmuc">Tour Bắc</div>--}}
+{{--                                    <div class="tenchitiet">Sapa</div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-sm-4">--}}
+{{--                        <div class="sp">--}}
+{{--                            <img src="images/dd3.jpg" alt="">--}}
+{{--                            <div class="ten">--}}
+{{--                                <div class="goi">--}}
+{{--                                    <div class="danhmuc">Tour Bắc</div>--}}
+{{--                                    <div class="tenchitiet">Đà Nẵng</div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-sm-4">--}}
+{{--                        <div class="sp">--}}
+{{--                            <img src="images/dd1.jpg" alt="">--}}
+{{--                            <div class="ten">--}}
+{{--                                <div class="goi">--}}
+{{--                                    <div class="danhmuc">Tour Bắc</div>--}}
+{{--                                    <div class="tenchitiet">Vịnh Hạ Long</div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-sm-4">--}}
+{{--                        <div class="sp">--}}
+{{--                            <img src="images/dd4.jpg" alt="">--}}
+{{--                            <div class="ten">--}}
+{{--                                <div class="goi">--}}
+{{--                                    <div class="danhmuc">Tour Bắc</div>--}}
+{{--                                    <div class="tenchitiet">Nhà Kỷ</div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div> <!-- hết noidung3 -->
         </div> <!-- HẾT wrapCont -->
     </div>
