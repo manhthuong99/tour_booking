@@ -1,40 +1,29 @@
 @extends('layouts.layout')
 @section('content')
-    @php( $endPoint = 1)
     <section class="divSection">
         <div class="side-indicator" style="right: 50px">
             <div class="line"></div>
-            <div class="index one">
-                1
-            </div>
-            <div class="index two">
-                2
-            </div>
-            <div class="index three">
-                3
-            </div>
-            <div class="index four">
-                4
-            </div>
+            @foreach( $toursHighlights as $key => $tourHighlight)
+                <div class="index one">
+                    {{ $key+1 }}
+                </div>
+                @break($key == 3)
+            @endforeach
         </div>
         <div class="content contentHome">
             <div class="text-wrapper">
                 <div class="text" style="margin-left: 80px">
                     <h4> TOUR NỔI BẬT</h4>
                     <div id="title">
-                        @foreach( $listTours as $tour)
-                            @if( $tour->category_detail_id == 4)
-                                <h4>{{ $tour->tours_name }}</h4>
-                            @endif
-                            @break($endPoint == 5)
+                        @foreach( $toursHighlights as $key => $tourHighlight)
+                            <h4>{{ $tourHighlight->tours_name }}</h4>
+                            @break($key == 3)
                         @endforeach
                     </div>
                     <div id="description">
-                        @foreach( $listTours as $tour)
-                            @if( $tour->category_detail_id == 4)
-                                <p>{{ $tour->address }}</p>
-                            @endif
-                            @break($endPoint == 5)
+                        @foreach( $toursHighlights as $key => $tourHighlight)
+                            <p>{{ $tourHighlight->address }}</p>
+                            @break($key == 3)
                         @endforeach
                     </div>
                 </div>
@@ -43,46 +32,31 @@
                 <div class="glide_cover"></div>
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
-                        @foreach( $listTours as $tour)
-                            @if( $tour->category_detail_id == 4)
-                                <li class="glide__slide">
-                                    <div class="slide one">
-                                        <div class="slider-image">
-                                            <img src="{{asset('storage/tours/'.$tour->image)}}" alt=""/>
+                        @foreach( $toursHighlights as $key => $tourHighlight)
+                            <li class="glide__slide">
+                                <a style="z-index: 10000000" href="{{ route('frontend.detailTour',$tourHighlight->tours_id) }}">
+                                <div class="slide one">
+                                    <div class="slider-image">
+                                        <img src="{{asset('storage/tours/'.$tourHighlight->image)}}" alt=""/>
+                                        <div class="bookmark">
+                                                <i class="fa fa-bookmark"></i>
                                         </div>
                                     </div>
-                                </li>
-                            @endif
-                            @break($endPoint == 4)
-                        @endforeach
+                                </div>
+                                </a>
+                            </li>
 
-                        {{--                        <li class="glide__slide">--}}
-                        {{--                            <div class="slide two">--}}
-                        {{--                                <p>Kerala</p>--}}
-                        {{--                                <div class="rating">--}}
-                        {{--                                    <div class="circle active"></div>--}}
-                        {{--                                    <div class="circle active"></div>--}}
-                        {{--                                    <div class="circle active"></div>--}}
-                        {{--                                    <div class="circle active"></div>--}}
-                        {{--                                    <div class="circle"></div>--}}
-                        {{--                                </div>--}}
-                        {{--                                <div class="slider-image">--}}
-                        {{--                                    <img src="{{asset('frontend/img/slide6.jpg')}}" alt=""/>--}}
-                        {{--                                    <div class="bookmark">--}}
-                        {{--                                        <i class="fa fa-bookmark"></i>--}}
-                        {{--                                    </div>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </li>--}}
+                            @break($key == 3)
+                        @endforeach
                     </ul>
                 </div>
                 <div data-glide-el="controls" class="controls">
                     <div data-glide-dir="<" id="prev" class="removeAuto">
-                        <<
+                        <i class="fa fa-arrow-left"></i>
                     </div>
 
                     <div data-glide-dir=">" id="next" class="removeAuto">
-                        >>
+                        <i class="fa fa-arrow-right"></i>
                     </div>
                     <div data-glide-dir=">" id="nextTren" class="removeAuto">
                         <i class="fa fa-arrow-right"></i>
@@ -138,50 +112,58 @@
                 </div>
             </div>
         </div>
+        <div class="container banner4">
+            <div class="tdaddress">
 
-    {{--    <div class="mainWavy">--}}
-    {{--        <div class="container wavy">--}}
-    {{--            <div class="col-xs-12 marginBot">--}}
-    {{--                <div class="text-xs-center">--}}
-    {{--                    <h3 class="tdto mb-3 ht_tieude nopadTilt">Tour kích cầu</h3>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="initWavy">--}}
-    {{--                <div class="boxWavy">--}}
-    {{--                    <div class="contentWavy">--}}
-    {{--                        <h2>Water wave div</h2>--}}
-    {{--                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.--}}
-    {{--                            Lorem Ipsum has been the industry's standard</p>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <div class="boxWavy">--}}
-    {{--                    <div class="contentWavy">--}}
-    {{--                        <h2>Water wave div</h2>--}}
-    {{--                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.--}}
-    {{--                            Lorem Ipsum has been the industry's standard</p>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <div class="boxWavy">--}}
-    {{--                    <div class="contentWavy">--}}
-    {{--                        <h2>Water wave div</h2>--}}
-    {{--                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.--}}
-    {{--                            Lorem Ipsum has been the industry's standard</p>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--                <svg>--}}
-    {{--                    <filter id="wavyFilter">--}}
-    {{--                        <feTurbulence x="0" y="0" baseFrequency="0.02" numOctaves="5" seed="2">--}}
-    {{--                            <animate attributeName="baseFrequency" dur="60s" values="0.02;0.05;0.02"--}}
-    {{--                                     repeatCount="indefinite"/>--}}
-    {{--                        </feTurbulence>--}}
-    {{--                        <feDisplacementMap in="SourceGraphic" scale="30"/>--}}
-    {{--                    </filter>--}}
-    {{--                </svg>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    <!-- het wavy -->
+                <h2>Tour đang được giảm giá</h2>
 
+            </div>
+            <div class="container n3-pay-online">
+                <div class="row">
+                    <div id="idTourOnline" class="clTourOnline">
+                        @foreach( $toursDiscount as $tour)
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mg-bot30 touronl2 fullWidth">
+                                <a href="{{ route('frontend.detailTour',$tour->tours_id) }}"
+                                   title="Nha Trang - Đà Lạt (Tour Tiết Kiệm)">
+                                    <div class="pos-relative">
+                                        <img src="{{ asset('storage/tours/'.$tour->image)}}"
+                                             class="img-responsive pic-ud-s" alt="Nha Trang - Đà Lạt (Tour Tiết Kiệm)">
+                                        {{--                                    <div class="frame-po"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Nơi khởi hành:&nbsp;&nbsp;<span style="color:#ffc000"> Hồ Chí Minh</span></div>--}}
+                                    </div>
+                                </a>
+                                <div class="frame-po-s">
+                                    <a href="#" title="Nha Trang - Đà Lạt (Tour Tiết Kiệm)">
+                                        <div
+                                            class="po-title-s dot-dot-ajax cut-po-s overWrap">{{ $tour->tours_name }}</div>
+                                    </a>
+                                    <div class="po-line"></div>
+                                    <div class="mg-bot10 khoiinfott disPlex">
+                                        <img src="{{ asset('images/ic_date.png') }}" class="f-left" alt="date">
+                                        <div class="f-left po-info-s">{{ date("d/m/Y", strtotime($tour->calendar)) }}
+                                            &nbsp;&nbsp;-&nbsp;&nbsp;{{ $tour->day_number }} ngày
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    {{--                                    <div class="mg-bot10 khoiinfott disPlex">--}}
+                                    {{--                                        <img src="images/ic_chair.png" class="f-left" alt="chair">--}}
+                                    {{--                                        <div class="f-left po-info-s">9 chỗ</div>--}}
+                                    {{--                                        <div class="clear"></div>--}}
+                                    {{--                                    </div>--}}
+                                    <div class="mg-bot10 khoiinfott disPlex">
+                                        <img src="{{ asset('images/ic_price.png') }}" class="f-left" alt="price">
+                                        <div class="f-left po-info-s priceDiscountFlex">
+                                            <div class="price-n">{{ $tour->price - $tour->discount }} đ</div>
+                                            <div class="price-o">{{ $tour->price }} đ</div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="khoidulich360">
             <div class="container">
@@ -221,30 +203,14 @@
                                                        style="display: -webkit-box; -webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;">
                                                         {{ $tour->address }}
                                                     </p>
-                                                    //code moi
                                                     <div class="priceTour360">
-                                                        <i class="fas fa-dollar-sign"></i>&nbsp;
-                                                        <span >1.200.000</span>
+                                                        <i class="fa fa-fw fa-dollar"></i>&nbsp;
+                                                        <span>{{ number_format($tour->price) }} VNĐ</span>
                                                     </div>
                                                     <div class="clockTour360">
-                                                        <i class="far fa-clock"></i>&nbsp;
+                                                        <i class="fa fa-clock-o"></i>&nbsp;
                                                         <span>{{ date("d/m/Y", strtotime($tour->calendar)) }}</span>
                                                     </div>
-                                                    //het code moi
-                                                    
-                                                    //comment code cu
-                                                    // <div>
-                                                    //     <div class="f-left">
-                                                    //         <i class="far fa-clock" style="color: #999;"></i>&nbsp;
-                                                    //         <span
-                                                    //             style="color: #0aa0fe;font-style: italic;font-weight: bold;font-size: 14px;">{{ date("d/m/Y", strtotime($tour->calendar)) }}</span>
-                                                    //     </div>
-                                                    //     <div class="f-right">
-                                                    //     </div>
-                                                    //     <div class="clear"></div>
-                                                    // </div>
-                                                    //het comment
-                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -265,7 +231,7 @@
                     <p>Các điểm đến du lịch trong nước và nước ngoài</p>
                 </div>
                 <div class="row sl-travelto">
-                    @foreach( $topBooking as $tour)
+                    @foreach( $topBooking as $key => $tour)
                         <div class="col-sm-3 sl-travel">
                             <div class="pos-travel">
                                 <a href="{{ route('frontend.detailTour',$tour->tours_id) }}" class="bg-travel">
@@ -281,30 +247,30 @@
                                 </a>
                             </div>
                         </div>
-                        @break($endPoint++ == 4)
+                        @break($key == 3)
                     @endforeach
                     <div class="col-xs-12 netdut">
                         <div style="border-top: 1px dashed #ccc;padding-bottom: 30px;padding-top: 0px;"></div>
                     </div>
                     @foreach( $topBooking as $key => $tour)
                         @if( $key >3)
-                        <div class="col-sm-2 sl-travel">
-                            <div class="pos-travel">
-                                <a href="#" class="bg-travel bg-small">
+                            <div class="col-sm-2 sl-travel">
+                                <div class="pos-travel">
+                                    <a href="#" class="bg-travel bg-small">
 
-                                    <img class="imgqg" src="{{ asset('storage/tours/'.$tour->image)}}" alt="">
-                                    <div class="tt-tour">
-                                        <div class="destination-name">{{ $tour->tours_name }}</div>
-                                        <div class="destination-like">Đã có
-                                            <span class="num-like">{{ $tour->total }}
+                                        <img class="imgqg" src="{{ asset('storage/tours/'.$tour->image)}}" alt="">
+                                        <div class="tt-tour">
+                                            <div class="destination-name">{{ $tour->tours_name }}</div>
+                                            <div class="destination-like">Đã có
+                                                <span class="num-like">{{ $tour->total }}
 											<sup class="k">+</sup>
 										</span>lượt khách
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                            @endif
+                        @endif
                     @endforeach
                 </div>
             </div>

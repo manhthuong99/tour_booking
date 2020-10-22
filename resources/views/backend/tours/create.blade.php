@@ -107,8 +107,14 @@
                             <input name="discount" type="number" class="form-control" placeholder="" value="0">
                         </div>
                         <div class="form-group" id="calender">
-                            <label for="exampleInputEmail1">Ngày khởi hành</label>
-                            <input name="calendar" type="date" class="form-control" placeholder="" value="0">
+                            <label for="exampleInputEmail1">Ngày khởi hành (<b style="color: red">*</b>)</label>
+                            <input name="calendar" type="date" class="form-control" placeholder="" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mô tả ngắn</label>
+                            <div class="box-body pad">
+                                <textarea id="short_description" name="short_description" rows="10" cols="80"></textarea>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mô tả</label>
@@ -135,6 +141,7 @@
             // Replace the <textarea id="editor1"> with a CKEditor
             // instance, using default configuration.
             CKEDITOR.replace('description')
+            CKEDITOR.replace('short_description')
             //bootstrap WYSIHTML5 - text editor
             $('.textarea').wysihtml5()
         })

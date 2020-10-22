@@ -4,7 +4,7 @@
     margin: 0;
     /* font-family: "Poppins", Arial, Helvetica, sans-serif; */
 }
-  
+
 body {
     width: 100vw;
     height: 100vh;
@@ -213,7 +213,7 @@ nav ul {
     height: 100%;
     /* height: 94%; */
     background-color: transparent;
-    z-index: 1;
+    /*z-index: 1;*/
     cursor: default;
 }
 
@@ -320,7 +320,7 @@ nav ul {
     left: 62%;
     background-color: transparent;
 }
-  
+
 @media  only screen and (max-width: 1600px){
     nav{
       padding: 25px 80px;
@@ -348,7 +348,7 @@ nav ul {
       font-size: 14px;
     }
 }
-  
+
 @media  only screen and (max-width: 1300px){
     nav{
       padding: 25px 40px;
@@ -362,7 +362,7 @@ nav ul {
       width: 220px;
     }
 }
-  
+
 @media  only screen and (max-width: 1200px){
     .side-indicator {
       width: 120px;

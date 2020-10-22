@@ -60,8 +60,19 @@ class TourController extends Controller
         $data->discount = $request->discount;
         $data->calendar = $request->calendar;
         $data->description = $request->description;
+        $address ="";
+        if ( isset($request->id_district)) {
+            $arrDistrict = District::where('id', $request->id_district)->get()->toArray();
+            $address .= $arrDistrict[0]['_prefix'] . ' ' . $arrDistrict[0]['_name'] . ', ';
+        }
+        if (isset($request->id_province)){
+            $arrProvince = Province::where('id', $request->id_province)->get()->toArray();
+            $address .= $arrProvince[0]['_name'];
+        }
+        $data->address = $address;
         $data->id_province = $request->id_province;
         $data->id_district = $request->id_district;
+        $data->short_description = $request->short_description;
         if ($request->hasFile('images')) {
             $data->image = rand() . '-' . $request->images->getClientOriginalName();
             $request->images->storeAs('tours', $data->image, 'public');
@@ -135,14 +146,17 @@ class TourController extends Controller
         $data->calendar = $request->calendar;
         $data->description = $request->description;
         $data->status = $request->status;
-        if ($request->id_district != null) {
-            $address ="";
+        $data->short_description = $request->short_description;
+        $address ="";
+        if ( isset($request->id_district)) {
             $arrDistrict = District::where('id', $request->id_district)->get()->toArray();
             $address .= $arrDistrict[0]['_prefix'] . ' ' . $arrDistrict[0]['_name'] . ', ';
+        }
+        if (isset($request->id_province)){
             $arrProvince = Province::where('id', $request->id_province)->get()->toArray();
             $address .= $arrProvince[0]['_name'];
-            $data->address = $address;
         }
+        $data->address = $address;
         $data->id_province = $request->id_province;
         $data->id_district = $request->id_district;
         if ($request->hasFile('images')) {

@@ -7,26 +7,27 @@
             $('#booking').click(function () {
                 if ({{\Illuminate\Support\Facades\Auth::check() == false}}) {
                     alert("Bạn cần đăng nhập để đặt tour")
-                    window.location = "/login";
+                    // window.location = "/login";
                 }
                 console.log('oke')
             })
         })
-        jQuery(document).ready(function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $('#btn-submit').click(function () {
-                let id_users = {{ \Illuminate\Support\Facades\Auth::user()->users_id }};
-                let id_tours = $('#id_tours').val();
-                let number_customer = $('#isAdult').text();
-                let total = $('#total').text();
-                alert('oke')
-                console.log('oke' + id_users + '-' + id_tours + '-' + number_customer + '-' + total)
-            })
-        })
+        {{--jQuery(document).ready(function () {--}}
+        {{--    $.ajaxSetup({--}}
+        {{--        headers: {--}}
+        {{--            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--    $('#btn-submit').click(function () {--}}
+        {{--        if ({{\Illuminate\Support\Facades\Auth::check()}}) {--}}
+        {{--        let id_users = {{ \Illuminate\Support\Facades\Auth::user()->users_id }};--}}
+        {{--        let id_tours = $('#id_tours').val();--}}
+        {{--        let number_customer = $('#isAdult').text();--}}
+        {{--        let total = $('#total').text();--}}
+        {{--        alert('oke')--}}
+        {{--        console.log('oke' + id_users + '-' + id_tours + '-' + number_customer + '-' + total)--}}
+        {{--    })--}}
+        {{--})--}}
     </script>
     @if( session()->get('message'))
         <script>
@@ -48,9 +49,6 @@
                         <div class="slideshow-pt col-lg-8 col-md-12 col-sm-12 col-xs-12 pos-relative">
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    {{--                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>--}}
-                                    {{--                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>--}}
-                                    {{--                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>--}}
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
@@ -84,9 +82,6 @@
                                         <div class="date-input-group">
                                             <span
                                                 style="float: right">{{ date("d/m/Y", strtotime($tour->calendar )) }}</span>
-                                            {{--                                            <!-- <label readonly="" type="text" class="form-control date-input dates-date btn-general DateCheckinField" value="11-11-2017"><span class="DateCheckinText">28-08-2020</span></label> -->--}}
-                                            {{--                                            <!-- <input type="hidden" class="get_date" value="2020-08-28"> -->--}}
-                                            {{--                                            <input type="date" name="ngay_di" class="form-text get_date">--}}
                                         </div>
                                     </div>
                                 </div>
@@ -200,10 +195,22 @@
                                                 <table align="left" border="0" cellpadding="10" cellspacing="10"
                                                        style="width:100%;">
                                                     <tbody class="body_tr">
+                                                   <tr>
+                                                       <td style="width: 20%;">
+                                                        <span style="color:#555555;">
+                                                            <strong>Điểm đến:</strong>
+                                                        </span>
+                                                       </td>
+                                                       <td>
+                                                        <span style="color:#555555;">
+                                                            <strong>{{ $tour->destination }}</strong>
+                                                        </span>
+                                                       </td>
+                                                   </tr>
                                                     <tr>
                                                         <td style="width: 20%;">
                                                         <span style="color:#555555;">
-                                                            <strong>Địa điểm:</strong>
+                                                            <strong>Địa chỉ:</strong>
                                                         </span>
                                                         </td>
                                                         <td>
@@ -261,11 +268,8 @@
                                                 <p>
                                             <span style="color:#555555;">
                                                 <em>
-                                                    {{ $tour->description }}
+                                                    {!! $tour->short_description !!}
                                                 </em>
-                                            </span>
-                                                    <span style="color:#555555;">
-                                                <em>Du khách đến với động mang theo trí tưởng tượng tuyệt vời của mình để rồi động Thiên Đường lại luôn biến ảo như một “Thiên Cung” nơi trần thế.</em>
                                             </span>
                                                 </p>
                                             </div>
@@ -565,10 +569,11 @@
                                 <p id="isCost" style="display: none"></p>
                             </div>
                         </div>
-                        <input  type="hidden" id="id_users" name="id_users" value="{{ \Illuminate\Support\Facades\Auth::user()->users_id }}">
-                        <input  type="hidden" id="id_tours" name="id_tours" value=" {{ $tour->tours_id }}">
-                        <input  type="hidden" id="number_customer" name="number_customer" value="1">
-                        <input  type="hidden" id="totalBooking" name="total" value="{{ $tour->price }}">
+                        <input type="hidden" id="id_users" name="id_users"
+                               value="{{ \Illuminate\Support\Facades\Auth::user()->users_id }}">
+                        <input type="hidden" id="id_tours" name="id_tours" value=" {{ $tour->tours_id }}">
+                        <input type="hidden" id="number_customer" name="number_customer" value="1">
+                        <input type="hidden" id="totalBooking" name="total" value="{{ $tour->price }}">
                         <div class="col-xs-12 btnTotalCostTour">
                             <input type="submit" id="btn-submit"
                                    class="btn btn-flat btn-action btn-md btn-block checkButton requestPrice"

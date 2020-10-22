@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/font-gg1.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/font-gg2.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/discount.css') }}">
 
 </head>
 <body>
@@ -91,8 +92,8 @@
     <div class="global_inner">
         <ul class="gn_links-01">
             <li class="child">
-                <a href="{{ route('frontend.travel') }}" class="noUnderline">
-                    <span class="titleHeader">Du lịch</span>
+                <a  class="noUnderline">
+                    <span class="titleHeader">Danh Mục</span>
                 </a>
                 <button class="gnl_button" id="btnmore" type="button">
                     <span class="iconbtnmore"></span>
@@ -102,21 +103,15 @@
                 <div class="gnl_inner">
                     <div class="global_inner" id="navmore">
                         <ul>
+                            @if(isset($categories))
+                            @foreach( $categories as $category)
                             <li class="">
-                                <a href="{{ route('frontend.travel') }}" class="noafter">
-                                    <span>Hùng vĩ miền Bắc</span>
+                                <a href="{{ route('frontend.category',$category->category_detail_id) }}" class="noafter">
+                                    <span>{{ $category->category_detail_name }}</span>
                                 </a>
                             </li>
-                            <li class="">
-                                <a href="{{ route('frontend.travel') }}" class="noafter">
-                                    <span>Nắng gió miền Trung</span>
-                                </a>
-                            </li>
-                            <li class="">
-                                <a href="{{ route('frontend.travel') }}" class="noafter">
-                                    <span>Sông nước miền Nam</span>
-                                </a>
-                            </li>
+                            @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
