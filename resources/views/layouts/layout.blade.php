@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/font-gg1.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/font-gg2.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/discount.css') }}">
 
 </head>
 <body>

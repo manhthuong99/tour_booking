@@ -13,13 +13,14 @@ class ToursSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        for($i = 1; $i < 102; $i++) {
+        for($i = 1; $i < 10; $i++) {
             App\Models\Tours::create([
                 'tours_name' => $faker->country,
                 'description' => $faker->text,
                 'destination' => $faker->city,
                 'address' => $faker->address,
                 'price' => rand(1000000,10000000),
+                'discount' => rand(50000,1000000),
                 'day_number'=>rand(1,3),
                 'id_province'=>rand(1,63),
                 'image'=>'sapa.jpg',

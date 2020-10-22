@@ -1,162 +1,162 @@
 @extends('layouts.layout')
 @section('content')
 
-{{--    <section class="divSection">--}}
-{{--        <div class="side-indicator">--}}
-{{--            <div class="line"></div>--}}
-{{--            <div class="index one">--}}
-{{--                <p>1</p>--}}
-{{--            </div>--}}
-{{--            <div class="index two">--}}
-{{--                <p>2</p>--}}
-{{--            </div>--}}
-{{--            <div class="index three">--}}
-{{--                <p>3</p>--}}
-{{--            </div>--}}
-{{--            <div class="index four">--}}
-{{--                <p>4</p>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="content contentHome">--}}
-{{--            <div class="text-wrapper">--}}
-{{--                <div class="text">--}}
-{{--                    <div id="title">--}}
-{{--                        <h4>INDONESIA</h4>--}}
-{{--                        <h4>KERALA</h4>--}}
-{{--                        <h4>BALI</h4>--}}
-{{--                        <h4>THAILAND</h4>--}}
-{{--                    </div>--}}
-{{--                    <div id="description">--}}
-{{--                        <p>--}}
-{{--                            As the larget archipelagic country in the world, Indonesia is--}}
-{{--                            blessed with so many different people, cultures, customs,--}}
-{{--                            traditions, artworks, food, animals, plants, landscapes, and--}}
-{{--                            everything that made it almost like 100 (or even 200} countries--}}
-{{--                            melted beautifully into one.--}}
-{{--                        </p>--}}
-{{--                        <p>--}}
-{{--                            Kerala, a state on India's tropical Malabar Coast, has nearly--}}
-{{--                            600km of Arabian Sea shoreline. It's known for its palm-lined--}}
-{{--                            beaches and backwaters, a network of canals. Inland are the--}}
-{{--                            Western Ghats, mountains whose slopes support tea, coffee and--}}
-{{--                            spice plantations as well as wildlife.--}}
-{{--                        </p>--}}
-{{--                        <p>--}}
-{{--                            Bali is an Indonesian island known for its forested volcanic--}}
-{{--                            mountains, iconic rice paddies, beaches and coral reefs. The--}}
-{{--                            island is home to religious sites such as cliffside Uluwatu--}}
-{{--                            Temple. To the south, the beachside city of Kuta has lively--}}
-{{--                            bars, while Seminyak, Sanur and Nusa Dua are popular resort--}}
-{{--                            towns.--}}
-{{--                        </p>--}}
-{{--                        <p>--}}
-{{--                            Thailand is a Southeast Asian country. It's known for tropical--}}
-{{--                            beaches, opulent royal palaces, ancient ruins and ornate temples--}}
-{{--                            displaying figures of Buddha. In Bangkok, the capital, an--}}
-{{--                            ultramodern cityscape rises next to quiet canalside communities--}}
-{{--                            and the iconic temples of Wat Arun, Wat Pho and the Emerald--}}
-{{--                            Buddha Temple (Wat Phra Kaew).--}}
-{{--                        </p>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="glide">--}}
-{{--                <div class="glide_cover"></div>--}}
-{{--                <div class="glide__track" data-glide-el="track">--}}
-{{--                    <ul class="glide__slides">--}}
-{{--                        <li class="glide__slide">--}}
-{{--                            <div class="slide one">--}}
-{{--                                <p>Borobudur Temple, Indonesia</p>--}}
-{{--                                <div class="rating">--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle"></div>--}}
-{{--                                </div>--}}
-{{--                                <div class="slider-image">--}}
-{{--                                    <img src="{{asset('frontend/img/slide5.jpg')}}" alt=""/>--}}
-{{--                                    <div class="bookmark">--}}
-{{--                                        <i class="fa fa-bookmark"></i>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                        <li class="glide__slide">--}}
-{{--                            <div class="slide two">--}}
-{{--                                <p>Kerala</p>--}}
-{{--                                <div class="rating">--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle"></div>--}}
-{{--                                </div>--}}
-{{--                                <div class="slider-image">--}}
-{{--                                    <img src="{{asset('frontend/img/slide6.jpg')}}" alt=""/>--}}
-{{--                                    <div class="bookmark">--}}
-{{--                                        <i class="fa fa-bookmark"></i>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                        <li class="glide__slide">--}}
-{{--                            <div class="slide three">--}}
-{{--                                <p>Balinese Temple, Bali</p>--}}
-{{--                                <div class="rating">--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle"></div>--}}
-{{--                                </div>--}}
-{{--                                <div class="slider-image">--}}
-{{--                                    <img src="{{asset('frontend/img/slide7.jpg')}}" alt=""/>--}}
-{{--                                    <div class="bookmark">--}}
-{{--                                        <i class="fa fa-bookmark"></i>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                        <li class="glide__slide">--}}
-{{--                            <div class="slide four">--}}
-{{--                                <p>Buddha Temple, Thailand</p>--}}
-{{--                                <div class="rating">--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle active"></div>--}}
-{{--                                    <div class="circle"></div>--}}
-{{--                                </div>--}}
-{{--                                <div class="slider-image">--}}
-{{--                                    <img src="{{asset('frontend/img/slide8.jpg')}}" alt=""/>--}}
-{{--                                    <div class="bookmark">--}}
-{{--                                        <i class="fa fa-bookmark"></i>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--                <div data-glide-el="controls" class="controls">--}}
-{{--                    <div data-glide-dir="<" id="prev" class="removeAuto">--}}
-{{--                        <i class="fa fa-arrow-left"></i>--}}
-{{--                    </div>--}}
+    <section class="divSection">
+        <div class="side-indicator">
+            <div class="line"></div>
+            <div class="index one">
+                <p>1</p>
+            </div>
+            <div class="index two">
+                <p>2</p>
+            </div>
+            <div class="index three">
+                <p>3</p>
+            </div>
+            <div class="index four">
+                <p>4</p>
+            </div>
+        </div>
+        <div class="content contentHome">
+            <div class="text-wrapper">
+                <div class="text">
+                    <div id="title">
+                        <h4>INDONESIA</h4>
+                        <h4>KERALA</h4>
+                        <h4>BALI</h4>
+                        <h4>THAILAND</h4>
+                    </div>
+                    <div id="description">
+                        <p>
+                            As the larget archipelagic country in the world, Indonesia is
+                            blessed with so many different people, cultures, customs,
+                            traditions, artworks, food, animals, plants, landscapes, and
+                            everything that made it almost like 100 (or even 200} countries
+                            melted beautifully into one.
+                        </p>
+                        <p>
+                            Kerala, a state on India's tropical Malabar Coast, has nearly
+                            600km of Arabian Sea shoreline. It's known for its palm-lined
+                            beaches and backwaters, a network of canals. Inland are the
+                            Western Ghats, mountains whose slopes support tea, coffee and
+                            spice plantations as well as wildlife.
+                        </p>
+                        <p>
+                            Bali is an Indonesian island known for its forested volcanic
+                            mountains, iconic rice paddies, beaches and coral reefs. The
+                            island is home to religious sites such as cliffside Uluwatu
+                            Temple. To the south, the beachside city of Kuta has lively
+                            bars, while Seminyak, Sanur and Nusa Dua are popular resort
+                            towns.
+                        </p>
+                        <p>
+                            Thailand is a Southeast Asian country. It's known for tropical
+                            beaches, opulent royal palaces, ancient ruins and ornate temples
+                            displaying figures of Buddha. In Bangkok, the capital, an
+                            ultramodern cityscape rises next to quiet canalside communities
+                            and the iconic temples of Wat Arun, Wat Pho and the Emerald
+                            Buddha Temple (Wat Phra Kaew).
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="glide">
+                <div class="glide_cover"></div>
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <li class="glide__slide">
+                            <div class="slide one">
+                                <p>Borobudur Temple, Indonesia</p>
+                                <div class="rating">
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="slider-image">
+                                    <img src="{{asset('frontend/img/slide5.jpg')}}" alt=""/>
+                                    <div class="bookmark">
+                                        <i class="fa fa-bookmark"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="glide__slide">
+                            <div class="slide two">
+                                <p>Kerala</p>
+                                <div class="rating">
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="slider-image">
+                                    <img src="{{asset('frontend/img/slide6.jpg')}}" alt=""/>
+                                    <div class="bookmark">
+                                        <i class="fa fa-bookmark"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="glide__slide">
+                            <div class="slide three">
+                                <p>Balinese Temple, Bali</p>
+                                <div class="rating">
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="slider-image">
+                                    <img src="{{asset('frontend/img/slide7.jpg')}}" alt=""/>
+                                    <div class="bookmark">
+                                        <i class="fa fa-bookmark"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="glide__slide">
+                            <div class="slide four">
+                                <p>Buddha Temple, Thailand</p>
+                                <div class="rating">
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle active"></div>
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="slider-image">
+                                    <img src="{{asset('frontend/img/slide8.jpg')}}" alt=""/>
+                                    <div class="bookmark">
+                                        <i class="fa fa-bookmark"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div data-glide-el="controls" class="controls">
+                    <div data-glide-dir="<" id="prev" class="removeAuto">
+                        <i class="fa fa-arrow-left"></i>
+                    </div>
 
-{{--                    <div data-glide-dir=">" id="next" class="removeAuto">--}}
-{{--                        <i class="fa fa-arrow-right"></i>--}}
-{{--                    </div>--}}
-{{--                    <div data-glide-dir=">" id="nextTren" class="removeAuto">--}}
-{{--                        <i class="fa fa-arrow-right"></i>--}}
-{{--                    </div>--}}
+                    <div data-glide-dir=">" id="next" class="removeAuto">
+                        <i class="fa fa-arrow-right"></i>
+                    </div>
+                    <div data-glide-dir=">" id="nextTren" class="removeAuto">
+                        <i class="fa fa-arrow-right"></i>
+                    </div>
 
-{{--                </div>--}}
-{{--                ky o--}}
-{{--            </div>--}}
-{{--        </div>--}}
+                </div>
+                ky o
+            </div>
+        </div>
 
-{{--        <div class="background"></div>--}}
-{{--    </section>--}}
+        <div class="background"></div>
+    </section>
 
     <div class="bigMain">
         <div class="khoi4">

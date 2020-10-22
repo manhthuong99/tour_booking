@@ -4,9 +4,9 @@
         <div class="side-indicator" style="right: 50px">
             <div class="line"></div>
             @foreach( $toursHighlights as $key => $tourHighlight)
-                    <div class="index one">
-                        {{ $key+1 }}
-                    </div>
+                <div class="index one">
+                    {{ $key+1 }}
+                </div>
                 @break($key == 3)
             @endforeach
         </div>
@@ -16,13 +16,13 @@
                     <h4> TOUR NỔI BẬT</h4>
                     <div id="title">
                         @foreach( $toursHighlights as $key => $tourHighlight)
-                                <h4>{{ $tourHighlight->tours_name }}</h4>
+                            <h4>{{ $tourHighlight->tours_name }}</h4>
                             @break($key == 3)
                         @endforeach
                     </div>
                     <div id="description">
                         @foreach( $toursHighlights as $key => $tourHighlight)
-                                <p>{{ $tourHighlight->address }}</p>
+                            <p>{{ $tourHighlight->address }}</p>
                             @break($key == 3)
                         @endforeach
                     </div>
@@ -33,24 +33,30 @@
                 <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
                         @foreach( $toursHighlights as $key => $tourHighlight)
-                                <li class="glide__slide">
-                                    <div class="slide one">
-                                        <div class="slider-image">
-                                            <img src="{{asset('storage/tours/'.$tourHighlight->image)}}" alt=""/>
+                            <li class="glide__slide">
+                                <a style="z-index: 10000000" href="{{ route('frontend.detailTour',$tourHighlight->tours_id) }}">
+                                <div class="slide one">
+                                    <div class="slider-image">
+                                        <img src="{{asset('storage/tours/'.$tourHighlight->image)}}" alt=""/>
+                                        <div class="bookmark">
+                                                <i class="fa fa-bookmark"></i>
                                         </div>
                                     </div>
-                                </li>
+                                </div>
+                                </a>
+                            </li>
+
                             @break($key == 3)
                         @endforeach
                     </ul>
                 </div>
                 <div data-glide-el="controls" class="controls">
                     <div data-glide-dir="<" id="prev" class="removeAuto">
-                        <<
+                        <i class="fa fa-arrow-left"></i>
                     </div>
 
                     <div data-glide-dir=">" id="next" class="removeAuto">
-                        >>
+                        <i class="fa fa-arrow-right"></i>
                     </div>
                     <div data-glide-dir=">" id="nextTren" class="removeAuto">
                         <i class="fa fa-arrow-right"></i>
@@ -102,6 +108,58 @@
                                 <p><i class="fas fa-map-marker-alt"></i><span>Bà Rịa - Vũng tàu</span></p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container banner4">
+            <div class="tdaddress">
+
+                <h2>Tour đang được giảm giá</h2>
+
+            </div>
+            <div class="container n3-pay-online">
+                <div class="row">
+                    <div id="idTourOnline" class="clTourOnline">
+                        @foreach( $toursDiscount as $tour)
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mg-bot30 touronl2 fullWidth">
+                                <a href="{{ route('frontend.detailTour',$tour->tours_id) }}"
+                                   title="Nha Trang - Đà Lạt (Tour Tiết Kiệm)">
+                                    <div class="pos-relative">
+                                        <img src="{{ asset('storage/tours/'.$tour->image)}}"
+                                             class="img-responsive pic-ud-s" alt="Nha Trang - Đà Lạt (Tour Tiết Kiệm)">
+                                        {{--                                    <div class="frame-po"><i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Nơi khởi hành:&nbsp;&nbsp;<span style="color:#ffc000"> Hồ Chí Minh</span></div>--}}
+                                    </div>
+                                </a>
+                                <div class="frame-po-s">
+                                    <a href="#" title="Nha Trang - Đà Lạt (Tour Tiết Kiệm)">
+                                        <div
+                                            class="po-title-s dot-dot-ajax cut-po-s overWrap">{{ $tour->tours_name }}</div>
+                                    </a>
+                                    <div class="po-line"></div>
+                                    <div class="mg-bot10 khoiinfott disPlex">
+                                        <img src="{{ asset('images/ic_date.png') }}" class="f-left" alt="date">
+                                        <div class="f-left po-info-s">{{ date("d/m/Y", strtotime($tour->calendar)) }}
+                                            &nbsp;&nbsp;-&nbsp;&nbsp;{{ $tour->day_number }} ngày
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    {{--                                    <div class="mg-bot10 khoiinfott disPlex">--}}
+                                    {{--                                        <img src="images/ic_chair.png" class="f-left" alt="chair">--}}
+                                    {{--                                        <div class="f-left po-info-s">9 chỗ</div>--}}
+                                    {{--                                        <div class="clear"></div>--}}
+                                    {{--                                    </div>--}}
+                                    <div class="mg-bot10 khoiinfott disPlex">
+                                        <img src="{{ asset('images/ic_price.png') }}" class="f-left" alt="price">
+                                        <div class="f-left po-info-s priceDiscountFlex">
+                                            <div class="price-n">{{ $tour->price - $tour->discount }} đ</div>
+                                            <div class="price-o">{{ $tour->price }} đ</div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
