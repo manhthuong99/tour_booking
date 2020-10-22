@@ -35,8 +35,8 @@
                                         <div class="avatar_3KH_">
                                             <div>
                                                 <img src="{{ asset('storage/avatars/'.$user->avatar) }}" title="Avatar" alt="Avatar">
-                                                <input type="file">
-                                                <button type="file">Thay đổi</button>
+{{--                                                <input type="file">--}}
+{{--                                                <button type="file">Thay đổi</button>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@
                                                     <div class="col-sm-10 col-md-6 col-lg-6">
                                                         <input name="firstName"
                                                                class="form-control pointerEvent removeBorder"
-                                                               type="text" maxlength="30" placeholder="Họ và tên đệm"
+                                                               type="text" maxlength="30"
                                                                tabindex="3" value="{{ $user->fullname }}">
                                                     </div>
                                                 </div>
@@ -105,7 +105,7 @@
                                                     <label for="email" class="col-sm-2 col-form-label"></label>
                                                     <div class="col-sm-10">
                                                         <button class="userSubmit_3ASx">
-                                                            <a href="updateUser.php">Sửa thông tin</a>
+                                                            <a href="{{ route('frontend.updateProfile',$user->users_id) }}">Sửa thông tin</a>
                                                         </button>
                                                     </div>
                                                 </div>

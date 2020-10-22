@@ -56,7 +56,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @if(\Illuminate\Support\Facades\Auth::check())
                                 <a class="dropdown-item tittleHeader" href="{{ route('frontend.profile',\Illuminate\Support\Facades\Auth::user()->users_id) }}">
-                                    {{ \Illuminate\Support\Facades\Auth::user()->fullname }}</a>
+                                    {{ \Illuminate\Support\Facades\Auth::user()->username }}</a>
                                 <a class="dropdown-item tittleHeader" href="{{ route('frontend.logout') }}">Đăng
                                     xuất</a>
 

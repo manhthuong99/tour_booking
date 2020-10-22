@@ -27,47 +27,50 @@
             }
         });
         let check = true;
-        $('#username').blur(function (){
+        $('#username').blur(function () {
             let username = $('#username').val();
             console.log(username)
             $.post('{{ route('frontend.checkUsername') }}', {
                     "username": username
                 }, function (data) {
-                    if (data){
+                    if (data) {
                         $("#validate-username").html('Tên tài khoản đã được sử dụng')
-                        check =false;
-                    }
-                    else $("#validate-username").html('')
+                        check = false;
+                    } else $("#validate-username").html('')
+                    check = true
                 }
             )
         })
-        $('#email').blur(function (){
+        $('#email').blur(function () {
             let email = $('#email').val();
             console.log(email)
             $.post('{{ route('frontend.checkEmail') }}', {
                     "email": email
                 }, function (data) {
-                    if (data){
+                    if (data) {
                         $("#validate-email").html('Email đã được sử dụng')
-                        check =false;
-                    }
-                    else $("#validate-email").html('')
+                        check = false;
+                    } else $("#validate-email").html('')
+                    check = true
                 }
             )
         })
-        $('#re-password').blur(function (){
+        $('#repassword').keyup( function () {
             let password = $('#password').val();
-            let rePassword = $('#re-password').val();
-            if (rePassword !== password){
-                $("#validate-password").html('Mật khẩu không khớp')
-                check =false;
-            }
-            else {
+            let rePassword = $('#repassword').val();
+            console.log(rePassword +'+'+ password)
+            if (rePassword == password) {
                 $("#validate-password").html('')
+                check = true
+                console.log('oke')
+            } else if (rePassword != password) {
+
+                $("#validate-password").html('Mật khẩu không khớp')
+                check = false;
             }
         })
-        if (check){
-            $('#registerForm').on('submit',function(event){
+        if (check == true) {
+            $('#registerForm').on('submit', function (event) {
                 event.preventDefault();
 
                 let username = $('#username').val();
@@ -76,14 +79,16 @@
 
                 $.ajax({
                     url: "{{ route('frontend.registerUser') }}",
-                    type:"POST",
-                    data:{
+                    type: "POST",
+                    data: {
                         "_token": "{{ csrf_token() }}",
-                        username:username,
-                        email:email,
-                        password:password
+                        username: username,
+                        email: email,
+                        password: password
                     },
-                    success:function(data){
+                    success: function (data) {
+                        alert(data)
+                        window.location='/login'
                         console.log(data);
                     },
                 });
@@ -94,7 +99,8 @@
 <div class="limiter">
     <div class="container-login100" style="background-image: url({{ asset('images/ht_gt1.jpg') }});">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-            <form id="registerForm" name="registerForm" class="login100-form validate-form" action="{{ route('frontend.registerUser') }}" method="post">
+            <form id="registerForm" name="registerForm" class="login100-form validate-form"
+                  action="{{ route('frontend.registerUser') }}" method="post">
                 @csrf
                 <span class="login100-form-title p-b-49" style="font-family: sans-serif; font-weight: bold;">
 						Kinh Đô Travel
@@ -106,7 +112,8 @@
                     <span class="label-input100">Email</span>
                     <div class="flexform">
                         <i class='fa fa-envelope iconFormDK'></i>
-                        <input class="input100 inputFormDK" type="email" id="email" name="email" placeholder="Nhập Email">
+                        <input class="input100 inputFormDK" type="email" id="email" name="email"
+                               placeholder="Nhập Email">
                     </div>
                 </div>
                 <span id="validate-email" class="validForm"></span>
@@ -114,7 +121,8 @@
                     <span class="label-input100">Tài Khoản</span>
                     <div class="flexform">
                         <i class='fa fa-user iconFormDK'></i>
-                        <input class="input100 inputFormDK" type="text" id="username" name="username" placeholder="Tài khoản">
+                        <input class="input100 inputFormDK" type="text" id="username" name="username"
+                               placeholder="Tài khoản">
                     </div>
                 </div>
                 <span id="validate-username" class="validForm"></span>
@@ -123,7 +131,7 @@
                     <span class="label-input100">Mật khẩu</span>
                     <div class="flexform">
                         <i class='fa fa-lock iconFormDK'></i>
-                        <input class="input100 inputFormDK" type="password" name="password" placeholder="Mật khẩu">
+                        <input class="input100 inputFormDK" type="password" id="password" name="password" placeholder="Mật khẩu">
                     </div>
                 </div>
 
@@ -131,7 +139,7 @@
                     <span class="label-input100">Nhập lại mật khẩu</span>
                     <div class="flexform">
                         <i class='fa fa-lock iconFormDK'></i>
-                        <input class="input100 inputFormDK" type="password" name="re-password" id="re-password"
+                        <input class="input100 inputFormDK" type="password" name="re-password" id="repassword"
                                placeholder="Nhập lại mật khẩu">
                     </div>
                 </div>
@@ -163,7 +171,10 @@
 </div>
 <script>
 
-<script type="text/javascript" src="https://www.technicalkeeda.com/js/javascripts/plugin/jquery.js"></script>
+    <
+    script
+    type = "text/javascript"
+    src = "https://www.technicalkeeda.com/js/javascripts/plugin/jquery.js" ></script>
 <script type="text/javascript" src="https://www.technicalkeeda.com/js/javascripts/plugin/jquery.validate.js"></script>
 <script src={{ asset('frontend/vendor/jquery/jquery-3.2.1.min.js') }}></script>
 <script src={{ asset('frontend/vendor/animsition/js/animsition.min.js') }}></script>
