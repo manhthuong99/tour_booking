@@ -1,3 +1,67 @@
+.myDIVPay{
+    display: flex;
+    /* justify-content: space-around; */
+    height: 70px;
+    margin-top: 10px;
+}
+.contentPay{
+    width: 50%;
+    height: 100%;
+}
+.payMethod{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 7px 0;
+}
+.payMethod img{
+    width: 40%;
+    height: 55px;
+    display: block;
+    margin:auto;
+    align-items: center;
+    justify-content: center;
+}
+.contentAcc a{
+    display: block;
+    margin: auto;
+}
+.contentAcc a img{
+    width: 100px;
+    height: 80px;
+    display: block;
+    margin: auto;
+}
+.myDIVPay .contentPay.active .payMethod{
+    background: #e5e6e6;
+}
+
+.myDIVPay .contentPay .contentAcc{
+    position: relative;
+    background: #fff;
+    /* height: 0; */
+    overflow: hidden;
+    transition: 0.5s;
+    overflow-y: auto;
+    z-index: 1;
+    height: 130px;
+    padding: 10px;
+    /* display: none; */
+}
+/* #payNone{
+    display: none;
+} */
+/* .myDIVPay .contentPay.active .contentAcc{
+    height: 130px;
+    padding: 10px;
+} */
+
+
+
+
+
+
 
 #blur{
     transition: 0.5s;

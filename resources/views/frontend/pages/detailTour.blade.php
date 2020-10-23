@@ -559,6 +559,47 @@
                                 <input maxlength="255" type="text" class="form-control " id="customerEmail"
                                        value="{{ \Illuminate\Support\Facades\Auth::user()->email }}">
                             </div>
+                            <div class="col-xs-12 initRequestTour">
+                                <label class="labelRequestTour">Phương thức thanh toán</label>
+                                <div class="myDIVPay">
+                                   {{-- <div class="payMethod">
+                                        <a href="#" class="payCredit">
+                                            <img src="{{ asset('frontend/images/payMoney.png') }}" alt="">
+                                        </a>
+                                        <a href="#" class="payCredit">
+                                            <img src="{{ asset('frontend/images/payCredit.png') }}" alt="">
+                                        </a>
+                                        <div class="contentAcc">
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                                        It has survived not only five centuries</p>
+                                    </div>
+                                    </div>--}}
+                                   
+                                    <div class="contentPay">
+                                        <div class="payMethod" onClick="closeCardPay()">
+                                            <img src="{{ asset('frontend/images/payMoney.png') }}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="contentPay">
+                                        <div class="payMethod" onClick="toggleCardPay()">
+                                            <img src="{{ asset('frontend/images/payCredit.png') }}" alt="">
+                                        </div>
+                                        <div class="contentAcc" id="payNone" style="display: none">
+                                            <a href="#" class="isCardPay" onClick="closeCardPay()">
+                                                <img src="{{ asset('frontend/images/payCredit.png') }}" alt="">
+                                            </a>
+                                            <a href="#" class="isCardPay" onClick="closeCardPay()">
+                                                <img src="{{ asset('frontend/images/payCredit.png') }}" alt="">
+                                            </a>
+                                            <a href="#" class="isCardPay" onClick="closeCardPay()">
+                                                <img src="{{ asset('frontend/images/payCredit.png') }}" alt="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                            </div>
                             <div class="col-xs-12 initRequestTour" style="display: none">
                                 <label class="labelRequestTour">Yêu cầu khác</label>
                                 <textarea maxlength="1000" rows="2" cols="30" class="form-control"
@@ -590,6 +631,57 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    // Add active phương thức thanh toán
+    <script>
+        $(document).ready(function(){
+            $('.myDIVPay .contentPay').click(function(){
+                $('.myDIVPay .contentPay').removeClass("active");
+                $(this).toggleClass("active");
+                // if ( $('.myDIVPay .contentPay').hasClass('active') ) {
+                //     console.log('okkkkk');
+                //     $('.isCardPay').removeClass('active');
+                // }
+            });
+
+            $('.isCardPay').click(function(){
+                $('.isCardPay').removeClass("active");
+                $(this).toggleClass("active");
+                // if ( $('.isCardPay').hasClass('active') ) {
+                //     console.log('okkkkk');
+                //     $('.contentAcc').toggleClass('active');
+                // }
+            });
+       
+        });
+
+  
+    </script>
+    <script>
+        var payNone = document.getElementById("payNone");
+        function toggleCardPay(){
+            if (payNone.style.display === "none") {
+                payNone.style.display = "block";
+            } else {
+                payNone.style.display = "none";
+            }
+        }
+        function closeCardPay(){
+            if (payNone.style.display === "block") {
+                payNone.style.display = "none";
+            } 
+        }
+        closeCardPay
+      
+       {{-- const contentPay = document.getElementsByClassName('contentPay');
+        for(i = 0; i < contentPay.length; i++){
+            contentPay[i].addEventListener('click', function(){
+                this.classList.toggle('active')
+            })
+        }--}}
+       
+    </script>
 
     <script>
         jQuery(document).ready(function () {
