@@ -13,5 +13,21 @@ class UpdateInfoClient extends Controller
             ->get();
         return view('frontend.pages.updateInfoClient',$data);
     }
+    public function saveProfile(Request $request){
+        $data = Users::find($request->id);
+        $data->fullname = $request->fullname;
+        $data->phone_number = $request->phone_number;
+        $data->address = $request->address;
+        $data->birthday = $request->birthday;
+
+        if ($request->hasFile('avatar')) {
+            $data->avatar = rand() . '-' . $request->avatar->getClientOriginalName();
+            $request->avatar->storeAs('avatars', $data->avatar, 'public');
+        }
+        if ($data->save()){
+           return redirect(route('frontend.profile',$request->id))->with('success', 'Thay đổi thành công');
+        }
+    }
+
 
 }

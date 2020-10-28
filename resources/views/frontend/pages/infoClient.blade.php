@@ -1,5 +1,14 @@
 @extends('layouts.layout')
 @section('content')
+    <style>
+        .avatar {
+            max-width: 100%;
+            vertical-align: center;
+            object-fit: cover;
+            width: 250px;
+            height: 250px;
+        }
+    </style>
     @foreach( $Users as $user)
         <div id="vnt-content">
             <div id="vnt-navation" class="breadcrumb">
@@ -34,7 +43,7 @@
                                     <div class="col-sm-12 col-md-2 col-lg-2">
                                         <div class="avatar_3KH_">
                                             <div>
-                                                <img src="{{ asset('storage/avatars/'.$user->avatar) }}" title="Avatar" alt="Avatar">
+                                                <img class="avatar" src="{{ asset('storage/avatars/'.$user->avatar) }}" title="Avatar" alt="Avatar">
 {{--                                                <input type="file">--}}
 {{--                                                <button type="file">Thay đổi</button>--}}
                                             </div>
@@ -79,8 +88,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="email" class="col-sm-2 col-form-label">Địa chỉ
-                                                        tính:</label>
+                                                    <label for="email" class="col-sm-2 col-form-label">Địa chỉ:</label>
                                                     <div class="col-sm-10 col-md-6 col-lg-6">
                                                         <div class="phoneInput_Q_2V">
                                                             <input name="phone"
@@ -94,19 +102,18 @@
                                                            class="col-sm-2 col-form-label birthdayLabel_2KaK">Ngày
                                                         sinh:</label>
                                                     <div class="col-sm-10 col-md-6 col-lg-6">
+                                                        <label class="form-control pointerEvent removeBorder">{{ $user->birthday }}</label>
                                                         <div class="phoneInput_Q_2V">
-                                                            <input name="phone"
-                                                                   class="form-control pointerEvent removeBorder"
-                                                                   type="text" placeholder="" value="{{ $user->birthday }}">
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="email" class="col-sm-2 col-form-label"></label>
                                                     <div class="col-sm-10">
-                                                        <button class="userSubmit_3ASx">
-                                                            <a href="{{ route('frontend.updateProfile',$user->users_id) }}">Sửa thông tin</a>
-                                                        </button>
+
+                                                            <a class="btn btn-success" href="{{ route('frontend.updateProfile',$user->users_id) }}">Sửa thông tin</a>
+
                                                     </div>
                                                 </div>
                                             </form>

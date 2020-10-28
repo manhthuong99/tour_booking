@@ -55,10 +55,10 @@
                 }
             )
         })
-        $('#repassword').keyup( function () {
+        $('#repassword').keyup(function () {
             let password = $('#password').val();
             let rePassword = $('#repassword').val();
-            console.log(rePassword +'+'+ password)
+            console.log(rePassword + '+' + password)
             if (rePassword == password) {
                 $("#validate-password").html('')
                 check = true
@@ -88,7 +88,7 @@
                     },
                     success: function (data) {
                         alert(data)
-                        window.location='/login'
+                        window.location = '/login'
                         console.log(data);
                     },
                 });
@@ -109,38 +109,61 @@
 						Đăng ký
 					</span>
                 <div class="wrap-input100 validate-input m-b-23 reMargin" data-validate="Username is reauired">
-                    <span class="label-input100">Email</span>
+                    <span class="label-input100">Email <span
+                            style="color: red">*</span></span>
                     <div class="flexform">
                         <i class='fa fa-envelope iconFormDK'></i>
                         <input class="input100 inputFormDK" type="email" id="email" name="email"
-                               placeholder="Nhập Email">
+                               placeholder="Nhập Email" required>
                     </div>
                 </div>
                 <span id="validate-email" class="validForm"></span>
                 <div class="wrap-input100 validate-input m-b-23 reMargin" data-validate="Username is reauired">
-                    <span class="label-input100">Tài Khoản</span>
+                    <span class="label-input100">Họ tên <span
+                            style="color: red">*</span></span>
+                    <div class="flexform">
+                        <i class='fa fa-user iconFormDK'></i>
+                        <input class="input100 inputFormDK" type="text" id="fullname" name="fullname"
+                               placeholder="Họ tên" required>
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-23 reMargin" data-validate="Username is reauired">
+                    <span class="label-input100">Số điện thoại <span
+                            style="color: red">*</span></span>
+                    <div class="flexform">
+                        <i class='fa fa-user iconFormDK'></i>
+                        <input class="input100 inputFormDK" type="text" id="phone_number" name="phone_number"
+                               placeholder="Số điện thoại" required>
+                    </div>
+                </div>
+                <div class="wrap-input100 validate-input m-b-23 reMargin" data-validate="Username is reauired">
+                    <span class="label-input100">Tài Khoản <span
+                            style="color: red">*</span></span>
                     <div class="flexform">
                         <i class='fa fa-user iconFormDK'></i>
                         <input class="input100 inputFormDK" type="text" id="username" name="username"
-                               placeholder="Tài khoản">
+                               placeholder="Tài khoản" required>
                     </div>
                 </div>
                 <span id="validate-username" class="validForm"></span>
                 <div class="wrap-input100 validate-input reMargin" data-validate="Password is required"
                      style="margin-bottom: 23px">
-                    <span class="label-input100">Mật khẩu</span>
+                    <span class="label-input100">Mật khẩu <span
+                            style="color: red">*</span></span>
                     <div class="flexform">
                         <i class='fa fa-lock iconFormDK'></i>
-                        <input class="input100 inputFormDK" type="password" id="password" name="password" placeholder="Mật khẩu">
+                        <input class="input100 inputFormDK" type="password" id="password" name="password"
+                               placeholder="Mật khẩu" required>
                     </div>
                 </div>
 
                 <div class="wrap-input100 validate-input reMargin" data-validate="Password is required">
-                    <span class="label-input100">Nhập lại mật khẩu</span>
+                    <span class="label-input100">Nhập lại mật khẩu <span
+                            style="color: red">*</span></span>
                     <div class="flexform">
                         <i class='fa fa-lock iconFormDK'></i>
                         <input class="input100 inputFormDK" type="password" name="re-password" id="repassword"
-                               placeholder="Nhập lại mật khẩu">
+                               placeholder="Nhập lại mật khẩu" required>
                     </div>
                 </div>
                 <div style="height:10px">

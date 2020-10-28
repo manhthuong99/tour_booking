@@ -24,6 +24,7 @@ class DetailTour extends Controller
         $data->id_tours =$request->id_tours;
         $data->number_customer =$request->number_customer;
         $data->total =$request->total;
+        $data->payment_method =$request->payment_method;
         if ($data->save()){
             return redirect()->back()->with('message', 'Đặt tour thành công!');
         }

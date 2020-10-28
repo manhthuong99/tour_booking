@@ -62,6 +62,7 @@ Route::get('about', 'frontend\About@index')->name('frontend.about');
 Route::get('detailTour/{id?}', 'frontend\DetailTour@index')->name('frontend.detailTour');
 Route::get('profile/{id}', 'frontend\InfoClient@index')->name('frontend.profile');
 Route::get('updateProfile/{id}', 'frontend\UpdateInfoClient@index')->name('frontend.updateProfile');
+Route::post('updateProfiles', 'frontend\UpdateInfoClient@saveProfile')->name('frontend.saveProfile');
 Route::get('login', 'frontend\Login@index')->name('frontend.login');
 Route::get('register', 'frontend\Register@index')->name('frontend.register');
 Route::post('register', 'frontend\Login@register')->name('frontend.registerUser');

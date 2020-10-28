@@ -54,7 +54,11 @@ class UserController extends Controller
         $data->fullname = $request->fullname;
         $data->birthday = $request->birthday;
         $data->permission = $request->permission;
-        $data->avatar = 'avatar-clone.jpg';
+
+        if ($request->hasFile('avatar')) {
+            $data->avatar = rand() . '-' . $request->avatar->getClientOriginalName();
+            $request->avatar->storeAs('avatars', $data->avatar, 'public');
+        }
         if ($this->checkDuplicateName($request->users_id,$request->username)){
             return redirect()->back()->with('failed', 'Username này đã tồn tại');
         }

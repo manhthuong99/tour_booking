@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddShortDescriptionToToursTable extends Migration
+class AddPaymentMethodToBookingTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddShortDescriptionToToursTable extends Migration
      */
     public function up()
     {
-        Schema::table('tours', function (Blueprint $table) {
-            $table->text('short_description')->after('tours_name')->nullable();
+        Schema::table('booking', function (Blueprint $table) {
+            $table->integer('payment_method')->after('total')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddShortDescriptionToToursTable extends Migration
      */
     public function down()
     {
-        Schema::table('tours', function (Blueprint $table) {
+        Schema::table('booking', function (Blueprint $table) {
 
         });
     }
